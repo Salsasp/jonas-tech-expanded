@@ -11,7 +11,6 @@ namespace JonasTechExpanded
     {
         private ICoreServerAPI sapi;
 
-        /// <summary>Players whose picking range we are currently responsible for.</summary>
         private readonly HashSet<string> reachApplied = new HashSet<string>();
 
         private double lastFuelCheckTotalHours = -1;
@@ -22,13 +21,18 @@ namespace JonasTechExpanded
         {
             api.RegisterItemClass("ItemExoskeletonChest", typeof(ItemExoskeletonChest));
             api.RegisterEntityBehaviorClass("exoStabilized", typeof(EntityBehaviorExoStabilized));
+            api.RegisterCollectibleBehaviorClass("exoMiningSpeed", typeof(CollectibleBehaviorExoMiningSpeed));
         }
 
         public override void AssetsFinalize(ICoreAPI api)
         {
             foreach (var collectible in api.World.Collectibles)
             {
-                collectible.CollectibleBehaviors = collectible.CollectibleBehaviors.Append(new CollectibleBehaviorExoMiningSpeed(collectible, this));
+                // On a client the behavior also arrives via the server's item type packets, so skip any
+                // collectible that already has it rather than attaching a second copy.
+                if (collectible.HasBehavior<CollectibleBehaviorExoMiningSpeed>()) continue;
+
+                collectible.CollectibleBehaviors = collectible.CollectibleBehaviors.Append(new CollectibleBehaviorExoMiningSpeed(collectible));
             }
         }
 

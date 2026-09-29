@@ -9,16 +9,22 @@ namespace JonasTechExpanded
     /// </summary>
     public class CollectibleBehaviorExoMiningSpeed : CollectibleBehavior
     {
-        private readonly JonasTechExpandedModSystem modSys;
+        private JonasTechExpandedModSystem modSys;
 
-        public CollectibleBehaviorExoMiningSpeed(CollectibleObject collObj, JonasTechExpandedModSystem modSys) : base(collObj)
+        public CollectibleBehaviorExoMiningSpeed(CollectibleObject collObj) : base(collObj)
         {
-            this.modSys = modSys;
+        }
+
+        public override void OnLoaded(ICoreAPI api)
+        {
+            base.OnLoaded(api);
+
+            modSys = api.ModLoader.GetModSystem<JonasTechExpandedModSystem>();
         }
 
         public override float GetMiningSpeed(ItemStack itemstack, BlockSelection blockSel, Block block, IPlayer forPlayer, ref EnumHandling bhHandling)
         {
-            var exo = modSys.GetPoweredExo(forPlayer);
+            var exo = modSys?.GetPoweredExo(forPlayer);
             if (exo == null) return 1f;
 
             // Handled rather than PreventDefault, so this multiplies on top of the tool's own

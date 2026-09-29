@@ -1,0 +1,23 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../night-vision-toggle"
+		},
+		{
+			"path": "../vssurvivalmod"
+		},
+		{
+			"path": "../../../AppData/Roaming/Vintagestory"
+		},
+		{
+			"path": "../vs-gorilla"
+		},
+		{
+			"path": "../vsapi"
+		}
+	],
+	"settings": {}
+}
