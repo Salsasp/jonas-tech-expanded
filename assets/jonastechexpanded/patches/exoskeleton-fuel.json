@@ -1,0 +1,10 @@
+[
+	// Declares what one temporal gear is worth as exoskeleton fuel, mirroring vanilla's
+	// nightVisionFuelHours so additional fuel types can be added by patch alone.
+	{
+		"op": "add",
+		"path": "/attributesByType/*-temporal/exoskeletonFuelHours",
+		"value": 24,
+		"file": "game:itemtypes/resource/gear.json"
+	}
+]

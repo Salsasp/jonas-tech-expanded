@@ -1,0 +1,12 @@
+{
+	"type": "code",
+	"modid": "jonastechexpanded",
+	"name": "Jonas Tech Expanded",
+	"authors": [ "salsa" ],
+	"description": "Expands on Jonas' salvaged machinery with new wearable devices.",
+	"version": "0.1.0",
+	"dependencies": {
+		"game": "1.22.0",
+		"survival": ""
+	}
+}

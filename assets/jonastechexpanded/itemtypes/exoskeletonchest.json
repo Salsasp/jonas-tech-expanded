@@ -1,0 +1,85 @@
+{
+	code: "exoskeletonchest",
+	class: "ItemExoskeletonChest",
+	storageFlags: 128,
+	durability: 900,
+	heldTpIdleAnimation: "holdunderarm",
+	behaviors: [
+		{ name: "Wearable" }
+	],
+	attributes: {
+		clothescategory: "armorbody",
+		visibleDamageEffect: true,
+		footStepSound: "wearable/leather*",
+		// Tunables. reachBonus is added to the default 4.5 block picking range, which the engine uses
+		// for breaking, placing and interacting alike.
+		exoskeleton: {
+			reachBonus: 2.5,
+			miningSpeedMultiplier: 2,
+			fuelHoursCapacity: 48
+		},
+		attachableToEntity: {
+			categoryCode: "armorbody",
+			disableElements: [
+				"Waist",
+				"hideupperarm",
+				"hidelowerarm",
+				"mittenfrill-l",
+				"mittenfrill-r",
+				"glovefrill-l",
+				"glovefrill-r",
+				"ShirtFrontTile",
+				"ShirtBackTile",
+				"coatFrontTile",
+				"coatBackTile",
+				"shouldertextureFrontTile",
+				"shouldertextureBackTile"
+			]
+		},
+		// Matches vanilla armor-body-sewn-linen (gambeson chest).
+		defaultProtLoss: {
+			perTierRelativeProtectionLoss: [0.03, 0.15],
+			perTierFlatDamageReductionLoss: [0.1, 0.2]
+		},
+		protectionModifiers: {
+			relativeProtection: 0.7,
+			flatDamageReduction: 0.7,
+			protectionTier: 2,
+			perTierRelativeProtectionLoss: [0.015, 0.075],
+			perTierFlatDamageReductionLoss: [0.05, 0.1]
+		},
+		statModifiers: {
+			walkSpeed: -0.02,
+			healingeffectivness: -0.17,
+			hungerrate: 0.03
+		}
+	},
+	// Placeholder: verbatim copy of the vanilla gambeson chest shape so the piece renders and animates
+	// correctly on the seraph. Replace this one file with the exoskeleton model.
+	shape: { base: "entity/humanoid/seraph/armor/exoskeleton/body" },
+	textures: {
+		"seraph": { base: "block/transparent" },
+		"material": { base: "entity/humanoid/serapharmor/sewn/linen" }
+	},
+	renderAlphaTest: 0.25,
+	creativeinventory: { "general": ["*"], "items": ["*"], "clothing": ["*"] },
+	materialDensity: 4000,
+	guiTransform: {
+		translation: { x: 3, y: 0, z: 0 },
+		rotation: { x: -26, y: -46, z: -180 },
+		origin: { x: 0.5, y: 1.11, z: 0.5 },
+		scale: 1.37
+	},
+	groundTransform: {
+		translation: { x: 0, y: 0, z: 0 },
+		rotation: { x: 0, y: 0, z: 90 },
+		origin: { x: 0.34, y: 1.12, z: 0.5 },
+		scale: 3.1
+	},
+	tpHandTransform: {
+		translation: { x: -1, y: -1.9, z: -0.5 },
+		rotation: { x: 97, y: -168, z: 94 },
+		origin: { x: 0.5, y: 1.5, z: 0.5 },
+		scale: 0.67
+	}
+}
