@@ -1,7 +1,10 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common;
+using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Config;
 
 namespace JonasTechExpanded
@@ -11,7 +14,7 @@ namespace JonasTechExpanded
     /// mining of every block material and holds their temporal stability steady. Its protection values
     /// match a gambeson chest piece and apply whether or not the frame is powered.
     /// </summary>
-    public class ItemExoskeletonChest : Item
+    public class ItemExoskeletonChest : Item, IWearableShapeSupplier
     {
         public const string FuelHoursAttribute = "fuelHours";
         public const string FuelItemAttribute = "exoskeletonFuelHours";
@@ -28,6 +31,9 @@ namespace JonasTechExpanded
         /// <summary>In-game hours of fuel the frame can hold.</summary>
         public float FuelHoursCapacity { get; private set; }
 
+        /// <summary>Worn shape elements, with their children, that are only shown while powered.</summary>
+        public string[] PoweredOnlyElements { get; private set; }
+
         public override void OnLoaded(ICoreAPI api)
         {
             base.OnLoaded(api);
@@ -39,6 +45,58 @@ namespace JonasTechExpanded
             ReachBonus = attr?["reachBonus"].AsFloat(2.5f) ?? 2.5f;
             MiningSpeedMultiplier = attr?["miningSpeedMultiplier"].AsFloat(2f) ?? 2f;
             FuelHoursCapacity = attr?["fuelHoursCapacity"].AsFloat(48f) ?? 48f;
+            PoweredOnlyElements = attr?["poweredOnlyElements"].AsArray<string>() ?? new[] { "TemporalGear" };
+        }
+
+        public bool IsPowered(ItemStack stack)
+        {
+            return GetFuelHours(stack) > 0 && GetRemainingDurability(stack) > 0;
+        }
+
+        public Shape GetShape(ItemStack stack, Entity forEntity, string texturePrefixCode)
+        {
+            AssetLocation shapeLoc = Shape.Base.CopyWithPathPrefixAndAppendixOnce("shapes/", ".json");
+
+            // Parsed fresh each call because the engine mutates the shape it is handed while attaching it.
+            var shape = Vintagestory.API.Common.Shape.TryGet(api, shapeLoc);
+            if (shape == null) return null;
+
+            // Players use the server's synced flag, since other players' stack attributes can be stale on
+            // this client. Anything else, like a mannequin, goes by the stack itself.
+            bool powered = forEntity is EntityPlayer
+                ? forEntity.WatchedAttributes.GetBool(EntityBehaviorExoVisuals.PoweredAttribute)
+                : IsPowered(stack);
+
+            if (!powered) removePoweredOnlyElements(shape);
+
+            // Returning a shape skips the engine's own subclassing step, so redo it here including the
+            // visibleDamageEffect wear.
+            float damageEffect = 0;
+            if (stack.ItemAttributes?["visibleDamageEffect"].AsBool() == true)
+            {
+                damageEffect = Math.Max(0, 1 - (float)GetRemainingDurability(stack) / GetMaxDurability(stack) * 1.1f);
+            }
+
+            shape.SubclassForStepParenting(texturePrefixCode, damageEffect);
+            shape.ResolveReferences(api.World.Logger, shapeLoc.ToString());
+            return shape;
+        }
+
+        private void removePoweredOnlyElements(Shape shape)
+        {
+            shape.RemoveElements(PoweredOnlyElements);
+            if (shape.Animations == null) return;
+
+            var remaining = new HashSet<string>();
+            foreach (var element in shape.Elements) element.WalkRecursive(el => remaining.Add(el.Name));
+
+            foreach (var keyFrame in shape.Animations.SelectMany(anim => anim.KeyFrames))
+            {
+                foreach (var name in keyFrame.Elements.Keys.Where(name => !remaining.Contains(name)).ToList())
+                {
+                    keyFrame.Elements.Remove(name);
+                }
+            }
         }
 
         public double GetFuelHours(ItemStack stack)

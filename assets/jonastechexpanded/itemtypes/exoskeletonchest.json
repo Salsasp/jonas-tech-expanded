@@ -16,7 +16,9 @@
 		exoskeleton: {
 			reachBonus: 2.5,
 			miningSpeedMultiplier: 2,
-			fuelHoursCapacity: 48
+			fuelHoursCapacity: 48,
+			// Element names in the worn shape that are removed, along with their children, while unpowered.
+			poweredOnlyElements: ["TemporalGear"]
 		},
 		attachableToEntity: {
 			categoryCode: "armorbody",

@@ -21,6 +21,7 @@ namespace JonasTechExpanded
         {
             api.RegisterItemClass("ItemExoskeletonChest", typeof(ItemExoskeletonChest));
             api.RegisterEntityBehaviorClass("exoStabilized", typeof(EntityBehaviorExoStabilized));
+            api.RegisterEntityBehaviorClass("exoVisuals", typeof(EntityBehaviorExoVisuals));
             api.RegisterCollectibleBehaviorClass("exoMiningSpeed", typeof(CollectibleBehaviorExoMiningSpeed));
         }
 
@@ -58,13 +59,8 @@ namespace JonasTechExpanded
             var slot = GetExoSlot(player);
             if (slot == null) return null;
 
-            var stack = slot.Itemstack;
-            var exo = (ItemExoskeletonChest)stack.Collectible;
-
-            if (exo.GetFuelHours(stack) <= 0) return null;
-            if (exo.GetRemainingDurability(stack) <= 0) return null;
-
-            return slot;
+            var exo = (ItemExoskeletonChest)slot.Itemstack.Collectible;
+            return exo.IsPowered(slot.Itemstack) ? slot : null;
         }
 
         public ItemSlot GetExoSlot(IPlayer player)
@@ -92,6 +88,20 @@ namespace JonasTechExpanded
                 if (drainFuel) drainExoFuel(player, hoursPassed);
 
                 if (player is IServerPlayer serverPlayer) updateReach(serverPlayer);
+
+                updatePoweredFlag(player);
+            }
+        }
+
+        private void updatePoweredFlag(IPlayer player)
+        {
+            var attrs = player.Entity?.WatchedAttributes;
+            if (attrs == null) return;
+
+            bool powered = GetPoweredExoSlot(player) != null;
+            if (attrs.GetBool(EntityBehaviorExoVisuals.PoweredAttribute) != powered)
+            {
+                attrs.SetBool(EntityBehaviorExoVisuals.PoweredAttribute, powered);
             }
         }
 

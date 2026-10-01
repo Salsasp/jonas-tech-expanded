@@ -1,7 +1,7 @@
 {
 	"editor": {
 		"backDropShape": "C:/Users/dakot/Coding/VSMods/jonas-tech-expanded/seraph-hairless",
-		"collapsedPaths": ",Root/ArmorUpperTorso,Root/ArmorUpperArmL/ElbowConnector/Valve2,Root/ArmorUpperArmL/ArmRingAnchor3/ArmSupportStrapAnchorMiddle3,Root/ArmorUpperTorso/SightGlassBack2,Root/ArmorUpperTorso/SupportFrameAnchor/SightGlassTopAnchor,Root/ArmorUpperArmL/ArmRingAnchor/ArmSupportStrapAnchorMiddle,Root/origin/TopValve,Root/ArmorUpperTorso/SupportFrameAnchor/SightGlassFrontAnchor/SightGlassFront3,Root/ArmorUpperTorso/SupportFrameAnchor/SightGlassFrontAnchor/SightGlassFront2,Root/ArmorUpperTorso/SupportFrameAnchor/SightGlassFrontAnchor/SightGlassFront5,Root/ArmorUpperTorso/SupportFrameAnchor/SightGlassFrontAnchor/SightGlassFront4,Root/ArmorCoatR,Root/ArmorUpperTorso/SupportFrameAnchor/SupportGearBase2,Root/ArmorLowerArmL/ArmRingAnchor4/ArmSupportStrapAnchorMiddle4,Root/ArmorUpperArmL/ArmRingAnchor/ArmSupportStrapAnchorMiddle2,Root/ArmorUpperTorso/SightGlass2,Root/ArmorUpperTorso/SupportFrameAnchor/SightGlassFront,Root/ArmorCoatL,Root/origin,Root/ArmorUpperArmL/ArmRingAnchor2/ArmSupportStrapAnchor2,Root/ArmorUpperTorso/SupportFrameAnchor/PipeAnchorFront/JonasPipe3,Root/ArmorUpperTorso/SupportFrameAnchor/PipeAnchorFront/JonasPipe2,Root/ArmorLowerArmL/Gripper/SmallGear2,Root/ArmorLowerArmL/Gripper/SmallGear3,Root/ArmorLowerArmL/Gripper,Root/ArmorUpperTorso/SightGlass,Root/ArmorLowerArmL/ArmRingAnchor5,Root/ArmorLowerArmL/ArmRingAnchor6,Root/ArmorUpperTorso/SupportFrameAnchor/SupportRivetFrontAnchor,Root/ArmorUpperArmR,Root/ArmorUpperArmL,Root/ArmorUpperTorso/SupportFrameAnchor/Valve,Root/ArmorLowerArmL/ArmRingAnchor4,Root/ArmorUpperTorso/SupportFrameAnchor/SupportGearBase,Root/ArmorUpperTorso/SupportFrameAnchor/Valve2,Root/ArmorUpperTorso/SupportFrameAnchor/PipeAnchorFront/JonasPipe3/filament3,Root/ArmorLowerArmL/ArmSupportLarge33/SightGlassTop5,Root/cube1,Root/ArmorUpperArmL/ArmSupportStrapUpper,Root/base ,Root/ArmorUpperTorso/SupportFrameAnchor/SightGlassBack,Root/ArmorUpperTorso/SightGlassFront3,Root/ArmorUpperTorso/SupportFrameAnchor/SightGlassTopAnchor/SightGlassTop2,Root/ArmorUpperArmL/ArmRingAnchor4,Root/ArmorUpperArmL/ArmRingAnchor3/SightGlassTop4,Root/ArmorUpperArmL/ArmRingAnchor3,Root/ArmorUpperTorso/SupportFrameAnchor/SupportRivetBackAnchor,Root/ArmorUpperTorso/SupportFrameAnchor/SightGlassBackAnchor/SightGlassBack,Root/ArmorUpperArmL/ArmRingAnchor2,Root/ArmorUpperTorso/SupportFrameAnchor/SightGlassBack3,Root/ArmorUpperTorso/SupportFrameAnchor/SightGlassFrontAnchor/SightGlassFront,Root/ArmorUpperTorso/SupportFrameAnchor/SightGlassBack2,Root/ArmorLowerArmR/ArmRingAnchor4,Root/ArmorLowerArmR,Root/ArmorUpperTorso/SupportFrameAnchor/SupportGearBase/TemporalGear,Root/ArmorUpperTorso/SupportFrameAnchor/PipeAnchorFront/JonasPipe,Root/SmallGear,Root/ArmorLowerArmL,Root/SightGlass,Root/ArmorUpperTorso/SupportFrameAnchor/SightGlassBackAnchor/SightGlassBack4,Root/ArmorLowerArmL/ArmSupportLarge33,Root/origin/Bulkhead1,Root/ArmorUpperTorso/SupportFrameAnchor/SightGlassBackAnchor/SightGlassBack2,Root/ArmorUpperTorso/SupportFrameAnchor/SightGlassBackAnchor/SightGlassBack3,Root/ArmorUpperArmL/ArmRingAnchor/SightGlassTop3,Root/Valve/TopValve,Root/ArmorUpperArmL/ArmRingAnchor/SightGlassTop4,Root/ArmorUpperTorso/SupportFrameAnchor/SightGlassFront6,Root/ArmorUpperTorso/SupportFrameAnchor/SightGlassFront3,Root/ArmorUpperTorso/SupportFrameAnchor/SightGlassBackAnchor,Root/ArmorUpperTorso/SupportFrameAnchor/SightGlassFront2,Root/Valve/Bulkhead1,Root/ArmorUpperTorso/SupportFrameAnchor/PipeAnchorFront,Root/ArmorUpperTorso/SupportFrameAnchor/SightGlassFrontAnchor,Root/ArmorUpperTorso/SupportFrameAnchor/PipeAnchorFront/JonasPipe2/filament2",
+		"collapsedPaths": ",Root/ArmorUpperTorso,Root/ArmorUpperArmL/ElbowConnector/Valve2,Root/ArmorLowerArmR/GripperR/SmallGearR/ShaftUD12R/Tooth07R,Root/ArmorUpperArmL/ArmRingAnchor3/ArmSupportStrapAnchorMiddle3,Root/ArmorUpperTorso/SightGlassBack2,Root/ArmorUpperTorso/SupportFrameAnchor/SightGlassTopAnchor,Root/ArmorUpperArmL/ArmRingAnchor/ArmSupportStrapAnchorMiddle,Root/origin/TopValve,Root/ArmorUpperTorso/SupportFrameAnchor/SightGlassFrontAnchor/SightGlassFront3,Root/ArmorUpperTorso/SupportFrameAnchor/SightGlassFrontAnchor/SightGlassFront2,Root/ArmorUpperTorso/SupportFrameAnchor/SightGlassFrontAnchor/SightGlassFront5,Root/ArmorLowerArmL/HandController,Root/ArmorUpperTorso/SupportFrameAnchor/SightGlassFrontAnchor/SightGlassFront4,Root/ArmorCoatR,Root/ArmorUpperTorso/SupportFrameAnchor/SupportGearBase2,Root/ArmorLowerArmL/ArmRingAnchor4/ArmSupportStrapAnchorMiddle4,Root/ArmorUpperArmL/ArmRingAnchor/ArmSupportStrapAnchorMiddle2,Root/ArmorUpperTorso/SightGlass2,Root/ArmorUpperTorso/SupportFrameAnchor/SightGlassFront,Root/ArmorCoatL,Root/origin,Root/ArmorUpperArmL/ArmRingAnchor2/ArmSupportStrapAnchor2,Root/ArmorUpperTorso/SupportFrameAnchor/PipeAnchorFront/JonasPipe3,Root/ArmorUpperTorso/SupportFrameAnchor/PipeAnchorFront/JonasPipe2,Root/ArmorLowerArmL/Gripper/SmallGear2,Root/ArmorLowerArmL/Gripper/SmallGear3,Root/ArmorUpperTorso/SightGlass,Root/ArmorLowerArmL/ArmRingAnchor5,Root/ArmorLowerArmL/ArmRingAnchor6,Root/ArmorUpperTorso/SupportFrameAnchor/SupportRivetFrontAnchor,Root/ArmorUpperArmR,Root/ArmorLowerArmL/ArmRingAnchor7,Root/ArmorUpperArmL,Root/ArmorUpperTorso/SupportFrameAnchor/Valve,Root/ArmorLowerArmL/ArmRingAnchor4,Root/ArmorUpperTorso/SupportFrameAnchor/SupportGearBase,Root/ArmorUpperTorso/SupportFrameAnchor/Valve2,Root/ArmorUpperTorso/SupportFrameAnchor/PipeAnchorFront/JonasPipe3/filament3,Root/ArmorLowerArmL/ArmSupportLarge33/SightGlassTop5,Root/cube1,Root/ArmorUpperArmL/ArmSupportStrapUpper,Root/base ,Root/ArmorLowerArmR/GripperR/SmallGearR/ShaftUD12R/Tooth01R,Root/ArmorUpperTorso/SupportFrameAnchor/SightGlassBack,Root/ArmorUpperTorso/SightGlassFront3,Root/ArmorUpperTorso/SupportFrameAnchor/SightGlassTopAnchor/SightGlassTop2,Root/ArmorUpperArmL/ArmRingAnchor4,Root/ArmorUpperArmL/ArmRingAnchor3/SightGlassTop4,Root/ArmorUpperArmL/ArmRingAnchor3,Root/ArmorUpperTorso/SupportFrameAnchor/SupportRivetBackAnchor,Root/ArmorUpperTorso/SupportFrameAnchor/SightGlassBackAnchor/SightGlassBack,Root/ArmorUpperArmL/ArmRingAnchor2,Root/ArmorUpperTorso/SupportFrameAnchor/SightGlassBack3,Root/ArmorUpperTorso/SupportFrameAnchor/SightGlassFrontAnchor/SightGlassFront,Root/ArmorUpperTorso/SupportFrameAnchor/SightGlassBack2,Root/ArmorLowerArmR/GripperR/SmallGear3R,Root/ArmorLowerArmR/ArmRingAnchor4,Root/ArmorUpperTorso/SupportFrameAnchor/SupportGearBase/TemporalGear,Root/ArmorUpperTorso/SupportFrameAnchor/PipeAnchorFront/JonasPipe,Root/SmallGear,Root/SightGlass,Root/ArmorLowerArmR/GripperR/SmallGearR,Root/ArmorUpperTorso/SupportFrameAnchor/SightGlassBackAnchor/SightGlassBack4,Root/ArmorLowerArmL/ArmSupportLarge33,Root/origin/Bulkhead1,Root/ArmorUpperTorso/SupportFrameAnchor/SightGlassBackAnchor/SightGlassBack2,Root/ArmorUpperTorso/SupportFrameAnchor/SightGlassBackAnchor/SightGlassBack3,Root/ArmorUpperArmL/ArmRingAnchor/SightGlassTop3,Root/Valve/TopValve,Root/ArmorUpperArmL/ArmRingAnchor/SightGlassTop4,Root/ArmorUpperTorso/SupportFrameAnchor/SightGlassFront6,Root/ArmorUpperTorso/SupportFrameAnchor/SightGlassFront3,Root/ArmorUpperTorso/SupportFrameAnchor/SightGlassBackAnchor,Root/ArmorUpperTorso/SupportFrameAnchor/SightGlassFront2,Root/Valve/Bulkhead1,Root/ArmorLowerArmR/GripperR/SmallGear2R,Root/ArmorUpperTorso/SupportFrameAnchor/PipeAnchorFront,Root/ArmorUpperTorso/SupportFrameAnchor/SightGlassFrontAnchor,Root/ArmorUpperTorso/SupportFrameAnchor/PipeAnchorFront/JonasPipe2/filament2",
 		"allAngles": false,
 		"entityTextureMode": false
 	},
@@ -5077,56 +5077,10 @@
 				"east": { "texture": "#leather", "uv": [ 14.5, 14.0, 16.0, 16.0 ], "autoUv": false },
 				"south": { "texture": "#leather", "uv": [ 14.5, 14.0, 16.0, 16.0 ], "autoUv": false },
 				"west": { "texture": "#leather", "uv": [ 14.5, 14.0, 16.0, 16.0 ], "autoUv": false },
-				"up": { "texture": "#leather", "uv": [ 2.0, 1.0, 1.0, 0.0 ], "autoUv": false},
-				"down": { "texture": "#leather", "uv": [ 2.0, 1.0, 1.0, 0.0 ], "autoUv": false}
+				"up": { "texture": "#leather", "uv": [ 2.0, 1.0, 1.0, 0.0 ], "autoUv": false },
+				"down": { "texture": "#leather", "uv": [ 2.0, 1.0, 1.0, 0.0 ], "autoUv": false }
 			},
 			"children": [
-				{
-					"name": "ArmorElbowSideR",
-					"from": [ 0.6, 5.6, -0.2 ],
-					"to": [ 3.6, 8.6, 0.3 ],
-					"renderInEditor": false,
-					"rotationOrigin": [ 0.6, 5.6, -0.2 ],
-					"faces": {
-						"north": { "texture": "#null", "uv": [ 45.0, 53.0, 48.0, 56.0 ] },
-						"east": { "texture": "#null", "uv": [ 44.5, 53.0, 45.0, 56.0 ] },
-						"south": { "texture": "#null", "uv": [ 48.5, 53.0, 51.5, 56.0 ] },
-						"west": { "texture": "#null", "uv": [ 48.0, 53.0, 48.5, 56.0 ] },
-						"up": { "texture": "#null", "uv": [ 45.0, 52.5, 48.0, 53.0 ], "rotation": 180 },
-						"down": { "texture": "#null", "uv": [ 45.0, 56.0, 48.0, 56.5 ] }
-					}
-				},
-				{
-					"name": "ArmorElbowR",
-					"from": [ 2.0, 6.2, 0.3 ],
-					"to": [ 4.0, 8.2, 2.3 ],
-					"renderInEditor": false,
-					"rotationOrigin": [ 3.0, 7.2, 1.3 ],
-					"rotationZ": -45.0,
-					"faces": {
-						"north": { "texture": "#null", "uv": [ 42.0, 49.0, 44.0, 51.0 ] },
-						"east": { "texture": "#null", "uv": [ 40.0, 49.0, 42.0, 51.0 ] },
-						"south": { "texture": "#null", "uv": [ 46.0, 49.0, 48.0, 51.0 ] },
-						"west": { "texture": "#null", "uv": [ 44.0, 49.0, 46.0, 51.0 ] },
-						"up": { "texture": "#null", "uv": [ 42.0, 47.0, 44.0, 49.0 ], "rotation": 180 },
-						"down": { "texture": "#null", "uv": [ 42.0, 51.0, 44.0, 53.0 ] }
-					}
-				},
-				{
-					"name": "ArmorHandR",
-					"from": [ -0.3, -0.3, -0.5 ],
-					"to": [ 3.2, 3.1, 1.5 ],
-					"renderInEditor": false,
-					"rotationOrigin": [ -0.3, -0.3, -0.5 ],
-					"faces": {
-						"north": { "texture": "#null", "uv": [ 45.0, 42.0, 48.5, 45.0 ] },
-						"east": { "texture": "#null", "uv": [ 43.0, 42.0, 45.0, 45.0 ] },
-						"south": { "texture": "#null", "uv": [ 50.5, 42.0, 54.0, 45.0 ] },
-						"west": { "texture": "#null", "uv": [ 48.5, 42.0, 50.5, 45.0 ] },
-						"up": { "texture": "#null", "uv": [ 45.0, 40.0, 48.5, 42.0 ], "rotation": 180 },
-						"down": { "texture": "#null", "uv": [ 45.0, 45.0, 48.5, 47.0 ] }
-					}
-				},
 				{
 					"name": "ArmRingAnchor4R",
 					"from": [ -0.6, 3.45, -0.85 ],
@@ -7727,6 +7681,20 @@
 								"up": { "texture": "#tempglow", "uv": [ 0.0, 0.0, 3.0, 0.5 ] },
 								"down": { "texture": "#tempglow", "uv": [ 0.0, 0.0, 3.0, 0.5 ] }
 							}
+						},
+						{
+							"name": "HeldItemAnchorR",
+							"from": [ 1.7, -1.0, 1.0 ],
+							"to": [ 1.7, -1.0, 1.0 ],
+							"rotationOrigin": [ 1.7, -1.0, 1.0 ],
+							"faces": {
+								"north": { "texture": "#smoky", "uv": [ 0.0, 0.0, 0.5, 0.5 ] },
+								"east": { "texture": "#smoky", "uv": [ 0.0, 0.0, 0.5, 0.5 ] },
+								"south": { "texture": "#smoky", "uv": [ 0.0, 0.0, 0.5, 0.5 ] },
+								"west": { "texture": "#smoky", "uv": [ 0.0, 0.0, 0.5, 0.5 ] },
+								"up": { "texture": "#smoky", "uv": [ 0.0, 0.0, 0.5, 0.5 ] },
+								"down": { "texture": "#smoky", "uv": [ 0.0, 0.0, 0.5, 0.5 ] }
+							}
 						}
 					]
 				}
@@ -8806,52 +8774,6 @@
 							}
 						}
 					]
-				},
-				{
-					"name": "ArmorElbowSideL",
-					"from": [ 0.6, 5.6, 2.4 ],
-					"to": [ 3.6, 8.6, 2.9 ],
-					"renderInEditor": false,
-					"rotationOrigin": [ 0.6, 5.6, 2.4 ],
-					"faces": {
-						"north": { "texture": "#null", "uv": [ 39.0, 53.5, 42.0, 56.5 ] },
-						"east": { "texture": "#null", "uv": [ 38.5, 53.5, 39.0, 56.5 ] },
-						"south": { "texture": "#null", "uv": [ 35.5, 53.5, 38.5, 56.5 ] },
-						"west": { "texture": "#null", "uv": [ 35.0, 53.5, 35.5, 56.5 ] },
-						"up": { "texture": "#null", "uv": [ 35.5, 53.0, 38.5, 53.5 ] },
-						"down": { "texture": "#null", "uv": [ 35.5, 56.5, 38.5, 57.0 ], "rotation": 180 }
-					}
-				},
-				{
-					"name": "ArmorElbowL",
-					"from": [ 2.0, 6.1, 0.4 ],
-					"to": [ 4.0, 8.1, 2.4 ],
-					"renderInEditor": false,
-					"rotationOrigin": [ 3.0, 7.1, 1.4 ],
-					"rotationZ": 45.0,
-					"faces": {
-						"north": { "texture": "#null", "uv": [ 38.0, 49.0, 40.0, 51.0 ] },
-						"east": { "texture": "#null", "uv": [ 36.0, 49.0, 38.0, 51.0 ] },
-						"south": { "texture": "#null", "uv": [ 34.0, 49.0, 36.0, 51.0 ] },
-						"west": { "texture": "#null", "uv": [ 32.0, 49.0, 34.0, 51.0 ] },
-						"up": { "texture": "#null", "uv": [ 34.0, 47.0, 36.0, 49.0 ] },
-						"down": { "texture": "#null", "uv": [ 34.0, 51.0, 36.0, 53.0 ], "rotation": 180 }
-					}
-				},
-				{
-					"name": "ArmorHandL",
-					"from": [ -0.3, -0.3, 0.8 ],
-					"to": [ 3.2, 3.1, 2.8 ],
-					"renderInEditor": false,
-					"rotationOrigin": [ -0.3, -0.3, 0.8 ],
-					"faces": {
-						"north": { "texture": "#null", "uv": [ 39.5, 42.0, 43.0, 45.0 ] },
-						"east": { "texture": "#null", "uv": [ 37.5, 42.0, 39.5, 45.0 ] },
-						"south": { "texture": "#null", "uv": [ 34.0, 42.0, 37.5, 45.0 ] },
-						"west": { "texture": "#null", "uv": [ 32.0, 42.0, 34.0, 45.0 ] },
-						"up": { "texture": "#null", "uv": [ 34.0, 40.0, 37.5, 42.0 ] },
-						"down": { "texture": "#null", "uv": [ 34.0, 45.0, 37.5, 47.0 ], "rotation": 180 }
-					}
 				},
 				{
 					"name": "ArmSupportLarge33",
@@ -10395,6 +10317,23 @@
 								"up": { "texture": "#tempglow", "uv": [ 0.0, 0.0, 3.0, 0.5 ] },
 								"down": { "texture": "#tempglow", "uv": [ 0.0, 0.0, 3.0, 0.5 ] }
 							}
+						},
+						{
+							"name": "HeldItemAnchorR2",
+							"from": [ 1.77, -0.7, 1.18 ],
+							"to": [ 1.77, -0.7, 1.18 ],
+							"rotationOrigin": [ 1.7688, -0.7019, 1.1771 ],
+							"rotationX": 4.0874,
+							"rotationY": -2.0079,
+							"rotationZ": 0.0717,
+							"faces": {
+								"north": { "texture": "#smoky", "uv": [ 0.0, 0.0, 0.5, 0.5 ] },
+								"east": { "texture": "#smoky", "uv": [ 0.0, 0.0, 0.5, 0.5 ] },
+								"south": { "texture": "#smoky", "uv": [ 0.0, 0.0, 0.5, 0.5 ] },
+								"west": { "texture": "#smoky", "uv": [ 0.0, 0.0, 0.5, 0.5 ] },
+								"up": { "texture": "#smoky", "uv": [ 0.0, 0.0, 0.5, 0.5 ] },
+								"down": { "texture": "#smoky", "uv": [ 0.0, 0.0, 0.5, 0.5 ] }
+							}
 						}
 					]
 				}
@@ -10403,24 +10342,202 @@
 	],
 	"animations": [
 		{
-			"name": "active",
-			"code": "active",
-			"quantityframes": 30,
-			"onActivityStopped": "EaseOut",
+			"name": "exoactive",
+			"code": "exoactive",
+			"quantityframes": 240,
+			"onActivityStopped": "Stop",
 			"onAnimationEnd": "Repeat",
 			"keyframes": [
 				{
 					"frame": 0,
 					"elements": {
-						"ShaftUD12": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 0.0 },
-						"ShaftUD12R": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 0.0 }
+						"TemporalGear": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 0.0, "rotShortestDistanceZ": true },
+						"ShaftUD12": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 0.0, "rotShortestDistanceY": true },
+						"ShaftUD12R": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 0.0, "rotShortestDistanceY": true }
 					}
 				},
 				{
-					"frame": 29,
+					"frame": 10,
 					"elements": {
-						"ShaftUD12": { "rotationX": 0.0, "rotationY": -348.0, "rotationZ": 0.0 },
-						"ShaftUD12R": { "rotationX": 0.0, "rotationY": 348.0, "rotationZ": 0.0 }
+						"TemporalGear": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 60.0, "rotShortestDistanceZ": true },
+						"ShaftUD12": { "rotationX": 0.0, "rotationY": -120.0, "rotationZ": 0.0, "rotShortestDistanceY": true },
+						"ShaftUD12R": { "rotationX": 0.0, "rotationY": 120.0, "rotationZ": 0.0, "rotShortestDistanceY": true }
+					}
+				},
+				{
+					"frame": 20,
+					"elements": {
+						"TemporalGear": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 120.0, "rotShortestDistanceZ": true },
+						"ShaftUD12": { "rotationX": 0.0, "rotationY": -240.0, "rotationZ": 0.0, "rotShortestDistanceY": true },
+						"ShaftUD12R": { "rotationX": 0.0, "rotationY": 240.0, "rotationZ": 0.0, "rotShortestDistanceY": true }
+					}
+				},
+				{
+					"frame": 30,
+					"elements": {
+						"TemporalGear": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 180.0, "rotShortestDistanceZ": true },
+						"ShaftUD12": { "rotationX": 0.0, "rotationY": -360.0, "rotationZ": 0.0, "rotShortestDistanceY": true },
+						"ShaftUD12R": { "rotationX": 0.0, "rotationY": 360.0, "rotationZ": 0.0, "rotShortestDistanceY": true }
+					}
+				},
+				{
+					"frame": 40,
+					"elements": {
+						"TemporalGear": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 240.0, "rotShortestDistanceZ": true },
+						"ShaftUD12": { "rotationX": 0.0, "rotationY": -480.0, "rotationZ": 0.0, "rotShortestDistanceY": true },
+						"ShaftUD12R": { "rotationX": 0.0, "rotationY": 480.0, "rotationZ": 0.0, "rotShortestDistanceY": true }
+					}
+				},
+				{
+					"frame": 50,
+					"elements": {
+						"TemporalGear": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 300.0, "rotShortestDistanceZ": true },
+						"ShaftUD12": { "rotationX": 0.0, "rotationY": -600.0, "rotationZ": 0.0, "rotShortestDistanceY": true },
+						"ShaftUD12R": { "rotationX": 0.0, "rotationY": 600.0, "rotationZ": 0.0, "rotShortestDistanceY": true }
+					}
+				},
+				{
+					"frame": 60,
+					"elements": {
+						"TemporalGear": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 360.0, "rotShortestDistanceZ": true },
+						"ShaftUD12": { "rotationX": 0.0, "rotationY": -720.0, "rotationZ": 0.0, "rotShortestDistanceY": true },
+						"ShaftUD12R": { "rotationX": 0.0, "rotationY": 720.0, "rotationZ": 0.0, "rotShortestDistanceY": true }
+					}
+				},
+				{
+					"frame": 70,
+					"elements": {
+						"TemporalGear": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 420.0, "rotShortestDistanceZ": true },
+						"ShaftUD12": { "rotationX": 0.0, "rotationY": -840.0, "rotationZ": 0.0, "rotShortestDistanceY": true },
+						"ShaftUD12R": { "rotationX": 0.0, "rotationY": 840.0, "rotationZ": 0.0, "rotShortestDistanceY": true }
+					}
+				},
+				{
+					"frame": 80,
+					"elements": {
+						"TemporalGear": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 480.0, "rotShortestDistanceZ": true },
+						"ShaftUD12": { "rotationX": 0.0, "rotationY": -960.0, "rotationZ": 0.0, "rotShortestDistanceY": true },
+						"ShaftUD12R": { "rotationX": 0.0, "rotationY": 960.0, "rotationZ": 0.0, "rotShortestDistanceY": true }
+					}
+				},
+				{
+					"frame": 90,
+					"elements": {
+						"TemporalGear": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 540.0, "rotShortestDistanceZ": true },
+						"ShaftUD12": { "rotationX": 0.0, "rotationY": -1080.0, "rotationZ": 0.0, "rotShortestDistanceY": true },
+						"ShaftUD12R": { "rotationX": 0.0, "rotationY": 1080.0, "rotationZ": 0.0, "rotShortestDistanceY": true }
+					}
+				},
+				{
+					"frame": 100,
+					"elements": {
+						"TemporalGear": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 600.0, "rotShortestDistanceZ": true },
+						"ShaftUD12": { "rotationX": 0.0, "rotationY": -1200.0, "rotationZ": 0.0, "rotShortestDistanceY": true },
+						"ShaftUD12R": { "rotationX": 0.0, "rotationY": 1200.0, "rotationZ": 0.0, "rotShortestDistanceY": true }
+					}
+				},
+				{
+					"frame": 110,
+					"elements": {
+						"TemporalGear": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 660.0, "rotShortestDistanceZ": true },
+						"ShaftUD12": { "rotationX": 0.0, "rotationY": -1320.0, "rotationZ": 0.0, "rotShortestDistanceY": true },
+						"ShaftUD12R": { "rotationX": 0.0, "rotationY": 1320.0, "rotationZ": 0.0, "rotShortestDistanceY": true }
+					}
+				},
+				{
+					"frame": 120,
+					"elements": {
+						"TemporalGear": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 720.0, "rotShortestDistanceZ": true },
+						"ShaftUD12": { "rotationX": 0.0, "rotationY": -1440.0, "rotationZ": 0.0, "rotShortestDistanceY": true },
+						"ShaftUD12R": { "rotationX": 0.0, "rotationY": 1440.0, "rotationZ": 0.0, "rotShortestDistanceY": true }
+					}
+				},
+				{
+					"frame": 130,
+					"elements": {
+						"TemporalGear": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 780.0, "rotShortestDistanceZ": true },
+						"ShaftUD12": { "rotationX": 0.0, "rotationY": -1560.0, "rotationZ": 0.0, "rotShortestDistanceY": true },
+						"ShaftUD12R": { "rotationX": 0.0, "rotationY": 1560.0, "rotationZ": 0.0, "rotShortestDistanceY": true }
+					}
+				},
+				{
+					"frame": 140,
+					"elements": {
+						"TemporalGear": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 840.0, "rotShortestDistanceZ": true },
+						"ShaftUD12": { "rotationX": 0.0, "rotationY": -1680.0, "rotationZ": 0.0, "rotShortestDistanceY": true },
+						"ShaftUD12R": { "rotationX": 0.0, "rotationY": 1680.0, "rotationZ": 0.0, "rotShortestDistanceY": true }
+					}
+				},
+				{
+					"frame": 150,
+					"elements": {
+						"TemporalGear": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 900.0, "rotShortestDistanceZ": true },
+						"ShaftUD12": { "rotationX": 0.0, "rotationY": -1800.0, "rotationZ": 0.0, "rotShortestDistanceY": true },
+						"ShaftUD12R": { "rotationX": 0.0, "rotationY": 1800.0, "rotationZ": 0.0, "rotShortestDistanceY": true }
+					}
+				},
+				{
+					"frame": 160,
+					"elements": {
+						"TemporalGear": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 960.0, "rotShortestDistanceZ": true },
+						"ShaftUD12": { "rotationX": 0.0, "rotationY": -1920.0, "rotationZ": 0.0, "rotShortestDistanceY": true },
+						"ShaftUD12R": { "rotationX": 0.0, "rotationY": 1920.0, "rotationZ": 0.0, "rotShortestDistanceY": true }
+					}
+				},
+				{
+					"frame": 170,
+					"elements": {
+						"TemporalGear": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 1020.0, "rotShortestDistanceZ": true },
+						"ShaftUD12": { "rotationX": 0.0, "rotationY": -2040.0, "rotationZ": 0.0, "rotShortestDistanceY": true },
+						"ShaftUD12R": { "rotationX": 0.0, "rotationY": 2040.0, "rotationZ": 0.0, "rotShortestDistanceY": true }
+					}
+				},
+				{
+					"frame": 180,
+					"elements": {
+						"TemporalGear": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 1080.0, "rotShortestDistanceZ": true },
+						"ShaftUD12": { "rotationX": 0.0, "rotationY": -2160.0, "rotationZ": 0.0, "rotShortestDistanceY": true },
+						"ShaftUD12R": { "rotationX": 0.0, "rotationY": 2160.0, "rotationZ": 0.0, "rotShortestDistanceY": true }
+					}
+				},
+				{
+					"frame": 190,
+					"elements": {
+						"TemporalGear": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 1140.0, "rotShortestDistanceZ": true },
+						"ShaftUD12": { "rotationX": 0.0, "rotationY": -2280.0, "rotationZ": 0.0, "rotShortestDistanceY": true },
+						"ShaftUD12R": { "rotationX": 0.0, "rotationY": 2280.0, "rotationZ": 0.0, "rotShortestDistanceY": true }
+					}
+				},
+				{
+					"frame": 200,
+					"elements": {
+						"TemporalGear": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 1200.0, "rotShortestDistanceZ": true },
+						"ShaftUD12": { "rotationX": 0.0, "rotationY": -2400.0, "rotationZ": 0.0, "rotShortestDistanceY": true },
+						"ShaftUD12R": { "rotationX": 0.0, "rotationY": 2400.0, "rotationZ": 0.0, "rotShortestDistanceY": true }
+					}
+				},
+				{
+					"frame": 210,
+					"elements": {
+						"TemporalGear": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 1260.0, "rotShortestDistanceZ": true },
+						"ShaftUD12": { "rotationX": 0.0, "rotationY": -2520.0, "rotationZ": 0.0, "rotShortestDistanceY": true },
+						"ShaftUD12R": { "rotationX": 0.0, "rotationY": 2520.0, "rotationZ": 0.0, "rotShortestDistanceY": true }
+					}
+				},
+				{
+					"frame": 220,
+					"elements": {
+						"TemporalGear": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 1320.0, "rotShortestDistanceZ": true },
+						"ShaftUD12": { "rotationX": 0.0, "rotationY": -2640.0, "rotationZ": 0.0, "rotShortestDistanceY": true },
+						"ShaftUD12R": { "rotationX": 0.0, "rotationY": 2640.0, "rotationZ": 0.0, "rotShortestDistanceY": true }
+					}
+				},
+				{
+					"frame": 230,
+					"elements": {
+						"TemporalGear": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 1380.0, "rotShortestDistanceZ": true },
+						"ShaftUD12": { "rotationX": 0.0, "rotationY": -2760.0, "rotationZ": 0.0, "rotShortestDistanceY": true },
+						"ShaftUD12R": { "rotationX": 0.0, "rotationY": 2760.0, "rotationZ": 0.0, "rotShortestDistanceY": true }
 					}
 				}
 			]
