@@ -3723,12 +3723,12 @@
 			"to": [ 3.1, 7.2, 2.2 ],
 			"rotationOrigin": [ -0.1, -0.2, -0.2 ],
 			"faces": {
-				"north": { "texture": "#null", "uv": [ 44.0, 2.0, 47.0, 9.0 ] },
-				"east": { "texture": "#null", "uv": [ 47.0, 2.0, 49.0, 9.0 ] },
-				"south": { "texture": "#null", "uv": [ 49.0, 2.0, 52.0, 9.0 ] },
-				"west": { "texture": "#null", "uv": [ 52.0, 2.0, 54.0, 9.0 ] },
-				"up": { "texture": "#null", "uv": [ 44.0, 0.0, 47.0, 2.0 ] },
-				"down": { "texture": "#null", "uv": [ 47.0, 0.0, 50.0, 2.0 ] }
+				"north": { "texture": "#leather", "uv": [ 14.5, 14.0, 16.0, 16.0 ], "autoUv": false },
+				"east": { "texture": "#leather", "uv": [ 14.5, 14.0, 16.0, 16.0 ], "autoUv": false },
+				"south": { "texture": "#leather", "uv": [ 14.5, 14.0, 16.0, 16.0 ], "autoUv": false },
+				"west": { "texture": "#leather", "uv": [ 14.5, 14.0, 16.0, 16.0 ], "autoUv": false },
+				"up": { "texture": "#leather", "uv": [ 2.0, 1.0, 1.0, 0.0 ], "autoUv": false, "windMode": [-1,-1,-1,-1], "windData": [1,1,1,1] },
+				"down": { "texture": "#leather", "uv": [ 2.0, 1.0, 1.0, 0.0 ], "autoUv": false, "windMode": [-1,-1,-1,-1], "windData": [1,1,1,1] }
 			},
 			"children": [
 				{
@@ -7739,12 +7739,12 @@
 			"to": [ 2.9, 8.5, 2.15 ],
 			"rotationOrigin": [ -0.3, 1.5, -0.2 ],
 			"faces": {
-				"north": { "texture": "#null", "uv": [ 44.0, 11.5, 47.0, 18.5 ] },
-				"east": { "texture": "#null", "uv": [ 46.5, 11.5, 48.5, 18.5 ] },
-				"south": { "texture": "#null", "uv": [ 49.0, 11.5, 52.0, 18.5 ] },
-				"west": { "texture": "#null", "uv": [ 51.5, 11.5, 53.5, 18.5 ] },
-				"up": { "texture": "#null", "uv": [ 44.0, 9.0, 47.0, 11.0 ] },
-				"down": { "texture": "#null", "uv": [ 46.5, 9.0, 49.5, 11.0 ] }
+				"north": { "texture": "#leather", "uv": [ 14.5, 14.0, 16.0, 16.0 ], "autoUv": false },
+				"east": { "texture": "#leather", "uv": [ 14.5, 14.0, 16.0, 16.0 ], "autoUv": false },
+				"south": { "texture": "#leather", "uv": [ 14.5, 14.0, 16.0, 16.0 ], "autoUv": false },
+				"west": { "texture": "#leather", "uv": [ 14.5, 14.0, 16.0, 16.0 ], "autoUv": false },
+				"up": { "texture": "#leather", "uv": [ 2.0, 1.0, 1.0, 0.0 ], "autoUv": false },
+				"down": { "texture": "#leather", "uv": [ 2.0, 1.0, 1.0, 0.0 ], "autoUv": false }
 			},
 			"children": [
 				{
