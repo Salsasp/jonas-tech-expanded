@@ -29,8 +29,7 @@ namespace JonasTechExpanded
         {
             foreach (var collectible in api.World.Collectibles)
             {
-                // On a client the behavior also arrives via the server's item type packets, so skip any
-                // collectible that already has it rather than attaching a second copy.
+                // Prevent adding duplicate behavior to collectibles
                 if (collectible.HasBehavior<CollectibleBehaviorExoMiningSpeed>()) continue;
 
                 collectible.CollectibleBehaviors = collectible.CollectibleBehaviors.Append(new CollectibleBehaviorExoMiningSpeed(collectible));
@@ -63,6 +62,9 @@ namespace JonasTechExpanded
             return exo.IsPowered(slot.Itemstack) ? slot : null;
         }
 
+        /// <summary>
+        /// Returns the armor slot containing exoskeleton if available, otherwise returns null.
+        /// </summary>
         public ItemSlot GetExoSlot(IPlayer player)
         {
             var inv = player?.InventoryManager?.GetOwnInventory(GlobalConstants.characterInvClassName);
@@ -93,6 +95,9 @@ namespace JonasTechExpanded
             }
         }
 
+        /// <summary>
+        /// If the player has an exoskeleton equipped, update the powered attribute
+        /// </summary>
         private void updatePoweredFlag(IPlayer player)
         {
             var attrs = player.Entity?.WatchedAttributes;
@@ -105,6 +110,7 @@ namespace JonasTechExpanded
             }
         }
 
+        // Mostly replicates the functionality already in the game from the night vision mask
         private void drainExoFuel(IPlayer player, double hoursPassed)
         {
             var slot = GetExoSlot(player);
@@ -121,7 +127,7 @@ namespace JonasTechExpanded
         {
             if (player.WorldData.CurrentGameMode != EnumGameMode.Survival)
             {
-                // Creative and spectator set their own reach, so drop our claim without writing a value.
+                // Creative and spectator set their own reach, so drop the claim without writing a value.
                 reachApplied.Remove(player.PlayerUID);
                 return;
             }

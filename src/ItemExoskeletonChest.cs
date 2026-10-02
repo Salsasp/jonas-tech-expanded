@@ -10,9 +10,8 @@ using Vintagestory.API.Config;
 namespace JonasTechExpanded
 {
     /// <summary>
-    /// Chest armor that runs on temporal gears. While fuelled it extends the wearer's reach, speeds up
-    /// mining of every block material and holds their temporal stability steady. Its protection values
-    /// match a gambeson chest piece and apply whether or not the frame is powered.
+    /// Chest armor that runs on temporal gears. While fueled it extends the wearer's reach, speeds up
+    /// mining of every block material and prevents temporal stability loss. Uses same armor values as gambeson.
     /// </summary>
     public class ItemExoskeletonChest : Item, IWearableShapeSupplier
     {
@@ -37,10 +36,6 @@ namespace JonasTechExpanded
         public override void OnLoaded(ICoreAPI api)
         {
             base.OnLoaded(api);
-
-            // Kept in the item json rather than a mod config file so that the values are authored on the
-            // server and synced to every client, which matters because mining speed is calculated on
-            // both sides and has to agree.
             var attr = Attributes?["exoskeleton"];
             ReachBonus = attr?["reachBonus"].AsFloat(2.5f) ?? 2.5f;
             MiningSpeedMultiplier = attr?["miningSpeedMultiplier"].AsFloat(2f) ?? 2f;
