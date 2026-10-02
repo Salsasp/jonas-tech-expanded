@@ -14113,6 +14113,19 @@
 					}
 				}
 			]
+		},
+		{
+			"name": "exoactive",
+			"code": "exoactive",
+			"quantityframes": 240,
+			"onActivityStopped": "Stop",
+			"onAnimationEnd": "Repeat",
+			"keyframes": [
+				{
+					"frame": 0,
+					"elements": {}
+				}
+			]
 		}
 	]
 }
