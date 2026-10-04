@@ -1,0 +1,78 @@
+{
+	code: "springboots",
+	class: "ItemSpringBoots",
+	storageFlags: 128,
+	durability: 900,
+	heldTpIdleAnimation: "holdunderarm",
+	behaviors: [
+		{ name: "Wearable" }
+	],
+	attributes: {
+		clothescategory: "armorlegs",
+		visibleDamageEffect: true,
+		footStepSound: "wearable/leather*", //TODO: add metallic sound effect here
+		// Tunables
+		springboots: {
+			speedBonus: 2.5,
+			jumpHeightBonus: 1,
+			fuelHoursCapacity: 48,
+			// Element names in the worn shape that are removed, along with their children, while unpowered.
+			poweredOnlyElements: ["TemporalGearL, TemporalGearR"]
+		},
+		attachableToEntity: {
+			categoryCode: "armorlegs",
+			// Matches vanilla armor-legs-sewn-linen.
+			disableElements: [
+				"hideshoeL",
+				"hideshoeR",
+				"shoefluffL",
+				"shoefluffR"
+			]
+		},
+		// Matches vanilla armor-legs-sewn-linen (gambeson legs). Sewn-linen uses the same
+		// protection and stat numbers on every slot; only hide-list and transforms differ.
+		defaultProtLoss: {
+			perTierRelativeProtectionLoss: [0.03, 0.15],
+			perTierFlatDamageReductionLoss: [0.1, 0.2]
+		},
+		protectionModifiers: {
+			relativeProtection: 0.7,
+			flatDamageReduction: 0.7,
+			protectionTier: 2,
+			perTierRelativeProtectionLoss: [0.015, 0.075],
+			perTierFlatDamageReductionLoss: [0.05, 0.1]
+		},
+		statModifiers: {
+			walkSpeed: -0.02,
+			healingeffectivness: -0.17,
+			hungerrate: 0.03
+		}
+	},
+	// Placeholder: still using the exo body shape until the boot model is ready.
+	shape: { base: "entity/humanoid/seraph/armor/exoskeleton/body" },
+	textures: {
+		"seraph": { base: "block/transparent" },
+		"material": { base: "entity/humanoid/serapharmor/sewn/linen" }
+	},
+	renderAlphaTest: 0.25,
+	creativeinventory: { "general": ["*"], "items": ["*"], "clothing": ["*"] },
+	materialDensity: 4000,
+	guiTransform: {
+		translation: { x: 1, y: 0, z: 0 },
+		rotation: { x: -26, y: -46, z: -180 },
+		origin: { x: 0.5, y: 0.6, z: 0.5 },
+		scale: 1.25
+	},
+	groundTransform: {
+		translation: { x: 0, y: 0, z: 0 },
+		rotation: { x: 0, y: 0, z: 90 },
+		origin: { x: 0.34, y: 1.12, z: 0.5 },
+		scale: 3.1
+	},
+	tpHandTransform: {
+		translation: { x: -0.7, y: -0.6, z: -0.4 },
+		rotation: { x: 95, y: -20, z: -91 },
+		origin: { x: 0.5, y: 0.7, z: 0.5 },
+		scale: 0.74
+	}
+}
