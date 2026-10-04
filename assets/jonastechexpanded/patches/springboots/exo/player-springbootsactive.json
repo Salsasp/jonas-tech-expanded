@@ -1,0 +1,30 @@
+[
+	// Worn gear only contributes keyframes to animations the player shape already has (matched by code),
+	// so the player needs an empty exoactive animation for the exoskeleton's spinning parts to merge into.
+	// Its length is taken from here, not from the exoskeleton shape.
+	{
+		"op": "add",
+		"path": "/animations/-",
+		"value": {
+			"name": "springbootsactive",
+			"code": "springbootsactive",
+			"quantityframes": 240,
+			"onActivityStopped": "Stop",
+			"onAnimationEnd": "Repeat",
+			"keyframes": [{ "frame": 0, "elements": {} }]
+		},
+		"file": "game:shapes/entity/humanoid/seraph-faceless.json"
+	},
+	{
+		"op": "add",
+		"path": "/client/animations/-",
+		"value": { code: "springbootsactive", animation: "springbootsactive", clientSide: true, blendMode: "Add" },
+		"file": "game:entities/humanoid/player.json"
+	},
+	{
+		"op": "add",
+		"path": "/client/behaviors/-",
+		"value": { code: "springbootsVisuals" },
+		"file": "game:entities/humanoid/player.json"
+	}
+]
