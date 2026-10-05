@@ -33,7 +33,7 @@ namespace JonasTechExpanded
             SpeedBonus = attr?["speedBonus"].AsFloat(2.5f) ?? 2.5f;
             JumpHeightBonus = attr?["jumpHeightBonus"].AsFloat(1f) ?? 1f;
             FuelHoursCapacity = attr?["fuelHoursCapacity"].AsFloat(48f) ?? 48f;
-            PoweredOnlyElements = attr?["poweredOnlyElements"].AsArray<string>() ?? new[] { "TemporalGearL, TemporalGearR" };
+            PoweredOnlyElements = attr?["poweredOnlyElements"].AsArray<string>() ?? new[] { "TemporalGearL", "TemporalGearR" };
         }
 
         public bool IsPowered(ItemStack stack)

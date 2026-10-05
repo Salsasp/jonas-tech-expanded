@@ -17,7 +17,7 @@
 			jumpHeightBonus: 1,
 			fuelHoursCapacity: 48,
 			// Element names in the worn shape that are removed, along with their children, while unpowered.
-			poweredOnlyElements: ["TemporalGearL, TemporalGearR"]
+			poweredOnlyElements: ["TemporalGearL", "TemporalGearR"]
 		},
 		attachableToEntity: {
 			categoryCode: "armorlegs",
@@ -48,8 +48,7 @@
 			hungerrate: 0.03
 		}
 	},
-	// Placeholder: still using the exo body shape until the boot model is ready.
-	shape: { base: "entity/humanoid/seraph/armor/exoskeleton/body" },
+	shape: { base: "entity/humanoid/seraph/armor/springboots/springboots" },
 	textures: {
 		"seraph": { base: "block/transparent" },
 		"material": { base: "entity/humanoid/serapharmor/sewn/linen" }
