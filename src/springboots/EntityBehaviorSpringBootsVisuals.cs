@@ -9,7 +9,7 @@ namespace JonasTechExpanded
     public class EntityBehaviorSpringBootsVisuals : EntityBehavior
     {
         public const string PoweredAttribute = "jonastechexpanded:springBootsPowered";
-        public const string ActiveAnimation = "springBootsactive";
+        public const string ActiveAnimation = "springbootsactive";
 
         private bool powered;
 
@@ -53,6 +53,6 @@ namespace JonasTechExpanded
             if (entityShape == null || !shapeIsCloned) return;
         }
 
-        public override string PropertyName() => "springBootsVisuals";
+        public override string PropertyName() => "springbootsVisuals";
     }
 }

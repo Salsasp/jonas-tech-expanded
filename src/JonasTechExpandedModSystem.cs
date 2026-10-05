@@ -20,8 +20,10 @@ namespace JonasTechExpanded
         public override void Start(ICoreAPI api)
         {
             api.RegisterItemClass("ItemExoskeletonChest", typeof(ItemExoskeletonChest));
+            api.RegisterItemClass("ItemSpringBoots", typeof(ItemSpringBoots));
             api.RegisterEntityBehaviorClass("exoStabilized", typeof(EntityBehaviorExoStabilized));
             api.RegisterEntityBehaviorClass("exoVisuals", typeof(EntityBehaviorExoVisuals));
+            api.RegisterEntityBehaviorClass("springbootsVisuals", typeof(EntityBehaviorSpringBootsVisuals));
             api.RegisterCollectibleBehaviorClass("exoMiningSpeed", typeof(CollectibleBehaviorExoMiningSpeed));
         }
 
@@ -74,6 +76,24 @@ namespace JonasTechExpanded
             return slot?.Itemstack?.Collectible is ItemExoskeletonChest ? slot : null;
         }
 
+        public ItemSlot GetPoweredSpringBootsSlot(IPlayer player)
+        {
+            var slot = GetSpringBootsSlot(player);
+            if (slot == null) return null;
+
+            var boots = (ItemSpringBoots)slot.Itemstack.Collectible;
+            return boots.IsPowered(slot.Itemstack) ? slot : null;
+        }
+
+        public ItemSlot GetSpringBootsSlot(IPlayer player)
+        {
+            var inv = player?.InventoryManager?.GetOwnInventory(GlobalConstants.characterInvClassName);
+            if (inv == null) return null;
+
+            var slot = inv[(int)EnumCharacterDressType.ArmorLegs];
+            return slot?.Itemstack?.Collectible is ItemSpringBoots ? slot : null;
+        }
+
         private void onServerTick1s(float dt)
         {
             double totalHours = sapi.World.Calendar.TotalHours;
@@ -87,11 +107,16 @@ namespace JonasTechExpanded
 
             foreach (var player in sapi.World.AllOnlinePlayers)
             {
-                if (drainFuel) drainExoFuel(player, hoursPassed);
+                if (drainFuel)
+                {
+                    drainExoFuel(player, hoursPassed);
+                    drainSpringBootsFuel(player, hoursPassed);
+                }
 
                 if (player is IServerPlayer serverPlayer) updateReach(serverPlayer);
 
                 updatePoweredFlag(player);
+                updateSpringBootsPoweredFlag(player);
             }
         }
 
@@ -120,6 +145,30 @@ namespace JonasTechExpanded
             if (exo.GetFuelHours(slot.Itemstack) <= 0) return;
 
             exo.AddFuelHours(slot.Itemstack, -hoursPassed);
+            slot.MarkDirty();
+        }
+
+        private void updateSpringBootsPoweredFlag(IPlayer player)
+        {
+            var attrs = player.Entity?.WatchedAttributes;
+            if (attrs == null) return;
+
+            bool powered = GetPoweredSpringBootsSlot(player) != null;
+            if (attrs.GetBool(EntityBehaviorSpringBootsVisuals.PoweredAttribute) != powered)
+            {
+                attrs.SetBool(EntityBehaviorSpringBootsVisuals.PoweredAttribute, powered);
+            }
+        }
+
+        private void drainSpringBootsFuel(IPlayer player, double hoursPassed)
+        {
+            var slot = GetSpringBootsSlot(player);
+            if (slot == null) return;
+
+            var boots = (ItemSpringBoots)slot.Itemstack.Collectible;
+            if (boots.GetFuelHours(slot.Itemstack) <= 0) return;
+
+            boots.AddFuelHours(slot.Itemstack, -hoursPassed);
             slot.MarkDirty();
         }
 

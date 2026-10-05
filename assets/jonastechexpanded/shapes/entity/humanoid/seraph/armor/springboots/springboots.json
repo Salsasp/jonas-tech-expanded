@@ -1,7 +1,7 @@
 {
 	"editor": {
 		"backDropShape": "C:/Users/dakot/Coding/VSMods/jonas-tech-expanded/seraph-hairless",
-		"collapsedPaths": "Root/shoeR/SupportArchAnchorR,Root/shoeRAnchor/SupportArchAnchorR/ArchSegment5/PrimaRailAnchor5,Root/base ,Root/shoeR/baseR,Root/shoeRAnchor/SupportArchAnchorR/ArchSegment9/PrimaRailAnchor2,Root/shoeRAnchor/GearBaseAnchor/TemporalGearR,Root/GearFrame,Root/shoeRAnchor2,Root/shoeRAnchor/SupportArchAnchorR/ArchSegment6/PrimaRailAnchor4,Root/shoeRAnchor/GearBaseAnchor/base ,Root/shoeRAnchor/SupportArchAnchorR,Root/root/base/central_axle,Root/shoeRAnchor/SupportArchAnchorR/ArchSegment8/PrimaRailAnchor2,Root/root/base/upper_rotator,Root/MOVER,Root/root/base/gear_NE_sml,Root/root/base/gear_SE,Root/shoeRAnchor/SupportArchAnchorR/ArchSegment4/PrimaRailAnchor6,Root/shoeRAnchor/BaseAnchor,Root/root/base/gear_west,Root/root/base/floorplate,Root/shoeRAnchor/SupportArchAnchorR/ArchSegment7/PrimaRailAnchor3,Root/shoeRAnchor/FrameStrapAnchor,Root/shoeRAnchor/FrameAnchor,Root/root/base/big_axle_offset,Root/shoeRAnchor/GearBaseAnchor,Root/shoeRAnchor/FrameStrapAnchor/StrapLatchAnchor",
+		"collapsedPaths": "Root/shoeR/SupportArchAnchorR,Root/shoeRAnchor/SupportArchAnchorR/ArchSegment5/PrimaRailAnchor5,Root/base ,Root/shoeLAnchor,Root/shoeR/baseR,Root/shoeRAnchor/SupportArchAnchorR/ArchSegment9/PrimaRailAnchor2,Root/shoeRAnchor/GearBaseAnchor/TemporalGearR,Root/GearFrame,Root/shoeRAnchor2,Root/shoeRAnchor/SupportArchAnchorR/ArchSegment6/PrimaRailAnchor4,Root/shoeRAnchor/GearBaseAnchor/base ,Root/shoeRAnchor/SupportArchAnchorR,Root/root/base/central_axle,Root/shoeRAnchor/SupportArchAnchorR/ArchSegment8/PrimaRailAnchor2,Root/root/base/upper_rotator,Root/MOVER,Root/root/base/gear_NE_sml,Root/shoeLAnchor/GearBaseAnchorL/TemporalGearL,Root/shoeLAnchor/GearBaseAnchorL/TemporalGearL2,Root/shoeLAnchor/GearBaseAnchorL/GearFrameL,Root/root/base/gear_SE,Root/shoeRAnchor/SupportArchAnchorR/ArchSegment4/PrimaRailAnchor6,Root/shoeRAnchor/BaseAnchor,Root/root/base/gear_west,Root/root/base/floorplate,Root/shoeLAnchor/GearBaseAnchorL,Root/shoeRAnchor/SupportArchAnchorR/ArchSegment7/PrimaRailAnchor3,Root/shoeRAnchor/FrameStrapAnchor,Root/shoeRAnchor/FrameAnchor,Root/root/base/big_axle_offset,Root/shoeRAnchor/FrameStrapAnchor/StrapLatchAnchor",
 		"allAngles": false,
 		"entityTextureMode": false
 	},
@@ -1125,7 +1125,7 @@
 							"name": "TemporalGearR",
 							"from": [ 0.48, -0.1, -0.3 ],
 							"to": [ 0.68, 1.1, -0.06 ],
-							"rotationOrigin": [ 0.5, -0.1, -0.3 ],
+							"rotationOrigin": [ 0.8, 0.5, -0.3 ],
 							"faces": {
 								"north": { "texture": "#temporal", "uv": [ 0.0, 0.0, 2.0, 2.0 ], "glow": 35 },
 								"east": { "texture": "#temporal", "uv": [ 0.0, 0.0, 2.0, 2.0 ], "glow": 35 },
@@ -2444,7 +2444,7 @@
 							"name": "TemporalGearL",
 							"from": [ 0.48, -0.1, 0.06 ],
 							"to": [ 0.68, 1.1, 0.3 ],
-							"rotationOrigin": [ 0.5, -0.1, 0.3 ],
+							"rotationOrigin": [ 0.8, 0.5, 0.3 ],
 							"faces": {
 								"north": { "texture": "#temporal", "uv": [ 10.0, 10.0, 12.0, 12.0 ], "glow": 35 },
 								"east": { "texture": "#temporal", "uv": [ 0.0, 0.0, 2.0, 2.0 ], "glow": 35 },
@@ -2657,4 +2657,31 @@
 				}
 			]
 		}
-	]}
+	],
+	"animations": [
+		{
+			"name": "springbootsactive",
+			"code": "springbootsactive",
+			"quantityframes": 240,
+			"onActivityStopped": "Stop",
+			"onAnimationEnd": "Repeat",
+			"keyframes": [
+				{
+					"frame": 0,
+					"elements": {
+						"TemporalGearR": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 0.0 },
+						"TemporalGearL": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 0.0 }
+					}
+				},
+				{
+					"frame": 239,
+					"elements": {
+						"TemporalGearR": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 360.0, "rotShortestDistanceZ": true },
+						"TemporalGearL": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 180.0, "rotShortestDistanceZ": true }
+					}
+				}
+			]
+		},
+
+	]
+}

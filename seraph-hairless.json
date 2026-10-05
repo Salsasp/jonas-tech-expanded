@@ -14126,6 +14126,19 @@
 					"elements": {}
 				}
 			]
+		},
+		{
+			"name": "springbootsactive",
+			"code": "springbootsactive",
+			"quantityframes": 240,
+			"onActivityStopped": "Stop",
+			"onAnimationEnd": "Repeat",
+			"keyframes": [
+				{
+					"frame": 0,
+					"elements": {}
+				}
+			]
 		}
 	]
 }
