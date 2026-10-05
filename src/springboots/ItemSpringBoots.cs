@@ -18,7 +18,8 @@ namespace JonasTechExpanded
         public const string FuelItemAttribute = "springbootsFuelHours";
         public float SpeedMultiplier { get; private set; }
 
-        public float JumpHeightBonus { get; private set; }
+        /// <summary>jumpHeightMul written while powered. Replaces the vanilla base of 1.</summary>
+        public float JumpHeightMul { get; private set; }
 
         /// <summary>In-game hours of fuel the frame can hold.</summary>
         public float FuelHoursCapacity { get; private set; }
@@ -30,8 +31,8 @@ namespace JonasTechExpanded
         {
             base.OnLoaded(api);
             var attr = Attributes?["springboots"];
-            SpeedMultiplier = attr?["speedBonus"].AsFloat(2.5f) ?? 2.5f;
-            JumpHeightBonus = attr?["jumpHeightBonus"].AsFloat(1f) ?? 1f;
+            SpeedMultiplier = attr?["speedBonus"].AsFloat(2.0f) ?? 2.0f;
+            JumpHeightMul = attr?["jumpHeightMul"].AsFloat(2.0f) ?? 2.0f;
             FuelHoursCapacity = attr?["fuelHoursCapacity"].AsFloat(48f) ?? 48f;
             PoweredOnlyElements = attr?["poweredOnlyElements"].AsArray<string>() ?? new[] { "TemporalGearL", "TemporalGearR" };
         }
@@ -138,7 +139,7 @@ namespace JonasTechExpanded
             }
 
             // TODO: generalize this error to just fuelable item full (for exo as well)
-            (api as ICoreClientAPI)?.TriggerIngameError(this, "exoskeletonfull", Lang.Get("jonastechexpanded:ingameerror-exoskeleton-full"));
+            (api as ICoreClientAPI)?.TriggerIngameError(this, "springbootsfull", Lang.Get("ingameerror-fuelable-full"));
         }
 
         public override void GetHeldItemInfo(ItemSlot inSlot, StringBuilder dsc, IWorldAccessor world, bool withDebugInfo)
@@ -150,16 +151,21 @@ namespace JonasTechExpanded
             double fuelLeft = GetFuelHours(inSlot.Itemstack);
             if (fuelLeft > 0)
             {
-                dsc.AppendLine(Lang.Get("jonastechexpanded:exoskeleton-fuel", fuelLeft, FuelHoursCapacity));
+                dsc.AppendLine(Lang.Get("jonastechexpanded:fuelable-fuel", fuelLeft, FuelHoursCapacity));
             }
             else
             {
-                dsc.AppendLine(Lang.Get("jonastechexpanded:exoskeleton-nofuel"));
+                dsc.AppendLine(Lang.Get("jonastechexpanded:fuelable-nofuel"));
             }
 
-            // TODO: add text specific to springboots
-            //dsc.AppendLine(Lang.Get("jonastechexpanded:exoskeleton-effect-reach", ReachBonus));
-            //dsc.AppendLine(Lang.Get("jonastechexpanded:exoskeleton-effect-mining", (int)((MiningSpeedMultiplier - 1) * 100)));
+            if (JumpHeightMul > 1f)
+            {
+                dsc.AppendLine(Lang.Get("jonastechexpanded:springboots-effect-jump", JumpHeightMul));
+            }
+            if (SpeedMultiplier > 1f)
+            {
+                dsc.AppendLine(Lang.Get("jonastechexpanded:springboots-effect-speed", SpeedMultiplier));
+            }
         }
     }
 }

@@ -8,11 +8,12 @@ namespace JonasTechExpanded
 {
     /// <summary>
     /// Registers the boots and their visuals, drains worn fuel, publishes the powered flag,
-    /// and applies the survival move-speed multiplier.
+    /// and applies the survival move-speed and jump-height multipliers.
     /// </summary>
     public class SpringBootsModSystem : ModSystem
     {
         private const float DefaultMoveSpeedMultiplier = 1f;
+        private const string JumpHeightStatKey = "springboots";
 
         private ICoreServerAPI sapi;
         private readonly HashSet<string> speedApplied = new HashSet<string>();
@@ -120,6 +121,7 @@ namespace JonasTechExpanded
             if ((boots != null) == applied) return;
 
             setPlayerSpeed(player, boots != null ? boots.SpeedMultiplier : DefaultMoveSpeedMultiplier);
+            setJumpHeightMul(player, boots != null ? boots.JumpHeightMul : 1f);
 
             if (boots != null) speedApplied.Add(player.PlayerUID);
             else speedApplied.Remove(player.PlayerUID);
@@ -130,6 +132,7 @@ namespace JonasTechExpanded
             if (!speedApplied.Remove(player.PlayerUID)) return;
 
             setPlayerSpeed(player, DefaultMoveSpeedMultiplier);
+            setJumpHeightMul(player, 1f);
         }
 
         private void setPlayerSpeed(IServerPlayer player, float speedMultiplier)
@@ -138,6 +141,24 @@ namespace JonasTechExpanded
 
             player.WorldData.MoveSpeedMultiplier = speedMultiplier;
             player.BroadcastPlayerData();
+        }
+
+        /// <summary>
+        /// Writes the JSON multiplier as the jumpHeightMul offset so blended equals that value
+        /// (base is 1). PModuleOnGround still takes sqrt of the blended stat.
+        /// </summary>
+        private void setJumpHeightMul(IServerPlayer player, float multiplier)
+        {
+            var stats = player.Entity?.Stats;
+            if (stats == null) return;
+
+            if (multiplier <= 1f)
+            {
+                stats.Remove("jumpHeightMul", JumpHeightStatKey);
+                return;
+            }
+
+            stats.Set("jumpHeightMul", JumpHeightStatKey, multiplier - 1f, true);
         }
 
         public override void Dispose()

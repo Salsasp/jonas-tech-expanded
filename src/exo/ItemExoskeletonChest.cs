@@ -156,11 +156,11 @@ namespace JonasTechExpanded
             double fuelLeft = GetFuelHours(inSlot.Itemstack);
             if (fuelLeft > 0)
             {
-                dsc.AppendLine(Lang.Get("jonastechexpanded:exoskeleton-fuel", fuelLeft, FuelHoursCapacity));
+                dsc.AppendLine(Lang.Get("jonastechexpanded:fuelable-fuel", fuelLeft, FuelHoursCapacity));
             }
             else
             {
-                dsc.AppendLine(Lang.Get("jonastechexpanded:exoskeleton-nofuel"));
+                dsc.AppendLine(Lang.Get("jonastechexpanded:fuelable-nofuel"));
             }
 
             dsc.AppendLine(Lang.Get("jonastechexpanded:exoskeleton-effect-reach", ReachBonus));

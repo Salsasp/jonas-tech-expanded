@@ -13,8 +13,9 @@
 		footStepSound: "wearable/leather*", //TODO: add metallic sound effect here
 		// Tunables
 		springboots: {
-			speedBonus: 2.5,
-			jumpHeightBonus: 1,
+			speedBonus: 2.0,
+			// Replaces the vanilla jumpHeightMul base of 1 while powered.
+			jumpHeightMul: 2.0,
 			fuelHoursCapacity: 48,
 			// Element names in the worn shape that are removed, along with their children, while unpowered.
 			poweredOnlyElements: ["TemporalGearL", "TemporalGearR"]
@@ -50,8 +51,8 @@
 	},
 	shape: { base: "entity/humanoid/seraph/armor/springboots/springboots" },
 	textures: {
-		"seraph": { base: "block/transparent" },
-		"material": { base: "entity/humanoid/serapharmor/sewn/linen" }
+		"seraph": { base: "game:block/transparent" },
+		"material": { base: "game:entity/humanoid/serapharmor/sewn/linen" }
 	},
 	renderAlphaTest: 0.25,
 	creativeinventory: { "general": ["*"], "items": ["*"], "clothing": ["*"] },

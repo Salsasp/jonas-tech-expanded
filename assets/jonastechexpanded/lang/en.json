@@ -1,10 +1,13 @@
 {
 	"item-exoskeletonchest": "Exoskeleton chestpiece",
 	"itemdesc-exoskeletonchest": "A salvaged powered frame worn over the torso. Runs on temporal gears.",
-	"exoskeleton-fuel": "Fuel: {0:0.#} / {1:0.#} hours",
-	"exoskeleton-nofuel": "Out of fuel. Right-click a temporal gear onto it to refuel.",
+	"fuelable-fuel": "Fuel: {0:0.#} / {1:0.#} hours",
+	"fuelable-nofuel": "Out of fuel. Right-click a temporal gear onto it to refuel.",
 	"exoskeleton-effect-reach": "While powered: +{0:0.#} blocks of reach",
 	"exoskeleton-effect-mining": "While powered: +{0}% mining speed on all materials",
 	"exoskeleton-effect-stability": "While powered: temporal stability does not drain",
-	"ingameerror-exoskeleton-full": "The exoskeleton is already full"
+	"ingameerror-fuelable-full": "This item's fuel is already full",
+	"item-springboots": "Jonas Springboots",
+	"springboots-effect-jump": "While powered: {0:0.#}x jump height",
+	"springboots-effect-speed": "While powered: {0:0.#}x speed multiplier"
 }

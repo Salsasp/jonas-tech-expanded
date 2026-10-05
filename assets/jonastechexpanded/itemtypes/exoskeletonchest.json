@@ -60,8 +60,8 @@
 	// correctly on the seraph. Replace this one file with the exoskeleton model.
 	shape: { base: "entity/humanoid/seraph/armor/exoskeleton/body" },
 	textures: {
-		"seraph": { base: "block/transparent" },
-		"material": { base: "entity/humanoid/serapharmor/sewn/linen" }
+		"seraph": { base: "game:block/transparent" },
+		"material": { base: "game:entity/humanoid/serapharmor/sewn/linen" }
 	},
 	renderAlphaTest: 0.25,
 	creativeinventory: { "general": ["*"], "items": ["*"], "clothing": ["*"] },
