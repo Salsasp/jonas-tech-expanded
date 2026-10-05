@@ -16,7 +16,7 @@ namespace JonasTechExpanded
     {
         public const string FuelHoursAttribute = "fuelHours";
         public const string FuelItemAttribute = "springbootsFuelHours";
-        public float SpeedBonus { get; private set; }
+        public float SpeedMultiplier { get; private set; }
 
         public float JumpHeightBonus { get; private set; }
 
@@ -30,7 +30,7 @@ namespace JonasTechExpanded
         {
             base.OnLoaded(api);
             var attr = Attributes?["springboots"];
-            SpeedBonus = attr?["speedBonus"].AsFloat(2.5f) ?? 2.5f;
+            SpeedMultiplier = attr?["speedBonus"].AsFloat(2.5f) ?? 2.5f;
             JumpHeightBonus = attr?["jumpHeightBonus"].AsFloat(1f) ?? 1f;
             FuelHoursCapacity = attr?["fuelHoursCapacity"].AsFloat(48f) ?? 48f;
             PoweredOnlyElements = attr?["poweredOnlyElements"].AsArray<string>() ?? new[] { "TemporalGearL", "TemporalGearR" };

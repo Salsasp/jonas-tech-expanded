@@ -15,7 +15,7 @@ namespace JonasTechExpanded
     /// </remarks>
     public class EntityBehaviorExoStabilized : EntityBehavior
     {
-        private JonasTechExpandedModSystem modSys;
+        private ExoskeletonModSystem modSys;
         private EntityBehaviorTemporalStabilityAffected stabilityBh;
         private double floor = -1;
 
@@ -27,7 +27,7 @@ namespace JonasTechExpanded
         {
             base.AfterInitialized(onFirstSpawn);
 
-            modSys = entity.Api.ModLoader.GetModSystem<JonasTechExpandedModSystem>();
+            modSys = entity.Api.ModLoader.GetModSystem<ExoskeletonModSystem>();
             stabilityBh = entity.GetBehavior<EntityBehaviorTemporalStabilityAffected>();
         }
 

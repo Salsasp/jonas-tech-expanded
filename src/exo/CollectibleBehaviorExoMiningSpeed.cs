@@ -9,7 +9,7 @@ namespace JonasTechExpanded
     /// </summary>
     public class CollectibleBehaviorExoMiningSpeed : CollectibleBehavior
     {
-        private JonasTechExpandedModSystem modSys;
+        private ExoskeletonModSystem modSys;
 
         public CollectibleBehaviorExoMiningSpeed(CollectibleObject collObj) : base(collObj)
         {
@@ -19,7 +19,7 @@ namespace JonasTechExpanded
         {
             base.OnLoaded(api);
 
-            modSys = api.ModLoader.GetModSystem<JonasTechExpandedModSystem>();
+            modSys = api.ModLoader.GetModSystem<ExoskeletonModSystem>();
         }
 
         public override float GetMiningSpeed(ItemStack itemstack, BlockSelection blockSel, Block block, IPlayer forPlayer, ref EnumHandling bhHandling)
