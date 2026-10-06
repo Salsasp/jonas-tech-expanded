@@ -16,6 +16,13 @@
 			speedBonus: 2.0,
 			// Replaces the vanilla jumpHeightMul base of 1 while powered.
 			jumpHeightMul: 2.0,
+			chargeHoldSeconds: 3,
+			chargeThresholdSeconds: [0.5, 1.25, 2.0],
+			// Replaces jumpHeightMul for the next jump. Level 1 matches the uncharged powered jump.
+			chargeJumpMuls: [2.0, 3.0, 4.0],
+			chargeSound: "game:sounds/effect/woodgrind",
+			chargeLevelSound: "game:sounds/effect/woodswitch",
+			chargeArmedSound: "game:sounds/effect/tempstab-drain",
 			fuelHoursCapacity: 48,
 			// Element names in the worn shape that are removed, along with their children, while unpowered.
 			poweredOnlyElements: ["TemporalGearL", "TemporalGearR"]

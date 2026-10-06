@@ -25,6 +25,7 @@ namespace JonasTechExpanded
         {
             api.RegisterItemClass("ItemSpringBoots", typeof(ItemSpringBoots));
             api.RegisterEntityBehaviorClass("springbootsVisuals", typeof(EntityBehaviorSpringBootsVisuals));
+            api.RegisterEntityBehaviorClass("springbootsCharge", typeof(EntityBehaviorSpringBootsCharge));
         }
 
         public override void StartServerSide(ICoreServerAPI api)
@@ -121,7 +122,12 @@ namespace JonasTechExpanded
             if ((boots != null) == applied) return;
 
             setPlayerSpeed(player, boots != null ? boots.SpeedMultiplier : DefaultMoveSpeedMultiplier);
-            setJumpHeightMul(player, boots != null ? boots.JumpHeightMul : 1f);
+
+            var charge = player.Entity?.GetBehavior<EntityBehaviorSpringBootsCharge>();
+            if (boots == null || charge?.IsChargeActive != true)
+            {
+                setJumpHeightMul(player, boots != null ? boots.JumpHeightMul : 1f);
+            }
 
             if (boots != null) speedApplied.Add(player.PlayerUID);
             else speedApplied.Remove(player.PlayerUID);

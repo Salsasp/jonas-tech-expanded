@@ -26,5 +26,17 @@
 		"path": "/client/behaviors/-",
 		"value": { code: "springbootsVisuals" },
 		"file": "game:entities/humanoid/player.json"
+	},
+	{
+		"op": "add",
+		"path": "/client/behaviors/-",
+		"value": { code: "springbootsCharge" },
+		"file": "game:entities/humanoid/player.json"
+	},
+	{
+		"op": "add",
+		"path": "/server/behaviors/-",
+		"value": { code: "springbootsCharge" },
+		"file": "game:entities/humanoid/player.json"
 	}
 ]

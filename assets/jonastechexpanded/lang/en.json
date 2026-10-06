@@ -9,5 +9,6 @@
 	"ingameerror-fuelable-full": "This item's fuel is already full",
 	"item-springboots": "Jonas Springboots",
 	"springboots-effect-jump": "While powered: {0:0.#}x jump height",
-	"springboots-effect-speed": "While powered: {0:0.#}x speed multiplier"
+	"springboots-effect-speed": "While powered: {0:0.#}x speed multiplier",
+	"springboots-effect-charge": "Hold crouch to charge a jump ({0}x). Charge is held for {1:0.#} seconds"
 }
