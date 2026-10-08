@@ -14,5 +14,7 @@
 	"springboots-effect-charge": "Hold crouch to charge a jump ({0}x). Charge is held for {1:0.#} seconds",
 	"springboots-effect-fall": "While powered: immune to fall damage ({0:0.#} hours of fuel per HP absorbed)",
 	"item-shockabsorptionapparatus": "Shock Absorption Apparatus",
-	"itemdesc-shockabsorptionapparatus": "A component for the Jonas Springboots. Capable of absorbing and releasing tremendous amounts of force."
+	"itemdesc-shockabsorptionapparatus": "A component for the Jonas Springboots. Capable of absorbing and releasing tremendous amounts of force.",
+	"item-springbootsbody": "Springboots Chassis",
+	"itemdesc-springbootsbody": "A cupronickel frame for the Jonas Springboots."
 }

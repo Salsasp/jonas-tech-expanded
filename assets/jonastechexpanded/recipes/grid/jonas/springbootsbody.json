@@ -1,0 +1,12 @@
+[
+	{
+		ingredientPattern: "_S,_C_,_C_",
+		ingredients: {
+			"C": { type: "item", code: "game:metalplate-cupronickel" },
+			"S": { type: "item", code: "game:metalplate-steel" }
+		},
+		width: 3,
+		height: 3,
+		output: { type: "item", code: "springbootsbody", quantity: 1 }
+	}
+]

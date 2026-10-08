@@ -1,0 +1,11 @@
+{
+	code: "springbootsbody",
+	maxstacksize: 32,
+	shape: { base: "item/parts/springbootsbody" },
+	textures: {
+		"cupronickel": { base: "game:block/metal/ingot/cupronickel" },
+		"steel1": { base: "game:block/metal/sheet/steel1" }
+	},
+	creativeinventory: { "general": ["*"], "items": ["*"] },
+	materialDensity: 900
+}
