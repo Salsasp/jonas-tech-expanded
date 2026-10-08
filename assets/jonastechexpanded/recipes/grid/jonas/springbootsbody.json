@@ -1,6 +1,6 @@
 [
 	{
-		ingredientPattern: "_S,_C_,_C_",
+		ingredientPattern: "_S_,_C_,_C_",
 		ingredients: {
 			"C": { type: "item", code: "game:metalplate-cupronickel" },
 			"S": { type: "item", code: "game:metalplate-steel" }

@@ -1,0 +1,17 @@
+[
+	{
+		ingredientPattern: "PSV,BTB,AZA",
+		ingredients: {
+			"A": { type: "item", code: "shockabsorptionapparatus" },
+			"B": { type: "item", code: "springbootsbody" },
+			"P": { type: "item", code: "game:jonasframes-gears02" },
+			"V": { type: "item", code: "game:jonasparts-cylinder01" },
+			"T": { type: "item", code: "game:flaxtwine", quantity: 4 },
+			"Z": { type: "item", code: "game:flaxtwine", quantity: 4 },
+			"S": {type: "item", code: "game:metalnailsandstrips-steel", quantity: 8 }
+		},
+		width: 3,
+		height: 3,
+		output: { type: "item", code: "springboots", quantity: 1 }
+	}
+]

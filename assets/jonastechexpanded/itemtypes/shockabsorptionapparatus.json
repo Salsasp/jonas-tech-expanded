@@ -12,5 +12,10 @@
 		"temporal": { base: "game:entity/humanoid/seraphclothes/neck/gem/temporal" }
 	},
 	creativeinventory: { "general": ["*"], "items": ["*"] },
-	materialDensity: 900
+	materialDensity: 900,
+	guiTransform: {
+		translation: { x: 0, y: -6, z: 0 },
+		rotation: { x: -26, y: -130, z: 180 },
+		scale: 1.28
+	}
 }

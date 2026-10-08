@@ -67,10 +67,10 @@
 	creativeinventory: { "general": ["*"], "items": ["*"], "clothing": ["*"] },
 	materialDensity: 4000,
 	guiTransform: {
-		translation: { x: 1, y: 0, z: 0 },
+		translation: { x: 1, y: -16, z: 0 },
 		rotation: { x: -26, y: -46, z: -180 },
 		origin: { x: 0.5, y: 0.6, z: 0.5 },
-		scale: 1.25
+		scale: 2.2
 	},
 	groundTransform: {
 		translation: { x: 0, y: 0, z: 0 },

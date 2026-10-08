@@ -197,7 +197,7 @@ namespace JonasTechExpanded
             }
             else
             {
-                dsc.AppendLine(Lang.Get("jonastechexpanded:fuelable-nofuel"));
+                dsc.AppendLine(Lang.Get("jonastechexpanded:fuelable-nofuel") + "\n");
             }
 
             if (JumpHeightMul > 1f)

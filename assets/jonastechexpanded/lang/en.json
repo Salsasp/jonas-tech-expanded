@@ -8,13 +8,13 @@
 	"exoskeleton-effect-stability": "While powered: temporal stability does not drain",
 	"ingameerror-fuelable-full": "This item's fuel is already full",
 	"item-springboots": "Jonas Springboots",
-	"itemdesc-springboots": "Advanced mechanical boots that use temporal gears as fuel. The millwrights and carpenters of the kingdom rejoiced at the invention of such technology.",
+	"itemdesc-springboots": "Advanced shock absorbing mechanical boots that use temporal gears as fuel. The millwrights and carpenters of the kingdom rejoiced at the invention of such technology.",
 	"springboots-effect-jump": "While powered: {0:0.#}x jump height",
 	"springboots-effect-speed": "While powered: {0:0.#}x speed multiplier",
 	"springboots-effect-charge": "Hold crouch to charge a jump ({0}x). Charge is held for {1:0.#} seconds",
 	"springboots-effect-fall": "While powered: immune to fall damage ({0:0.#} hours of fuel per HP absorbed)",
 	"item-shockabsorptionapparatus": "Shock Absorption Apparatus",
 	"itemdesc-shockabsorptionapparatus": "A component for the Jonas Springboots. Capable of absorbing and releasing tremendous amounts of force.",
-	"item-springbootsbody": "Springboots Chassis",
-	"itemdesc-springbootsbody": "A cupronickel frame for the Jonas Springboots."
+	"item-springbootsbody": "Springboots Body",
+	"itemdesc-springbootsbody": "A component for the Jonas Springboots. A sturdy yet flexible frame made from cupronickel and steel."
 }
