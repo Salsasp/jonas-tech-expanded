@@ -9,13 +9,13 @@ using Vintagestory.API.MathTools;
 namespace JonasTechExpanded
 {
     /// <summary>
-    /// Crouch-charges a jump on powered springboots. Writes jumpHeightMul so vanilla
-    /// PModuleOnGround launches with the charged value; no custom physics module.
+    /// Crouch-charges a jump on powered springboots, and absorbs fall damage into fuel.
+    /// Writes jumpHeightMul so vanilla PModuleOnGround launches with the charged value;
+    /// no custom physics module. Patched first on the server so fall absorb runs before health.
     /// </summary>
     public class EntityBehaviorSpringBootsCharge : EntityBehavior
     {
         public const string JumpHeightStatKey = "springboots";
-        public const string FallDamageStatKey = "springbootsCharge";
 
         private enum ChargeState
         {
@@ -34,8 +34,6 @@ namespace JonasTechExpanded
         private float coyote;
         private float lastWrittenJumpMul = float.NaN;
         private bool pendingConsume;
-        private bool fallProtect;
-        private bool leftGroundSinceProtect;
 
         private ILoadedSound chargingLoop;
         private ILoadedSound armedLoop;
@@ -70,8 +68,6 @@ namespace JonasTechExpanded
             if (onGround) coyote = 0.15f;
             else coyote = Math.Max(0, coyote - deltaTime);
             bool canJump = coyote > 0 && !entity.Swimming && !controls.IsFlying;
-
-            tickFallProtect(onGround);
 
             if (boots == null || controls.IsFlying)
             {
@@ -145,14 +141,37 @@ namespace JonasTechExpanded
             }
         }
 
+        public override void OnEntityReceiveDamage(DamageSource damageSource, ref float damage)
+        {
+            if (damage <= 0) return;
+            if (damageSource.Source != EnumDamageSource.Fall || damageSource.Type != EnumDamageType.Gravity) return;
+            if (modSys == null || entity is not EntityPlayer entityPlayer) return;
+
+            if (entity.World.Side == EnumAppSide.Server)
+            {
+                var slot = modSys.GetPoweredSpringBootsSlot(entityPlayer.Player);
+                if (slot == null) return;
+
+                var boots = (ItemSpringBoots)slot.Itemstack.Collectible;
+                float hours = damage * boots.FallDamageFuelHoursPerHp;
+                if (hours > 0)
+                {
+                    boots.AddFuelHours(slot.Itemstack, -hours);
+                    slot.MarkDirty();
+                }
+            }
+            else if (!entity.WatchedAttributes.GetBool(EntityBehaviorSpringBootsVisuals.PoweredAttribute))
+            {
+                return;
+            }
+
+            // Must run before vanilla health: that behavior subtracts HP in this same pass.
+            damage = 0;
+        }
+
         public override void OnEntityDespawn(EntityDespawnData despawn)
         {
             stopLoops();
-            if (fallProtect)
-            {
-                entity.Stats.Remove("fallDamageFactor", FallDamageStatKey);
-                fallProtect = false;
-            }
             base.OnEntityDespawn(despawn);
         }
 
@@ -201,7 +220,6 @@ namespace JonasTechExpanded
 
         private void consume(ItemSpringBoots boots)
         {
-            startFallProtect();
             goIdle();
             writeJumpMul(boots.JumpHeightMul);
         }
@@ -249,26 +267,6 @@ namespace JonasTechExpanded
             if (entity.World.Side != EnumAppSide.Client) return;
 
             entity.Pos.Motion.Y = GlobalConstants.BaseJumpForce / 60f * MathF.Sqrt(MathF.Max(1f, chargeMul));
-        }
-
-        private void startFallProtect()
-        {
-            fallProtect = true;
-            leftGroundSinceProtect = !entity.OnGround;
-            entity.Stats.Set("fallDamageFactor", FallDamageStatKey, -1f, true);
-        }
-
-        private void tickFallProtect(bool onGround)
-        {
-            if (!fallProtect) return;
-
-            if (!onGround) leftGroundSinceProtect = true;
-            if (leftGroundSinceProtect && onGround)
-            {
-                entity.Stats.Remove("fallDamageFactor", FallDamageStatKey);
-                fallProtect = false;
-                leftGroundSinceProtect = false;
-            }
         }
 
         private bool isLocalOwner()

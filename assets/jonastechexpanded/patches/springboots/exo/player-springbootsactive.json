@@ -34,8 +34,9 @@
 		"file": "game:entities/humanoid/player.json"
 	},
 	{
+		// Inserted at 0 so OnEntityReceiveDamage runs before vanilla health subtracts HP.
 		"op": "add",
-		"path": "/server/behaviors/-",
+		"path": "/server/behaviors/0",
 		"value": { code: "springbootsCharge" },
 		"file": "game:entities/humanoid/player.json"
 	}

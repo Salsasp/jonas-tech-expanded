@@ -23,6 +23,8 @@
 			chargeSound: "game:sounds/effect/woodgrind",
 			chargeLevelSound: "game:sounds/effect/woodswitch",
 			chargeArmedSound: "game:sounds/effect/tempstab-drain",
+			// Hours of fuel drained per 1 HP of fall damage the boots absorb.
+			fallDamageFuelHoursPerHp: 0.5,
 			fuelHoursCapacity: 48,
 			// Element names in the worn shape that are removed, along with their children, while unpowered.
 			poweredOnlyElements: ["TemporalGearL", "TemporalGearR"]

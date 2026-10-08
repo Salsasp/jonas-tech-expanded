@@ -10,5 +10,6 @@
 	"item-springboots": "Jonas Springboots",
 	"springboots-effect-jump": "While powered: {0:0.#}x jump height",
 	"springboots-effect-speed": "While powered: {0:0.#}x speed multiplier",
-	"springboots-effect-charge": "Hold crouch to charge a jump ({0}x). Charge is held for {1:0.#} seconds"
+	"springboots-effect-charge": "Hold crouch to charge a jump ({0}x). Charge is held for {1:0.#} seconds",
+	"springboots-effect-fall": "While powered: immune to fall damage ({0:0.#} hours of fuel per HP absorbed)"
 }

@@ -34,6 +34,9 @@ namespace JonasTechExpanded
         public AssetLocation ChargeLevelSound { get; private set; }
         public AssetLocation ChargeArmedSound { get; private set; }
 
+        /// <summary>In-game hours of fuel drained per 1 HP of fall damage absorbed.</summary>
+        public float FallDamageFuelHoursPerHp { get; private set; }
+
         /// <summary>In-game hours of fuel the frame can hold.</summary>
         public float FuelHoursCapacity { get; private set; }
 
@@ -54,6 +57,7 @@ namespace JonasTechExpanded
             ChargeSound = AssetLocation.Create(attr?["chargeSound"]?.AsString("game:sounds/effect/woodgrind") ?? "game:sounds/effect/woodgrind");
             ChargeLevelSound = AssetLocation.Create(attr?["chargeLevelSound"]?.AsString("game:sounds/effect/woodswitch") ?? "game:sounds/effect/woodswitch");
             ChargeArmedSound = AssetLocation.Create(attr?["chargeArmedSound"]?.AsString("game:sounds/effect/tempstab-drain") ?? "game:sounds/effect/tempstab-drain");
+            FallDamageFuelHoursPerHp = attr?["fallDamageFuelHoursPerHp"]?.AsFloat(0.5f) ?? 0.5f;
             FuelHoursCapacity = attr?["fuelHoursCapacity"].AsFloat(48f) ?? 48f;
             PoweredOnlyElements = attr?["poweredOnlyElements"].AsArray<string>() ?? new[] { "TemporalGearL", "TemporalGearR" };
         }
@@ -211,6 +215,7 @@ namespace JonasTechExpanded
                     string.Join(" / ", ChargeJumpMuls),
                     ChargeHoldSeconds));
             }
+            dsc.AppendLine(Lang.Get("jonastechexpanded:springboots-effect-fall", FallDamageFuelHoursPerHp));
         }
     }
 }
