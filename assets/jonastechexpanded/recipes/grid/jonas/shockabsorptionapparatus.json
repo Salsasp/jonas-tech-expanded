@@ -1,0 +1,15 @@
+[
+	{
+		ingredientPattern: "_R_,GSH,_P_",
+		ingredients: {
+			"P": { type: "item", code: "game:metalplate-steel" },
+			"R": { type: "item", code: "game:rod-steel" },
+			"S": { type: "item", code: "game:jonasframes-spring01" },
+            "G": { type: "item", code: "game:jonasframes-gearbox02" },
+            "H": { type: "item", code: "game:jonasparts-valve01" },
+		},
+		width: 3,
+		height: 3,
+		output: { type: "item", code: "shockabsorptionapparatus", quantity: 1 }
+	}
+]

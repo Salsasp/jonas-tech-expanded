@@ -1,0 +1,16 @@
+{
+	code: "shockabsorptionapparatus",
+	maxstacksize: 32,
+	shape: { base: "item/parts/shockabsorptionapparatus" },
+	textures: {
+		"bituminous": { base: "game:block/coal/bituminous" },
+		"rustyglow": { base: "game:block/machine/statictranslocator/rustyglow" },
+		"cupronickel1": { base: "game:block/metal/sheet/cupronickel1" },
+		"stainlesssteel1": { base: "game:block/metal/sheet/stainlesssteel1" },
+		"steel1": { base: "game:block/metal/sheet/steel1" },
+		"whitemarble2": { base: "game:block/stone/rock/whitemarble2" },
+		"temporal": { base: "game:entity/humanoid/seraphclothes/neck/gem/temporal" }
+	},
+	creativeinventory: { "general": ["*"], "items": ["*"] },
+	materialDensity: 900
+}
