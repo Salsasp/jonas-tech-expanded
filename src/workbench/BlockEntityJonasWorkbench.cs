@@ -19,6 +19,9 @@ namespace JonasTechExpanded
     /// <remarks>
     /// The socket slots hold the real consumed stacks, so breaking the bench drops everything put in so far.
     /// RightClickConstruction.GetDrops is not used: it returns nothing until two stages are complete.
+    /// The bench is two blocks wide. This entity lives on the main block only; the vanilla Multiblock behavior
+    /// fills the second block with a placeholder that forwards clicks to <see cref="BlockJonasWorkbench"/> with
+    /// the selection moved onto the main block.
     /// </remarks>
     public class BlockEntityJonasWorkbench : BlockEntityDisplay
     {
@@ -364,19 +367,25 @@ namespace JonasTechExpanded
             for (int i = 0; i < matrices.Length; i++)
             {
                 var placement = i == BlueprintSlot ? blueprintPlacement : socketPlacements.ElementAtOrDefault(i - 1);
-                placement ??= new SocketPlacement();
-
-                matrices[i] = new Matrixf()
-                    .Translate(0.5f, 0, 0.5f)
-                    .RotateYDeg(blockRotY)
-                    .Translate(placement.X / 16f - 0.5f, placement.Y / 16f, placement.Z / 16f - 0.5f)
-                    .RotateYDeg(placement.RotateY)
-                    .Scale(placement.Scale, placement.Scale, placement.Scale)
-                    .Translate(-0.5f, 0, -0.5f)
-                    .Values;
+                matrices[i] = PlacementMatrix(blockRotY, placement ?? new SocketPlacement()).Values;
             }
 
             return matrices;
+        }
+
+        /// <summary>
+        /// Transform from a displayed stack's mesh to the main block's space. Rotates about the main block's
+        /// center exactly like the block shape's rotateY, so a placement past x = 16 lands on the second block.
+        /// </summary>
+        public static Matrixf PlacementMatrix(float blockRotY, SocketPlacement placement)
+        {
+            return new Matrixf()
+                .Translate(0.5f, 0, 0.5f)
+                .RotateYDeg(blockRotY)
+                .Translate(placement.X / 16f - 0.5f, placement.Y / 16f, placement.Z / 16f - 0.5f)
+                .RotateYDeg(placement.RotateY)
+                .Scale(placement.Scale, placement.Scale, placement.Scale)
+                .Translate(-0.5f, 0, -0.5f);
         }
 
         public override void ToTreeAttributes(ITreeAttribute tree)
@@ -397,7 +406,8 @@ namespace JonasTechExpanded
         }
 
         /// <summary>
-        /// Where one displayed stack sits on the bench top, in voxels (1/16 block) of the unrotated (north) bench.
+        /// Where one displayed stack sits on the bench top, in voxels (1/16 block) of the unrotated (north) bench,
+        /// measured from the main block. The bench is two blocks wide, so X runs 0..32.
         /// Read from the block JSON's attributes.workbench.
         /// </summary>
         public class SocketPlacement

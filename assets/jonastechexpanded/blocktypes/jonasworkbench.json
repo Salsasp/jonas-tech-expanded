@@ -2,25 +2,42 @@
 	code: "jonasworkbench",
 	class: "BlockJonasWorkbench",
 	entityClass: "JonasWorkbench",
-	behaviors: [ { name: "HorizontalOrientable" } ],
+	behaviors: [
+		{ name: "HorizontalOrientable" },
+		// Two blocks wide. The model spans x 0..32 voxels of the unrotated (north) bench, so the second block
+		// sits on the model's +X side, which the shape's rotateY turns to east/south/west/north. Vanilla fills
+		// it with an invisible multiblock-monolithic placeholder that forwards clicks, breaking and hitboxes.
+		{ name: "Multiblock", propertiesByType: {
+			"*-north": { sizex: 2, sizey: 1, sizez: 1, cposition: { x: 0, y: 0, z: 0 } },
+			"*-east": { sizex: 1, sizey: 1, sizez: 2, cposition: { x: 0, y: 0, z: 0 } },
+			"*-south": { sizex: 2, sizey: 1, sizez: 1, cposition: { x: 1, y: 0, z: 0 } },
+			"*-west": { sizex: 1, sizey: 1, sizez: 2, cposition: { x: 0, y: 0, z: 1 } }
+		} }
+	],
 	variantgroups: [
 		{ code: "side", loadFromProperties: "abstract/horizontalorientation" }
 	],
 	attributes: {
-		// Where the blueprint and the installed ingredients render on the bench top, in voxels of the
-		// unrotated (north) bench. The backboard is on the north (z = 0) edge; the top surface is at y = 14.
-		// One socket per ingredient across all of a recipe's stages, in order. Up to 8.
+		// Where the blueprint and the installed ingredients render on the bench, in voxels of the unrotated
+		// (north) bench, measured from the main block: x runs 0..32 across both blocks. The work surface is at
+		// y = 14 and runs x 2..30 (brackets on the west corners), z 1..16 (backboard at z 0..1, tool rail above it).
+		// The blueprint mesh (vanilla label-paper) is an upright sheet on the mesh's north edge, so it stands
+		// propped against the backboard in the middle.
+		// Sockets are filled in list order, one per ingredient across all of a recipe's stages (up to 8), and
+		// are listed in mirrored pairs so any recipe size fills the bench symmetrically: back row beside the
+		// blueprint, then the front row. A socket's item is centered on (x, z) and sits on y; scale 0.4 makes a
+		// full-block item about 6 voxels across.
 		workbench: {
-			blueprint: { x: 8, y: 14.05, z: 4.5, rotateY: 0, scale: 0.6 },
+			blueprint: { x: 16, y: 10.9, z: 7.9, rotateY: 0, scale: 0.8 },
 			sockets: [
-				{ x: 2.5, y: 14, z: 9, rotateY: 15, scale: 0.35 },
-				{ x: 6, y: 14, z: 9, rotateY: -10, scale: 0.35 },
-				{ x: 10, y: 14, z: 9, rotateY: 5, scale: 0.35 },
-				{ x: 13.5, y: 14, z: 9, rotateY: -20, scale: 0.35 },
-				{ x: 2.5, y: 14, z: 13, rotateY: -5, scale: 0.35 },
-				{ x: 6, y: 14, z: 13, rotateY: 20, scale: 0.35 },
-				{ x: 10, y: 14, z: 13, rotateY: -15, scale: 0.35 },
-				{ x: 13.5, y: 14, z: 13, rotateY: 10, scale: 0.35 }
+				{ x: 9.5, y: 14.02, z: 5.5, rotateY: 10, scale: 0.4 },
+				{ x: 22.5, y: 14.02, z: 5.5, rotateY: -10, scale: 0.4 },
+				{ x: 4.5, y: 14.02, z: 5.5, rotateY: -15, scale: 0.4 },
+				{ x: 27.5, y: 14.02, z: 5.5, rotateY: 15, scale: 0.4 },
+				{ x: 12.5, y: 14.02, z: 11.5, rotateY: -5, scale: 0.4 },
+				{ x: 19.5, y: 14.02, z: 11.5, rotateY: 5, scale: 0.4 },
+				{ x: 5.5, y: 14.02, z: 11.5, rotateY: 20, scale: 0.4 },
+				{ x: 26.5, y: 14.02, z: 11.5, rotateY: -20, scale: 0.4 }
 			]
 		}
 	},
@@ -49,8 +66,9 @@
 		burnDuration: 25
 	},
 	materialDensity: 600,
+	// Centered on the two-block model (x 0..2).
 	guiTransform: {
-		origin: { x: 0.5, y: 0.5, z: 0.5 },
-		scale: 1.2
+		origin: { x: 1, y: 0.5, z: 0.5 },
+		scale: 0.8
 	}
 }
