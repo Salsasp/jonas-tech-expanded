@@ -9,14 +9,14 @@
 	creativeinventory: { "general": ["*"], "items": ["*"] },
 	materialDensity: 900,
 	guiTransform: {
-		translation: { x: -38, y: -15, z: 0 },
+		translation: { x: -12, y: 2, z: 0 },
 		rotation: { x: 152, y: -139, z: 0 },
-		scale: 2.95
+		scale: 1.41
   	},
 	tpHandTransform: {
-		translation: { x: -0.2, y: -0.4, z: -0.1 },
+		translation: { x: -0.4, y: -0.9, z: -0.1 },
 		rotation: { x: 0, y: 180, z: 0 },
 		origin: { x: 0, y: 0, z: 0 },
-		scale: 0.89
-	}
+		scale: 0.6
+  	}
 }
