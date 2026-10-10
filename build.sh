@@ -49,6 +49,7 @@ OPTIONS
         --no-build          Skip compilation; just repackage the existing build output.
                             Handy after an assets-only change.
         --symbols           Include .pdb debug symbols in the zip.
+        --skip-tests        Don't run the Atlas test suite in tests/ before packaging.
     -h, --help              Show this help.
 
 EXAMPLES
@@ -76,6 +77,7 @@ DO_INSTALL=0
 DO_CLEAN=0
 NO_BUILD=0
 WITH_SYMBOLS=0
+SKIP_TESTS=0
 
 while [ $# -gt 0 ]; do
     case "$1" in
@@ -86,6 +88,7 @@ while [ $# -gt 0 ]; do
         --clean)       DO_CLEAN=1;        shift ;;
         --no-build)    NO_BUILD=1;        shift ;;
         --symbols)     WITH_SYMBOLS=1;    shift ;;
+        --skip-tests)  SKIP_TESTS=1;      shift ;;
         -h|--help)     usage; exit 0 ;;
         *)             die "Unknown option: $1  (try --help)" ;;
     esac
@@ -268,6 +271,27 @@ if [ "$IS_CODE_MOD" -eq 1 ] && [ "$NO_BUILD" -eq 0 ]; then
     ok "build succeeded"
 elif [ "$IS_CODE_MOD" -eq 1 ]; then
     step "Skipping build (--no-build)"
+fi
+
+# ---------------------------------------------------------------------------
+# Test
+#
+# Every test project under tests/ runs against a headless server with this mod
+# staged (Atlas). A failure stops here, so a broken build is never packaged.
+# ---------------------------------------------------------------------------
+
+if [ "$SKIP_TESTS" -eq 0 ] && [ -d "$ROOT/tests" ]; then
+    command -v dotnet >/dev/null 2>&1 || die "dotnet not found on PATH"
+    # Without a located install (--no-build), the test project falls back to $VINTAGE_STORY or %APPDATA%.
+    [ -n "$VS_DIR" ] && export VINTAGE_STORY="$(to_native "$VS_DIR")"
+
+    while IFS= read -r test_project; do
+        step "Testing $(basename "$test_project") [$CONFIG]"
+        dotnet test "$test_project" -c "$CONFIG" --nologo             || die "Tests failed -- not packaging. Fix them, or re-run with --skip-tests to package anyway."
+        ok "tests passed"
+    done < <(find "$ROOT/tests" -mindepth 2 -maxdepth 2 -name '*.csproj' -type f | LC_ALL=C sort)
+elif [ "$SKIP_TESTS" -eq 1 ]; then
+    step "Skipping tests (--skip-tests)"
 fi
 
 # ---------------------------------------------------------------------------
