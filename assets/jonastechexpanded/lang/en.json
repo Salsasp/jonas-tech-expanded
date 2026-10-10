@@ -16,5 +16,17 @@
 	"item-shockabsorptionapparatus": "Shock Absorption Apparatus",
 	"itemdesc-shockabsorptionapparatus": "A component for the Jonas Springboots. Capable of absorbing and releasing tremendous amounts of force.",
 	"item-springbootsbody": "Springboots Body",
-	"itemdesc-springbootsbody": "A component for the Jonas Springboots. A sturdy yet flexible frame made from cupronickel and steel."
+	"itemdesc-springbootsbody": "A component for the Jonas Springboots. A sturdy yet flexible frame made from cupronickel and steel.",
+	"block-jonasworkbench-*": "Jonas Workbench",
+	"blockdesc-jonasworkbench-*": "A sturdy bench for assembling Jonas devices. Place a blueprint on it, then install the parts it calls for.",
+	"item-jonasblueprint-springboots": "Blueprint: Jonas Springboots",
+	"itemdesc-jonasblueprint-springboots": "Assembly instructions for the Jonas Springboots. Place on a Jonas Workbench to begin construction.",
+	"workbench-placeblueprint": "Place blueprint",
+	"workbench-takeblueprint": "Take blueprint",
+	"workbench-install": "Install",
+	"workbench-assemble": "Hold to assemble",
+	"workbench-noblueprint": "No blueprint placed",
+	"workbench-blueprint": "Blueprint: {0}",
+	"workbench-progress": "Stages installed: {0} / {1}",
+	"workbench-ready": "Ready to assemble: {0}"
 }

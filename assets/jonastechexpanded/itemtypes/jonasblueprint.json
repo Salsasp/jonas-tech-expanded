@@ -1,0 +1,51 @@
+{
+	code: "jonasblueprint",
+	variantgroups: [
+		{ code: "type", states: ["springboots"] }
+	],
+	maxstacksize: 1,
+	attributesByType: {
+		// Recipe for the Jonas workbench. Stages use vanilla's right-click construction format (the same as
+		// the waterwheel): each stage's requireStacks are taken from the hotbar in one right-click. Unprefixed
+		// codes are in this mod's domain. After the last stage, hold right-click for assemblySeconds.
+		"*-springboots": {
+			jonasWorkbench: {
+				output: { type: "item", code: "springboots" },
+				assemblySeconds: 4,
+				stages: [
+					{ requireStacks: [ { type: "item", code: "shockabsorptionapparatus", quantity: 2 } ], actionLangCode: "jonastechexpanded:workbench-install" },
+					{ requireStacks: [ { type: "item", code: "springbootsbody", quantity: 2 } ], actionLangCode: "jonastechexpanded:workbench-install" },
+					{ requireStacks: [ { type: "item", code: "game:jonasframes-gears02", quantity: 1 } ], actionLangCode: "jonastechexpanded:workbench-install" },
+					{ requireStacks: [ { type: "item", code: "game:jonasparts-cylinder01", quantity: 1 } ], actionLangCode: "jonastechexpanded:workbench-install" },
+					{ requireStacks: [ { type: "item", code: "game:metalnailsandstrips-steel", quantity: 8 } ], actionLangCode: "jonastechexpanded:workbench-install" },
+					{ requireStacks: [ { type: "item", code: "game:flaxtwine", quantity: 8 } ], actionLangCode: "jonastechexpanded:workbench-install" }
+				]
+			}
+		}
+	},
+	// Vanilla parchment shape with the blank map texture, until there's a dedicated blueprint model.
+	shape: { base: "game:block/wood/crate/label-paper" },
+	textures: {
+		"labelbase": { base: "game:item/lore/map-blank" }
+	},
+	creativeinventory: { "general": ["*"], "items": ["*"] },
+	materialDensity: 210,
+	tpHandTransform: {
+		translation: { x: 0, y: 0, z: 0 },
+		rotation: { x: 5, y: 180, z: 1 },
+		origin: { x: -0.8, y: -1.47, z: -0.39 },
+		scale: 0.65
+	},
+	groundTransform: {
+		translation: { x: 0, y: 0, z: 0 },
+		rotation: { x: 90, y: 0, z: 2 },
+		origin: { x: 0.5, y: 0.5, z: 0.08 },
+		scale: 3.2
+	},
+	guiTransform: {
+		translation: { x: 0, y: 0, z: 0 },
+		rotation: { x: 42, y: 34, z: -33 },
+		origin: { x: 0.53, y: 0.55, z: 0 },
+		scale: 2.45
+	}
+}

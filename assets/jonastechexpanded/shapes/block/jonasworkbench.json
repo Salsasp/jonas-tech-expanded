@@ -1,0 +1,1052 @@
+{
+	"editor": {
+		"allAngles": false,
+		"entityTextureMode": false
+	},
+	"textureWidth": 16,
+	"textureHeight": 16,
+	"textures": {
+		"planks": "game:block/wood/planks/oak1",
+		"log": "game:block/wood/debarked/oak",
+		"iron": "game:block/metal/sheet/iron1",
+		"brass": "game:block/metal/tarnished/brass"
+	},
+	"elements": [
+		{
+			"name": "Top",
+			"from": [
+				0,
+				12,
+				0
+			],
+			"to": [
+				16,
+				14,
+				16
+			],
+			"rotationOrigin": [
+				0,
+				12,
+				0
+			],
+			"faces": {
+				"north": {
+					"texture": "#planks",
+					"uv": [
+						0,
+						0,
+						16,
+						2
+					]
+				},
+				"east": {
+					"texture": "#planks",
+					"uv": [
+						0,
+						0,
+						16,
+						2
+					]
+				},
+				"south": {
+					"texture": "#planks",
+					"uv": [
+						0,
+						0,
+						16,
+						2
+					]
+				},
+				"west": {
+					"texture": "#planks",
+					"uv": [
+						0,
+						0,
+						16,
+						2
+					]
+				},
+				"up": {
+					"texture": "#planks",
+					"uv": [
+						0,
+						0,
+						16,
+						16
+					]
+				},
+				"down": {
+					"texture": "#planks",
+					"uv": [
+						0,
+						0,
+						16,
+						16
+					]
+				}
+			}
+		},
+		{
+			"name": "LegNW",
+			"from": [
+				1,
+				0,
+				1
+			],
+			"to": [
+				3,
+				12,
+				3
+			],
+			"rotationOrigin": [
+				1,
+				0,
+				1
+			],
+			"faces": {
+				"north": {
+					"texture": "#log",
+					"uv": [
+						0,
+						0,
+						2,
+						12
+					]
+				},
+				"east": {
+					"texture": "#log",
+					"uv": [
+						0,
+						0,
+						2,
+						12
+					]
+				},
+				"south": {
+					"texture": "#log",
+					"uv": [
+						0,
+						0,
+						2,
+						12
+					]
+				},
+				"west": {
+					"texture": "#log",
+					"uv": [
+						0,
+						0,
+						2,
+						12
+					]
+				},
+				"up": {
+					"texture": "#log",
+					"uv": [
+						0,
+						0,
+						2,
+						2
+					]
+				},
+				"down": {
+					"texture": "#log",
+					"uv": [
+						0,
+						0,
+						2,
+						2
+					]
+				}
+			}
+		},
+		{
+			"name": "LegNE",
+			"from": [
+				13,
+				0,
+				1
+			],
+			"to": [
+				15,
+				12,
+				3
+			],
+			"rotationOrigin": [
+				13,
+				0,
+				1
+			],
+			"faces": {
+				"north": {
+					"texture": "#log",
+					"uv": [
+						0,
+						0,
+						2,
+						12
+					]
+				},
+				"east": {
+					"texture": "#log",
+					"uv": [
+						0,
+						0,
+						2,
+						12
+					]
+				},
+				"south": {
+					"texture": "#log",
+					"uv": [
+						0,
+						0,
+						2,
+						12
+					]
+				},
+				"west": {
+					"texture": "#log",
+					"uv": [
+						0,
+						0,
+						2,
+						12
+					]
+				},
+				"up": {
+					"texture": "#log",
+					"uv": [
+						0,
+						0,
+						2,
+						2
+					]
+				},
+				"down": {
+					"texture": "#log",
+					"uv": [
+						0,
+						0,
+						2,
+						2
+					]
+				}
+			}
+		},
+		{
+			"name": "LegSW",
+			"from": [
+				1,
+				0,
+				13
+			],
+			"to": [
+				3,
+				12,
+				15
+			],
+			"rotationOrigin": [
+				1,
+				0,
+				13
+			],
+			"faces": {
+				"north": {
+					"texture": "#log",
+					"uv": [
+						0,
+						0,
+						2,
+						12
+					]
+				},
+				"east": {
+					"texture": "#log",
+					"uv": [
+						0,
+						0,
+						2,
+						12
+					]
+				},
+				"south": {
+					"texture": "#log",
+					"uv": [
+						0,
+						0,
+						2,
+						12
+					]
+				},
+				"west": {
+					"texture": "#log",
+					"uv": [
+						0,
+						0,
+						2,
+						12
+					]
+				},
+				"up": {
+					"texture": "#log",
+					"uv": [
+						0,
+						0,
+						2,
+						2
+					]
+				},
+				"down": {
+					"texture": "#log",
+					"uv": [
+						0,
+						0,
+						2,
+						2
+					]
+				}
+			}
+		},
+		{
+			"name": "LegSE",
+			"from": [
+				13,
+				0,
+				13
+			],
+			"to": [
+				15,
+				12,
+				15
+			],
+			"rotationOrigin": [
+				13,
+				0,
+				13
+			],
+			"faces": {
+				"north": {
+					"texture": "#log",
+					"uv": [
+						0,
+						0,
+						2,
+						12
+					]
+				},
+				"east": {
+					"texture": "#log",
+					"uv": [
+						0,
+						0,
+						2,
+						12
+					]
+				},
+				"south": {
+					"texture": "#log",
+					"uv": [
+						0,
+						0,
+						2,
+						12
+					]
+				},
+				"west": {
+					"texture": "#log",
+					"uv": [
+						0,
+						0,
+						2,
+						12
+					]
+				},
+				"up": {
+					"texture": "#log",
+					"uv": [
+						0,
+						0,
+						2,
+						2
+					]
+				},
+				"down": {
+					"texture": "#log",
+					"uv": [
+						0,
+						0,
+						2,
+						2
+					]
+				}
+			}
+		},
+		{
+			"name": "Shelf",
+			"from": [
+				2,
+				3,
+				2
+			],
+			"to": [
+				14,
+				4,
+				14
+			],
+			"rotationOrigin": [
+				2,
+				3,
+				2
+			],
+			"faces": {
+				"north": {
+					"texture": "#planks",
+					"uv": [
+						0,
+						0,
+						12,
+						1
+					]
+				},
+				"east": {
+					"texture": "#planks",
+					"uv": [
+						0,
+						0,
+						12,
+						1
+					]
+				},
+				"south": {
+					"texture": "#planks",
+					"uv": [
+						0,
+						0,
+						12,
+						1
+					]
+				},
+				"west": {
+					"texture": "#planks",
+					"uv": [
+						0,
+						0,
+						12,
+						1
+					]
+				},
+				"up": {
+					"texture": "#planks",
+					"uv": [
+						0,
+						0,
+						12,
+						12
+					]
+				},
+				"down": {
+					"texture": "#planks",
+					"uv": [
+						0,
+						0,
+						12,
+						12
+					]
+				}
+			}
+		},
+		{
+			"name": "TrimFront",
+			"from": [
+				0,
+				11,
+				15
+			],
+			"to": [
+				16,
+				12,
+				16
+			],
+			"rotationOrigin": [
+				0,
+				11,
+				15
+			],
+			"faces": {
+				"north": {
+					"texture": "#iron",
+					"uv": [
+						0,
+						0,
+						16,
+						1
+					]
+				},
+				"east": {
+					"texture": "#iron",
+					"uv": [
+						0,
+						0,
+						1,
+						1
+					]
+				},
+				"south": {
+					"texture": "#iron",
+					"uv": [
+						0,
+						0,
+						16,
+						1
+					]
+				},
+				"west": {
+					"texture": "#iron",
+					"uv": [
+						0,
+						0,
+						1,
+						1
+					]
+				},
+				"up": {
+					"texture": "#iron",
+					"uv": [
+						0,
+						0,
+						16,
+						1
+					]
+				},
+				"down": {
+					"texture": "#iron",
+					"uv": [
+						0,
+						0,
+						16,
+						1
+					]
+				}
+			}
+		},
+		{
+			"name": "TrimBack",
+			"from": [
+				0,
+				11,
+				0
+			],
+			"to": [
+				16,
+				12,
+				1
+			],
+			"rotationOrigin": [
+				0,
+				11,
+				0
+			],
+			"faces": {
+				"north": {
+					"texture": "#iron",
+					"uv": [
+						0,
+						0,
+						16,
+						1
+					]
+				},
+				"east": {
+					"texture": "#iron",
+					"uv": [
+						0,
+						0,
+						1,
+						1
+					]
+				},
+				"south": {
+					"texture": "#iron",
+					"uv": [
+						0,
+						0,
+						16,
+						1
+					]
+				},
+				"west": {
+					"texture": "#iron",
+					"uv": [
+						0,
+						0,
+						1,
+						1
+					]
+				},
+				"up": {
+					"texture": "#iron",
+					"uv": [
+						0,
+						0,
+						16,
+						1
+					]
+				},
+				"down": {
+					"texture": "#iron",
+					"uv": [
+						0,
+						0,
+						16,
+						1
+					]
+				}
+			}
+		},
+		{
+			"name": "BracketNW",
+			"from": [
+				0,
+				14,
+				0
+			],
+			"to": [
+				2,
+				14.5,
+				2
+			],
+			"rotationOrigin": [
+				0,
+				14,
+				0
+			],
+			"faces": {
+				"north": {
+					"texture": "#brass",
+					"uv": [
+						0,
+						0,
+						2,
+						0.5
+					]
+				},
+				"east": {
+					"texture": "#brass",
+					"uv": [
+						0,
+						0,
+						2,
+						0.5
+					]
+				},
+				"south": {
+					"texture": "#brass",
+					"uv": [
+						0,
+						0,
+						2,
+						0.5
+					]
+				},
+				"west": {
+					"texture": "#brass",
+					"uv": [
+						0,
+						0,
+						2,
+						0.5
+					]
+				},
+				"up": {
+					"texture": "#brass",
+					"uv": [
+						0,
+						0,
+						2,
+						2
+					]
+				},
+				"down": {
+					"texture": "#brass",
+					"uv": [
+						0,
+						0,
+						2,
+						2
+					]
+				}
+			}
+		},
+		{
+			"name": "BracketNE",
+			"from": [
+				14,
+				14,
+				0
+			],
+			"to": [
+				16,
+				14.5,
+				2
+			],
+			"rotationOrigin": [
+				14,
+				14,
+				0
+			],
+			"faces": {
+				"north": {
+					"texture": "#brass",
+					"uv": [
+						0,
+						0,
+						2,
+						0.5
+					]
+				},
+				"east": {
+					"texture": "#brass",
+					"uv": [
+						0,
+						0,
+						2,
+						0.5
+					]
+				},
+				"south": {
+					"texture": "#brass",
+					"uv": [
+						0,
+						0,
+						2,
+						0.5
+					]
+				},
+				"west": {
+					"texture": "#brass",
+					"uv": [
+						0,
+						0,
+						2,
+						0.5
+					]
+				},
+				"up": {
+					"texture": "#brass",
+					"uv": [
+						0,
+						0,
+						2,
+						2
+					]
+				},
+				"down": {
+					"texture": "#brass",
+					"uv": [
+						0,
+						0,
+						2,
+						2
+					]
+				}
+			}
+		},
+		{
+			"name": "BracketSW",
+			"from": [
+				0,
+				14,
+				14
+			],
+			"to": [
+				2,
+				14.5,
+				16
+			],
+			"rotationOrigin": [
+				0,
+				14,
+				14
+			],
+			"faces": {
+				"north": {
+					"texture": "#brass",
+					"uv": [
+						0,
+						0,
+						2,
+						0.5
+					]
+				},
+				"east": {
+					"texture": "#brass",
+					"uv": [
+						0,
+						0,
+						2,
+						0.5
+					]
+				},
+				"south": {
+					"texture": "#brass",
+					"uv": [
+						0,
+						0,
+						2,
+						0.5
+					]
+				},
+				"west": {
+					"texture": "#brass",
+					"uv": [
+						0,
+						0,
+						2,
+						0.5
+					]
+				},
+				"up": {
+					"texture": "#brass",
+					"uv": [
+						0,
+						0,
+						2,
+						2
+					]
+				},
+				"down": {
+					"texture": "#brass",
+					"uv": [
+						0,
+						0,
+						2,
+						2
+					]
+				}
+			}
+		},
+		{
+			"name": "BracketSE",
+			"from": [
+				14,
+				14,
+				14
+			],
+			"to": [
+				16,
+				14.5,
+				16
+			],
+			"rotationOrigin": [
+				14,
+				14,
+				14
+			],
+			"faces": {
+				"north": {
+					"texture": "#brass",
+					"uv": [
+						0,
+						0,
+						2,
+						0.5
+					]
+				},
+				"east": {
+					"texture": "#brass",
+					"uv": [
+						0,
+						0,
+						2,
+						0.5
+					]
+				},
+				"south": {
+					"texture": "#brass",
+					"uv": [
+						0,
+						0,
+						2,
+						0.5
+					]
+				},
+				"west": {
+					"texture": "#brass",
+					"uv": [
+						0,
+						0,
+						2,
+						0.5
+					]
+				},
+				"up": {
+					"texture": "#brass",
+					"uv": [
+						0,
+						0,
+						2,
+						2
+					]
+				},
+				"down": {
+					"texture": "#brass",
+					"uv": [
+						0,
+						0,
+						2,
+						2
+					]
+				}
+			}
+		},
+		{
+			"name": "Backboard",
+			"from": [
+				0,
+				14,
+				0
+			],
+			"to": [
+				16,
+				20,
+				1
+			],
+			"rotationOrigin": [
+				0,
+				14,
+				0
+			],
+			"faces": {
+				"north": {
+					"texture": "#planks",
+					"uv": [
+						0,
+						0,
+						16,
+						6
+					]
+				},
+				"east": {
+					"texture": "#planks",
+					"uv": [
+						0,
+						0,
+						1,
+						6
+					]
+				},
+				"south": {
+					"texture": "#planks",
+					"uv": [
+						0,
+						0,
+						16,
+						6
+					]
+				},
+				"west": {
+					"texture": "#planks",
+					"uv": [
+						0,
+						0,
+						1,
+						6
+					]
+				},
+				"up": {
+					"texture": "#planks",
+					"uv": [
+						0,
+						0,
+						16,
+						1
+					]
+				},
+				"down": {
+					"texture": "#planks",
+					"uv": [
+						0,
+						0,
+						16,
+						1
+					]
+				}
+			}
+		},
+		{
+			"name": "ToolRail",
+			"from": [
+				1,
+				18,
+				1
+			],
+			"to": [
+				15,
+				18.5,
+				1.5
+			],
+			"rotationOrigin": [
+				1,
+				18,
+				1
+			],
+			"faces": {
+				"north": {
+					"texture": "#brass",
+					"uv": [
+						0,
+						0,
+						14,
+						0.5
+					]
+				},
+				"east": {
+					"texture": "#brass",
+					"uv": [
+						0,
+						0,
+						0.5,
+						0.5
+					]
+				},
+				"south": {
+					"texture": "#brass",
+					"uv": [
+						0,
+						0,
+						14,
+						0.5
+					]
+				},
+				"west": {
+					"texture": "#brass",
+					"uv": [
+						0,
+						0,
+						0.5,
+						0.5
+					]
+				},
+				"up": {
+					"texture": "#brass",
+					"uv": [
+						0,
+						0,
+						14,
+						0.5
+					]
+				},
+				"down": {
+					"texture": "#brass",
+					"uv": [
+						0,
+						0,
+						14,
+						0.5
+					]
+				}
+			}
+		}
+	]
+}

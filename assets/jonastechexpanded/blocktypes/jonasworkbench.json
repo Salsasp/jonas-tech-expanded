@@ -1,0 +1,56 @@
+{
+	code: "jonasworkbench",
+	class: "BlockJonasWorkbench",
+	entityClass: "JonasWorkbench",
+	behaviors: [ { name: "HorizontalOrientable" } ],
+	variantgroups: [
+		{ code: "side", loadFromProperties: "abstract/horizontalorientation" }
+	],
+	attributes: {
+		// Where the blueprint and the installed ingredients render on the bench top, in voxels of the
+		// unrotated (north) bench. The backboard is on the north (z = 0) edge; the top surface is at y = 14.
+		// One socket per ingredient across all of a recipe's stages, in order. Up to 8.
+		workbench: {
+			blueprint: { x: 8, y: 14.05, z: 4.5, rotateY: 0, scale: 0.6 },
+			sockets: [
+				{ x: 2.5, y: 14, z: 9, rotateY: 15, scale: 0.35 },
+				{ x: 6, y: 14, z: 9, rotateY: -10, scale: 0.35 },
+				{ x: 10, y: 14, z: 9, rotateY: 5, scale: 0.35 },
+				{ x: 13.5, y: 14, z: 9, rotateY: -20, scale: 0.35 },
+				{ x: 2.5, y: 14, z: 13, rotateY: -5, scale: 0.35 },
+				{ x: 6, y: 14, z: 13, rotateY: 20, scale: 0.35 },
+				{ x: 10, y: 14, z: 13, rotateY: -15, scale: 0.35 },
+				{ x: 13.5, y: 14, z: 13, rotateY: 10, scale: 0.35 }
+			]
+		}
+	},
+	creativeinventory: { "general": ["*-north"], "decorative": ["*-north"] },
+	shape: {
+		base: "block/jonasworkbench",
+		rotateYByType: { "*-north": 0, "*-east": 270, "*-south": 180, "*-west": 90 }
+	},
+	blockmaterial: "Wood",
+	sidesolid: { all: false },
+	sideopaque: { all: false },
+	lightAbsorption: 0,
+	resistance: 3,
+	collisionSelectionBox: { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.875, z2: 1 },
+	drops: [
+		{ type: "block", code: "jonasworkbench-north" }
+	],
+	sounds: {
+		"hit": "game:block/planks",
+		"break": "game:block/planks",
+		"place": "game:block/planks",
+		"walk": "game:walk/wood"
+	},
+	combustibleProps: {
+		burnTemperature: 600,
+		burnDuration: 25
+	},
+	materialDensity: 600,
+	guiTransform: {
+		origin: { x: 0.5, y: 0.5, z: 0.5 },
+		scale: 1.2
+	}
+}

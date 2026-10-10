@@ -19,6 +19,8 @@
   -->
   <PropertyGroup>
     <VintageStoryDir Condition="'$(VintageStoryDir)' == ''">$(VINTAGE_STORY)</VintageStoryDir>
+    <!-- Default Windows install, so IDEs resolve every game assembly without the variable set. -->
+    <VintageStoryDir Condition="'$(VintageStoryDir)' == '' and Exists('$(APPDATA)/Vintagestory/VintagestoryAPI.dll')">$(APPDATA)/Vintagestory</VintageStoryDir>
     <VintageStoryDir Condition="'$(VintageStoryDir)' == ''">$(MSBuildProjectDirectory)/../vs-game</VintageStoryDir>
   </PropertyGroup>
 
