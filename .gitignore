@@ -15,6 +15,7 @@ obj/
 
 # AI
 .cursor/
+CLAUDE.md
 
 # OS
 .DS_Store
