@@ -1,3 +1,4 @@
+using System.IO;
 using Atlas.Api;
 using Vintagestory.API.Common;
 using Vintagestory.API.Config;
@@ -9,6 +10,26 @@ namespace JonasTechExpanded.Tests
     internal static class TestKit
     {
         public const string Domain = "jonastechexpanded";
+
+        /// <summary>
+        /// The repository checkout (modinfo.json + assets/). Found from the test assembly's location, not
+        /// AppContext.BaseDirectory: Atlas points that at the game install once a server has booted.
+        /// </summary>
+        public static readonly string RepoRoot = findRepoRoot();
+
+        private static string findRepoRoot()
+        {
+            string start = Path.GetDirectoryName(typeof(TestKit).Assembly.Location);
+            for (var dir = new DirectoryInfo(start); dir != null; dir = dir.Parent)
+            {
+                if (File.Exists(Path.Combine(dir.FullName, "modinfo.json")) && Directory.Exists(Path.Combine(dir.FullName, "assets"))
+                    && !dir.FullName.Contains("atlas-mods"))
+                {
+                    return dir.FullName;
+                }
+            }
+            throw new InvalidOperationException("Repository root (modinfo.json + assets/) not found above " + start);
+        }
 
         public static Item Item(IWorldSession world, string code)
         {

@@ -12,7 +12,7 @@ namespace JonasTechExpanded.Tests
     {
         private const string Domain = "jonastechexpanded";
 
-        private static readonly string RepoRoot = findRepoRoot();
+        private static readonly string RepoRoot = TestKit.RepoRoot;
         private static readonly string ModAssets = Path.Combine(RepoRoot, "assets", Domain);
         private static readonly string GameAssets = Path.Combine(
             Environment.GetEnvironmentVariable("VINTAGE_STORY") ?? throw new InvalidOperationException("VINTAGE_STORY is not set"),
@@ -36,6 +36,27 @@ namespace JonasTechExpanded.Tests
             {
                 assertExists(texture.Value.ToString(), "textures", ".png", $"{file}: texture '{texture.Name}'");
             }
+        }
+
+        [Theory]
+        [MemberData(nameof(ShapeFiles))]
+        public void Shape_faces_use_defined_textures(string file)
+        {
+            var json = parse(file);
+            var defined = (json["textures"] as JObject)?.Properties().Select(p => p.Name).ToHashSet() ?? new HashSet<string>();
+
+            // Worn shapes take their textures from the item JSON, which the type check covers.
+            if (defined.Count == 0) return;
+
+            var undefined = json.SelectTokens("$..faces.*")
+                .Where(face => face["enabled"]?.Value<bool>() != false)
+                .Select(face => face["texture"]?.ToString().TrimStart('#'))
+                // "#null" is VS Model Creator's marker for a face with no texture assigned.
+                .Where(code => !string.IsNullOrEmpty(code) && code != "null" && !defined.Contains(code))
+                .Distinct()
+                .ToList();
+
+            Assert.True(undefined.Count == 0, $"{file}: faces use undefined textures: {string.Join(", ", undefined)}");
         }
 
         [Theory]
@@ -109,19 +130,6 @@ namespace JonasTechExpanded.Tests
 
             return Directory.EnumerateFiles(dir, "*.json", SearchOption.AllDirectories)
                 .Select(f => new object[] { Path.GetRelativePath(ModAssets, f).Replace('\\', '/') });
-        }
-
-        private static string findRepoRoot()
-        {
-            for (var dir = new DirectoryInfo(AppContext.BaseDirectory); dir != null; dir = dir.Parent)
-            {
-                if (File.Exists(Path.Combine(dir.FullName, "modinfo.json")) && Directory.Exists(Path.Combine(dir.FullName, "assets"))
-                    && !dir.FullName.Contains("atlas-mods"))
-                {
-                    return dir.FullName;
-                }
-            }
-            throw new InvalidOperationException("Repository root (modinfo.json + assets/) not found above " + AppContext.BaseDirectory);
         }
     }
 }
