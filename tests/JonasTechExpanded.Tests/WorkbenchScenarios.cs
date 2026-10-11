@@ -33,7 +33,7 @@ namespace JonasTechExpanded.Tests
         {
             await Task.CompletedTask;
             var bench = TestKit.Block(World, "jonastechexpanded:jonasworkbench-north");
-            int sockets = bench.Attributes["workbench"]["sockets"].AsArray().Length;
+            int sockets = WorkbenchSocketMarkers.Get(World.Api, bench).Sockets.Length;
 
             var blueprints = World.Api.World.Collectibles
                 .Where(c => c.Attributes?[BlockEntityJonasWorkbench.RecipeAttribute].Exists == true)
@@ -60,6 +60,26 @@ namespace JonasTechExpanded.Tests
 
                 Assert.True(ingredients <= sockets, $"{blueprint.Code}: {ingredients} ingredients but the bench has {sockets} sockets");
             }
+        }
+
+        [AtlasScenario]
+        public async Task Socket_markers_put_every_item_on_the_work_surface()
+        {
+            await Task.CompletedTask;
+            var bench = TestKit.Block(World, "jonastechexpanded:jonasworkbench-north");
+            var placements = WorkbenchSocketMarkers.Get(World.Api, bench);
+
+            Assert.Equal(8, placements.Sockets.Length);
+            Assert.Equal(0.8f, placements.Blueprint.Scale);
+
+            // The work surface is the top at y = 14, x 2..30, z 1..16 (backboard at z 0..1).
+            foreach (var (socket, i) in placements.Sockets.Select((s, i) => (s, i + 1)))
+            {
+                Assert.True(socket.Y > 14 && socket.Y < 14.1, $"Socket{i} y is {socket.Y}, not on the work surface");
+                Assert.True(socket.X >= 2 && socket.X <= 30 && socket.Z >= 1 && socket.Z <= 16, $"Socket{i} at ({socket.X}, {socket.Z}) is off the work surface");
+                Assert.Equal(0.4f, socket.Scale);
+            }
+
         }
 
         [AtlasScenario(RollbackWorld = true)]

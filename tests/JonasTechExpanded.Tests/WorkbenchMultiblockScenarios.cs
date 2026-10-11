@@ -40,7 +40,7 @@ namespace JonasTechExpanded.Tests
                 Assert.Contains(blockUnder(rotY, x, z), footprint);
             }
 
-            foreach (var socket in block.Attributes["workbench"]["sockets"].AsObject<BlockEntityJonasWorkbench.SocketPlacement[]>())
+            foreach (var socket in WorkbenchSocketMarkers.Get(World.Api, block).Sockets)
             {
                 var at = BlockEntityJonasWorkbench.PlacementMatrix(rotY, socket).TransformVector(new Vec4f(0.5f, 0, 0.5f, 1));
                 Assert.Contains(new Vec3i((int)Math.Floor(at.X), 0, (int)Math.Floor(at.Z)), footprint);

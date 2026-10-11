@@ -68,9 +68,9 @@ namespace JonasTechExpanded
         {
             base.Initialize(api);
 
-            var attr = Block.Attributes?["workbench"];
-            blueprintPlacement = attr?["blueprint"].AsObject<SocketPlacement>() ?? new SocketPlacement();
-            socketPlacements = (attr?["sockets"].AsObject<SocketPlacement[]>() ?? new SocketPlacement[0]).Take(MaxSockets).ToArray();
+            var placements = WorkbenchSocketMarkers.Get(api, Block);
+            blueprintPlacement = placements.Blueprint;
+            socketPlacements = placements.Sockets.Take(MaxSockets).ToArray();
 
             bindRecipe();
         }
@@ -408,7 +408,7 @@ namespace JonasTechExpanded
         /// <summary>
         /// Where one displayed stack sits on the bench top, in voxels (1/16 block) of the unrotated (north) bench,
         /// measured from the main block. The bench is two blocks wide, so X runs 0..32.
-        /// Read from the block JSON's attributes.workbench.
+        /// Read from marker cubes in the block's shape by <see cref="WorkbenchSocketMarkers"/>.
         /// </summary>
         public class SocketPlacement
         {
