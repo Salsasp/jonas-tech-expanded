@@ -9,6 +9,10 @@
 		// the waterwheel): each stage's requireStacks are taken from the hotbar in one right-click. Unprefixed
 		// codes are in this mod's domain. After the last stage, hold right-click for assemblySeconds.
 		"*-springboots": {
+			// On the workbench, hang the sheet from its top edge: moves the label-paper's top-edge pivot
+			// (voxels 8, 14.2, 0.9) onto the socket point, nudged 0.35 voxels forward (after the bench's 0.8
+			// scale) so it hangs in front of the blueprint rail. Every blueprint variant needs this.
+			onJonasWorkbenchTransform: { translation: { x: 0, y: -0.8875, z: 0.4711 } },
 			jonasWorkbench: {
 				output: { type: "item", code: "springboots" },
 				assemblySeconds: 4,

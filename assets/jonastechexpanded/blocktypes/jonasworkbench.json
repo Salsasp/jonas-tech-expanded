@@ -21,14 +21,15 @@
 		// Where the blueprint and the installed ingredients render on the bench, in voxels of the unrotated
 		// (north) bench, measured from the main block: x runs 0..32 across both blocks. The work surface is at
 		// y = 14 and runs x 2..30 (brackets on the west corners), z 1..16 (backboard at z 0..1, tool rail above it).
-		// The blueprint mesh (vanilla label-paper) is an upright sheet on the mesh's north edge, so it stands
-		// propped against the backboard in the middle.
+		// The blueprint socket is the center of the shape's BlueprintToolRail cube (x 12.5..19.5, y 26..26.5,
+		// z 0.8..1.3); the blueprint item's onJonasWorkbenchTransform hangs the sheet from it by its top edge.
+		// Keep this in sync if the rail moves in the model.
 		// Sockets are filled in list order, one per ingredient across all of a recipe's stages (up to 8), and
 		// are listed in mirrored pairs so any recipe size fills the bench symmetrically: back row beside the
 		// blueprint, then the front row. A socket's item is centered on (x, z) and sits on y; scale 0.4 makes a
 		// full-block item about 6 voxels across.
 		workbench: {
-			blueprint: { x: 16, y: 10.9, z: 7.9, rotateY: 0, scale: 0.8 },
+			blueprint: { x: 16, y: 26.25, z: 1.05, rotateY: 0, scale: 0.8 },
 			sockets: [
 				{ x: 9.5, y: 14.02, z: 5.5, rotateY: 10, scale: 0.4 },
 				{ x: 22.5, y: 14.02, z: 5.5, rotateY: -10, scale: 0.4 },
