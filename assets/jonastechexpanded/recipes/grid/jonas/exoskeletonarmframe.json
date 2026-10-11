@@ -1,0 +1,15 @@
+[
+	{
+		ingredientPattern: "RGR,RPR,CPA",
+		ingredients: {
+			"R": { type: "item", code: "game:rod-steel", quantity: 2 },
+			"G": { type: "item", code: "game:jonasframes-gears02" },
+			"P": { type: "item", code: "game:metalplate-steel" },
+			"C": { type: "item", code: "game:jonasframes-joint01" },
+			"A": { type: "item", code: "game:jonasframes-gears01" }
+		},
+		width: 3,
+		height: 3,
+		output: { type: "item", code: "exoskeletonarmframe", quantity: 1 }
+	}
+]

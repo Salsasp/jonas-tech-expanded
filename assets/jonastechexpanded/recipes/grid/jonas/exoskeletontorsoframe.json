@@ -1,0 +1,16 @@
+[
+	{
+		ingredientPattern: "VPF,RCR,RAR",
+		ingredients: {
+			"V": { type: "item", code: "game:jonasparts-cylinder01" },
+			"P": { type: "item", code: "game:jonasparts-tank01" },
+			"F": { type: "item", code: "game:jonasparts-connector01" },
+			"R": { type: "item", code: "game:rod-steel", quantity: 2 },
+			"C": { type: "item", code: "game:metalplate-cupronickel", quantity: 2 },
+			"A": { type: "item", code: "game:jonasparts-valve01" }
+		},
+		width: 3,
+		height: 3,
+		output: { type: "item", code: "exoskeletontorsoframe", quantity: 1 }
+	}
+]

@@ -1,0 +1,17 @@
+{
+	code: "exoskeletonarmframe",
+	maxstacksize: 32,
+	// The shape defines its own textures (unprefixed, bundled in our textures/).
+	shape: { base: "item/parts/exoskeletonarmframe" },
+	creativeinventory: { "general": ["*"], "items": ["*"] },
+	materialDensity: 900,
+	tpHandTransform: {
+		translation: { x: -2.4, y: -2.8, z: -1.9 },
+		rotation: { x: 0, y: 0, z: 16 }
+	},
+	guiTransform: {
+		translation: { x: 11, y: -10, z: 0 },
+		rotation: { x: 0, y: 41, z: 9 },
+		scale: 0.75
+	}
+}

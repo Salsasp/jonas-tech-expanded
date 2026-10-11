@@ -1,0 +1,12 @@
+{
+	code: "exoskeletontorsoframe",
+	maxstacksize: 32,
+	// The shape defines its own textures (unprefixed, bundled in our textures/).
+	shape: { base: "item/parts/exoskeletontorsoframe" },
+	creativeinventory: { "general": ["*"], "items": ["*"] },
+	materialDensity: 900,
+	guiTransform: {
+		rotation: { x: 180, y: -106, z: 0 },
+		scale: 1.1
+	}
+}

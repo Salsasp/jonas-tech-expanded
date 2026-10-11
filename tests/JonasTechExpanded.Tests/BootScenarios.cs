@@ -138,6 +138,8 @@ namespace JonasTechExpanded.Tests
         [InlineData("jonastechexpanded:springboots")]
         [InlineData("jonastechexpanded:springbootsbody")]
         [InlineData("jonastechexpanded:shockabsorptionapparatus")]
+        [InlineData("jonastechexpanded:exoskeletontorsoframe")]
+        [InlineData("jonastechexpanded:exoskeletonarmframe")]
         public Task Grid_recipe_exists_for(string output)
         {
             var loc = new AssetLocation(output);

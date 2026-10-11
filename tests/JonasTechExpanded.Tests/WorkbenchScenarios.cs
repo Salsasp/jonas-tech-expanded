@@ -15,17 +15,29 @@ namespace JonasTechExpanded.Tests
     public class WorkbenchScenarios : AtlasScenarioBase
     {
         private const string Blueprint = "jonastechexpanded:jonasblueprint-springboots";
-        private const string Output = "jonastechexpanded:springboots";
 
-        /// <summary>The springboots blueprint's stages, in order: one ingredient each.</summary>
-        private static readonly (string code, int quantity)[] SpringbootsStages =
+        /// <summary>Each blueprint's output and stages, in order: one ingredient each.</summary>
+        private static readonly Dictionary<string, (string output, (string code, int quantity)[] stages)> Builds = new()
         {
-            ("jonastechexpanded:shockabsorptionapparatus", 2),
-            ("jonastechexpanded:springbootsbody", 2),
-            ("game:jonasframes-gears02", 1),
-            ("game:jonasparts-cylinder01", 1),
-            ("game:metalnailsandstrips-steel", 8),
-            ("game:flaxtwine", 8)
+            [Blueprint] = ("jonastechexpanded:springboots", new[]
+            {
+                ("jonastechexpanded:shockabsorptionapparatus", 1),
+                ("jonastechexpanded:shockabsorptionapparatus", 1),
+                ("jonastechexpanded:springbootsbody", 1),
+                ("jonastechexpanded:springbootsbody", 1),
+                ("game:jonasframes-gears02", 1),
+                ("game:jonasparts-cylinder01", 1),
+                ("game:metalnailsandstrips-steel", 8),
+                ("game:flaxtwine", 8)
+            }),
+            ["jonastechexpanded:jonasblueprint-exoskeleton"] = ("jonastechexpanded:exoskeletonchest", new[]
+            {
+                ("game:armor-body-jerkin-leather", 1),
+                ("jonastechexpanded:exoskeletontorsoframe", 1),
+                ("jonastechexpanded:exoskeletonarmframe", 1),
+                ("jonastechexpanded:exoskeletonarmframe", 1),
+                ("game:metalnailsandstrips-steel", 8)
+            })
         };
 
         [AtlasScenario]
@@ -82,23 +94,28 @@ namespace JonasTechExpanded.Tests
 
         }
 
-        [AtlasScenario(RollbackWorld = true)]
-        public async Task Building_springboots_takes_every_stage_and_returns_the_boots()
+        [AtlasTheory(RollbackWorld = true)]
+        [InlineData("jonastechexpanded:jonasblueprint-springboots", "BuildSpringboots")]
+        [InlineData("jonastechexpanded:jonasblueprint-exoskeleton", "BuildExo")]
+        public async Task Building_takes_every_stage_and_returns_the_output(string blueprint, string playerName)
         {
-            var (player, be, _) = await setUp("Builder");
+            var (output, stages) = Builds[blueprint];
+            var (player, be, _) = await setUp(playerName, blueprint);
 
             Assert.True(be.OnInteractStart(player.Player));
             Assert.True(be.HasBlueprint && be.HasRecipe);
             Assert.True(TestKit.HotbarSlot(player, 0).Empty, "Blueprint should have left the hand");
 
-            stockHotbar(player);
-            for (int stage = 0; stage < SpringbootsStages.Length; stage++)
+            stockHotbar(player, stages);
+            for (int stage = 0; stage < stages.Length; stage++)
             {
                 Assert.False(be.IsComplete, $"Complete before stage {stage + 1}");
                 be.OnInteractStart(player.Player);
 
-                var (code, quantity) = SpringbootsStages[stage];
-                Assert.Equal(0, TestKit.CountCarried(player, code));
+                var (code, quantity) = stages[stage];
+                // Later stages may take the same item again, so count what the remaining stages still need.
+                int stillNeeded = stages.Skip(stage + 1).Where(s => s.code == code).Sum(s => s.quantity);
+                Assert.Equal(stillNeeded, TestKit.CountCarried(player, code));
 
                 var socket = be.Inventory[1 + stage];
                 Assert.Equal(new AssetLocation(code), socket.Itemstack?.Collectible.Code);
@@ -110,14 +127,14 @@ namespace JonasTechExpanded.Tests
             Assert.True(be.OnInteractStart(player.Player));
             be.OnInteractStop(1f, player.Player);
             Assert.True(be.IsComplete);
-            Assert.Equal(0, TestKit.CountCarried(player, Output));
+            Assert.Equal(0, TestKit.CountCarried(player, output));
 
             Assert.True(be.OnInteractStart(player.Player));
             Assert.True(be.OnInteractStep(1f, player.Player), "Still assembling after 1 second");
             Assert.False(be.OnInteractStep(4f, player.Player), "Assembly should be done at 4 seconds");
             be.OnInteractStop(4f, player.Player);
 
-            Assert.Equal(1, TestKit.CountCarried(player, Output));
+            Assert.Equal(1, TestKit.CountCarried(player, output));
             Assert.False(be.IsComplete);
             Assert.True(be.HasBlueprint, "Blueprint stays on the bench for the next build");
             Assert.All(Enumerable.Range(1, be.Inventory.Count - 1), i => Assert.True(be.Inventory[i].Empty, $"Socket {i} not cleared"));
@@ -129,11 +146,11 @@ namespace JonasTechExpanded.Tests
             var (player, be, _) = await setUp("Missing");
             be.OnInteractStart(player.Player);
 
-            TestKit.PutInHotbar(player, 1, new ItemStack(TestKit.Item(World, "jonastechexpanded:shockabsorptionapparatus"), 1));
+            TestKit.PutInHotbar(player, 1, new ItemStack(TestKit.Item(World, "jonastechexpanded:springbootsbody"), 1));
             be.OnInteractStart(player.Player);
 
-            Assert.True(be.Inventory[1].Empty, "Stage installed with 1 of 2 apparatus");
-            Assert.Equal(1, TestKit.CountCarried(player, "jonastechexpanded:shockabsorptionapparatus"));
+            Assert.True(be.Inventory[1].Empty, "Stage installed with the wrong item");
+            Assert.Equal(1, TestKit.CountCarried(player, "jonastechexpanded:springbootsbody"));
         }
 
         [AtlasScenario(RollbackWorld = true)]
@@ -172,9 +189,8 @@ namespace JonasTechExpanded.Tests
         {
             var (player, be, pos) = await setUp("Breaker");
             be.OnInteractStart(player.Player);
-            stockHotbar(player);
-            be.OnInteractStart(player.Player);
-            be.OnInteractStart(player.Player);
+            stockHotbar(player, Builds[Blueprint].stages);
+            for (int i = 0; i < 4; i++) be.OnInteractStart(player.Player);
 
             TestKit.ClearHotbar(player);
             World.Api.World.BlockAccessor.BreakBlock(pos, player.Player);
@@ -191,7 +207,7 @@ namespace JonasTechExpanded.Tests
         }
 
         /// <summary>Survival player holding the blueprint, standing next to a fresh bench.</summary>
-        private async Task<(ITestPlayer player, BlockEntityJonasWorkbench be, BlockPos pos)> setUp(string playerName)
+        private async Task<(ITestPlayer player, BlockEntityJonasWorkbench be, BlockPos pos)> setUp(string playerName, string blueprint = Blueprint)
         {
             var player = await World.JoinPlayer(playerName);
             TestKit.SetGameMode(player, EnumGameMode.Survival);
@@ -205,16 +221,16 @@ namespace JonasTechExpanded.Tests
             var be = World.BlockEntityAt<BlockEntityJonasWorkbench>(pos);
             Assert.NotNull(be);
 
-            TestKit.PutInHotbar(player, 0, new ItemStack(TestKit.Item(World, Blueprint)));
+            TestKit.PutInHotbar(player, 0, new ItemStack(TestKit.Item(World, blueprint)));
             return (player, be, pos);
         }
 
         /// <summary>Every stage's ingredients in hotbar slots 1+, leaving the active slot 0 free.</summary>
-        private void stockHotbar(ITestPlayer player)
+        private void stockHotbar(ITestPlayer player, (string code, int quantity)[] stages)
         {
-            for (int i = 0; i < SpringbootsStages.Length; i++)
+            for (int i = 0; i < stages.Length; i++)
             {
-                var (code, quantity) = SpringbootsStages[i];
+                var (code, quantity) = stages[i];
                 var collectible = (CollectibleObject)World.Api.World.GetItem(new AssetLocation(code)) ?? World.Api.World.GetBlock(new AssetLocation(code));
                 TestKit.PutInHotbar(player, 1 + i, new ItemStack(collectible, quantity));
             }

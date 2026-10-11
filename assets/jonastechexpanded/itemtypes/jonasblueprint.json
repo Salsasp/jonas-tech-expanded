@@ -1,7 +1,7 @@
 {
 	code: "jonasblueprint",
 	variantgroups: [
-		{ code: "type", states: ["springboots"] }
+		{ code: "type", states: ["springboots", "exoskeleton"] }
 	],
 	maxstacksize: 1,
 	attributesByType: {
@@ -17,12 +17,28 @@
 				output: { type: "item", code: "springboots" },
 				assemblySeconds: 4,
 				stages: [
-					{ requireStacks: [ { type: "item", code: "shockabsorptionapparatus", quantity: 2 } ], actionLangCode: "jonastechexpanded:workbench-install" },
-					{ requireStacks: [ { type: "item", code: "springbootsbody", quantity: 2 } ], actionLangCode: "jonastechexpanded:workbench-install" },
+					{ requireStacks: [ { type: "item", code: "shockabsorptionapparatus", quantity: 1 } ], actionLangCode: "jonastechexpanded:workbench-install" },
+					{ requireStacks: [ { type: "item", code: "shockabsorptionapparatus", quantity: 1 } ], actionLangCode: "jonastechexpanded:workbench-install" },
+					{ requireStacks: [ { type: "item", code: "springbootsbody", quantity: 1 } ], actionLangCode: "jonastechexpanded:workbench-install" },
+					{ requireStacks: [ { type: "item", code: "springbootsbody", quantity: 1 } ], actionLangCode: "jonastechexpanded:workbench-install" },
 					{ requireStacks: [ { type: "item", code: "game:jonasframes-gears02", quantity: 1 } ], actionLangCode: "jonastechexpanded:workbench-install" },
 					{ requireStacks: [ { type: "item", code: "game:jonasparts-cylinder01", quantity: 1 } ], actionLangCode: "jonastechexpanded:workbench-install" },
 					{ requireStacks: [ { type: "item", code: "game:metalnailsandstrips-steel", quantity: 8 } ], actionLangCode: "jonastechexpanded:workbench-install" },
 					{ requireStacks: [ { type: "item", code: "game:flaxtwine", quantity: 8 } ], actionLangCode: "jonastechexpanded:workbench-install" }
+				]
+			}
+		},
+		"*-exoskeleton": {
+			onJonasWorkbenchTransform: { translation: { x: 0, y: -0.8875, z: 0.4711 } },
+			jonasWorkbench: {
+				output: { type: "item", code: "exoskeletonchest" },
+				assemblySeconds: 4,
+				stages: [
+					{ requireStacks: [ { type: "item", code: "game:armor-body-jerkin-leather", quantity: 1 } ], actionLangCode: "jonastechexpanded:workbench-install" },
+					{ requireStacks: [ { type: "item", code: "exoskeletontorsoframe", quantity: 1 } ], actionLangCode: "jonastechexpanded:workbench-install" },
+					{ requireStacks: [ { type: "item", code: "exoskeletonarmframe", quantity: 1 } ], actionLangCode: "jonastechexpanded:workbench-install" },
+					{ requireStacks: [ { type: "item", code: "exoskeletonarmframe", quantity: 1 } ], actionLangCode: "jonastechexpanded:workbench-install" },
+					{ requireStacks: [ { type: "item", code: "game:metalnailsandstrips-steel", quantity: 8 } ], actionLangCode: "jonastechexpanded:workbench-install" }
 				]
 			}
 		}
