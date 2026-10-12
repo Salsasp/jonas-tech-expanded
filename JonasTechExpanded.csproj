@@ -54,6 +54,11 @@
       <HintPath>$(VintageStoryDir)/Lib/Newtonsoft.Json.dll</HintPath>
       <Private>false</Private>
     </Reference>
+    <!-- GL texture readback for the .jteicons dev command (client only). -->
+    <Reference Include="OpenTK.Graphics">
+      <HintPath>$(VintageStoryDir)/Lib/OpenTK.Graphics.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
     <Reference Include="cairo-sharp">
       <HintPath>$(VintageStoryDir)/Lib/cairo-sharp.dll</HintPath>
       <Private>false</Private>

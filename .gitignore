@@ -21,7 +21,6 @@ CLAUDE.md
 .DS_Store
 Thumbs.db
 
-# Specific
-VintagestoryAPI.dll
-VSSurvivalMod.dll
-VSEssentials.dll
+# Tooling
+tools/blueprint-icons
+BlueprintIconExportModSystem.cs
