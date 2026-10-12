@@ -1,14 +1,16 @@
 {
 	"editor": {
 		"backDropShape": "C:/Users/dakot/Coding/VSMods/jonas-tech-expanded/seraph-hairless",
-		"collapsedPaths": "Root/shoeR/SupportArchAnchorR,Root/shoeRAnchor/SupportArchAnchorR/ArchSegment5/PrimaRailAnchor5,Root/base ,Root/shoeLAnchor,Root/shoeR/baseR,Root/shoeRAnchor/SupportArchAnchorR/ArchSegment9/PrimaRailAnchor2,Root/shoeRAnchor/GearBaseAnchor/TemporalGearR,Root/GearFrame,Root/shoeRAnchor2,Root/shoeRAnchor/SupportArchAnchorR/ArchSegment6/PrimaRailAnchor4,Root/shoeRAnchor/GearBaseAnchor/base ,Root/shoeRAnchor/SupportArchAnchorR,Root/root/base/central_axle,Root/shoeRAnchor/SupportArchAnchorR/ArchSegment8/PrimaRailAnchor2,Root/root/base/upper_rotator,Root/MOVER,Root/root/base/gear_NE_sml,Root/shoeLAnchor/GearBaseAnchorL/TemporalGearL,Root/shoeLAnchor/GearBaseAnchorL/TemporalGearL2,Root/shoeLAnchor/GearBaseAnchorL/GearFrameL,Root/root/base/gear_SE,Root/shoeRAnchor/SupportArchAnchorR/ArchSegment4/PrimaRailAnchor6,Root/shoeRAnchor/BaseAnchor,Root/root/base/gear_west,Root/root/base/floorplate,Root/shoeLAnchor/GearBaseAnchorL,Root/shoeRAnchor/SupportArchAnchorR/ArchSegment7/PrimaRailAnchor3,Root/shoeRAnchor/FrameStrapAnchor,Root/shoeRAnchor/FrameAnchor,Root/root/base/big_axle_offset,Root/shoeRAnchor/FrameStrapAnchor/StrapLatchAnchor",
+		"collapsedPaths": "Root/shoeLAnchor/FrameStrapAnchorL/StrapLatchAnchorL,Root/shoeR/SupportArchAnchorR,Root/shoeRAnchor/SupportArchAnchorR/ArchSegment5/PrimaRailAnchor5,Root/base ,Root/shoeR/baseR,Root/shoeRAnchor/SupportArchAnchorR/ArchSegment9/PrimaRailAnchor2,Root/shoeRAnchor/FrameStrapAnchor/StrapAnchor1,Root/shoeRAnchor/GearBaseAnchor/TemporalGearR,Root/shoeL,Root/shoeRAnchor/FrameStrapAnchor/StrapAnchor3,Root/GearFrame,Root/shoeRAnchor/FrameStrapAnchor/StrapAnchor2,Root/shoeRAnchor2,Root/shoeRAnchor/SupportArchAnchorR/ArchSegment6/PrimaRailAnchor4,Root/shoeRAnchor/FrameStrapAnchor/StrapAnchor5,Root/shoeRAnchor/GearBaseAnchor/base ,Root/shoeRAnchor/FrameStrapAnchor/StrapAnchor4,Root/shoeR,Root/shoeRAnchor/SupportArchAnchorR,Root/shoeLAnchor/FrameAnchorL,Root/root/base/central_axle,Root/shoeLAnchor/SupportArchAnchorL/ArchSegmentL,Root/shoeRAnchor/SupportArchAnchorR/ArchSegment8/PrimaRailAnchor2,Root/root/base/upper_rotator,Root/MOVER,Root/root/base/gear_NE_sml,Root/shoeLAnchor/SupportArchAnchorL/ArchSegment2L,Root/shoeLAnchor/GearBaseAnchorL/TemporalGearL,Root/shoeLAnchor/GearBaseAnchorL/TemporalGearL2,Root/shoeLAnchor/GearBaseAnchorL/GearFrameL,Root/root/base/gear_SE,Root/shoeRAnchor/SupportArchAnchorR/ArchSegment4/PrimaRailAnchor6,Root/shoeLAnchor/FrameStrapAnchorL/StrapAnchorL4,Root/shoeRAnchor/BaseAnchor,Root/root/base/gear_west,Root/root/base/floorplate,Root/shoeLAnchor/FrameStrapAnchorL/StrapAnchorL2,Root/shoeLAnchor/GearBaseAnchorL,Root/shoeLAnchor/FrameStrapAnchorL/StrapAnchorL3,Root/shoeRAnchor/SupportArchAnchorR/ArchSegment7/PrimaRailAnchor3,Root/shoeLAnchor/FrameStrapAnchorL/StrapAnchorL1,Root/shoeLAnchor/SupportArchAnchorL,Root/shoeRAnchor/FrameAnchor,Root/root/base/big_axle_offset,Root/shoeRAnchor/GearBaseAnchor,Root/shoeRAnchor/FrameStrapAnchor/StrapLatchAnchor,Root/shoeLAnchor/BaseAnchorL",
 		"allAngles": false,
 		"entityTextureMode": false
 	},
 	"textureWidth": 16,
 	"textureHeight": 16,
 	"textureSizes": {
-		"shoes": [16,24]
+		"shoes": [16,24],
+		"shoes-hunter-R": [16,16],
+		"shoes-hunter-L": [16,16]
 	},
 	"textures": {
 		"base_darkwood": "block/machine/statictranslocator/base_darkwood",
@@ -818,8 +820,8 @@
 					"children": [
 						{
 							"name": "FramePart",
-							"from": [ 0.0, 0.0, 0.0 ],
-							"to": [ 4.2, 3.0, 3.2 ],
+							"from": [ -0.01, 0.0, -0.02 ],
+							"to": [ 4.21, 3.0, 3.22 ],
 							"faces": {
 								"north": { "texture": "#cupronickel", "uv": [ 1.5, 6.5, 4.0, 10.0 ], "autoUv": false },
 								"east": { "texture": "#cupronickel", "uv": [ 4.0, 5.5, 7.0, 8.5 ] },
@@ -831,8 +833,8 @@
 						},
 						{
 							"name": "FramePart2",
-							"from": [ 1.5, 3.0, 0.0 ],
-							"to": [ 4.2, 8.0, 3.2 ],
+							"from": [ 1.51, 3.0, -0.02 ],
+							"to": [ 4.21, 8.0, 3.22 ],
 							"rotationOrigin": [ 1.5, 3.0, 0.0 ],
 							"faces": {
 								"north": { "texture": "#cupronickel", "uv": [ 1.5, 6.0, 4.0, 11.0 ], "windMode": [-1,-1,-1,-1] },
@@ -845,8 +847,8 @@
 						},
 						{
 							"name": "FramePart3",
-							"from": [ 0.0, 3.0, 0.001 ],
-							"to": [ 1.2, 6.0, 0.101 ],
+							"from": [ 0.0, 3.0, -0.01 ],
+							"to": [ 1.2, 6.0, 0.09 ],
 							"rotationOrigin": [ 0.0, 3.0, 0.0 ],
 							"rotationZ": -45.0,
 							"faces": {
@@ -860,8 +862,8 @@
 						},
 						{
 							"name": "FramePart4",
-							"from": [ 0.0, 3.0, 3.099 ],
-							"to": [ 1.2, 6.0, 3.199 ],
+							"from": [ 0.0, 3.0, 3.11 ],
+							"to": [ 1.2, 6.0, 3.21 ],
 							"rotationOrigin": [ 0.0, 3.0, 3.1 ],
 							"rotationX": -180.0,
 							"rotationY": 180.0,
@@ -891,68 +893,13 @@
 					},
 					"children": [
 						{
-							"name": "Strap",
-							"from": [ 0.08, 4.5, 0.08 ],
-							"to": [ 1.58, 4.8, 3.12 ],
-							"rotationOrigin": [ 0.0, 4.5, 0.1 ],
-							"faces": {
-								"north": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
-								"east": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
-								"south": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
-								"west": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false, "windMode": [-1,-1,-1,-1] },
-								"up": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
-								"down": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false }
-							}
-						},
-						{
-							"name": "Strap2",
-							"from": [ 0.08, 5.5, 0.08 ],
-							"to": [ 1.58, 5.8, 3.12 ],
-							"rotationOrigin": [ 0.0, 5.5, 0.1 ],
-							"faces": {
-								"north": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
-								"east": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 4.0 ], "autoUv": false },
-								"south": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 4.0 ], "autoUv": false },
-								"west": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
-								"up": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 4.0 ], "autoUv": false },
-								"down": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 4.0 ], "autoUv": false }
-							}
-						},
-						{
-							"name": "Strap3",
-							"from": [ 0.08, 6.5, 0.08 ],
-							"to": [ 1.58, 6.8, 3.12 ],
-							"rotationOrigin": [ 0.0, 6.5, 0.1 ],
-							"faces": {
-								"north": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
-								"east": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 4.0 ], "autoUv": false },
-								"south": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 4.0 ], "autoUv": false },
-								"west": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
-								"up": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 4.0 ], "autoUv": false },
-								"down": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 4.0 ], "autoUv": false }
-							}
-						},
-						{
-							"name": "Strap4",
-							"from": [ 0.08, 7.5, 0.08 ],
-							"to": [ 1.58, 7.8, 3.12 ],
-							"rotationOrigin": [ 0.0, 7.5, 0.1 ],
-							"faces": {
-								"north": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
-								"east": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 4.0 ], "autoUv": false },
-								"south": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 4.0 ], "autoUv": false },
-								"west": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
-								"up": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 4.0 ], "autoUv": false },
-								"down": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 4.0 ], "autoUv": false }
-							}
-						},
-						{
 							"name": "StrapLatchAnchor",
 							"from": [ 1.6, 4.46, 0.1 ],
 							"to": [ 1.6, 4.46, 0.1 ],
 							"rotationOrigin": [ 1.6, 4.5, 0.1 ],
-							"rotationX": -180.0,
-							"rotationZ": 180.0,
+							"rotationX": 180.0,
+							"rotationY": 0.0,
+							"rotationZ": -180.0,
 							"faces": {
 								"north": { "texture": "#steel1", "uv": [ 3.0, 3.5, 3.5, 4.0 ] },
 								"east": { "texture": "#steel1", "uv": [ 7.0, 4.0, 7.5, 4.5 ] },
@@ -1084,6 +1031,283 @@
 										"west": { "texture": "#steel1", "uv": [ 7.5, 6.5, 8.0, 7.0 ] },
 										"up": { "texture": "#steel1", "uv": [ 9.0, 6.0, 9.5, 6.5 ] },
 										"down": { "texture": "#steel1", "uv": [ 9.0, 8.0, 9.5, 8.5 ] }
+									}
+								}
+							]
+						},
+						{
+							"name": "StrapAnchorR1",
+							"from": [ 0.08, 4.5, 0.08 ],
+							"to": [ 0.08, 4.5, 0.08 ],
+							"rotationOrigin": [ 0.0, 4.5, 0.1 ],
+							"faces": {
+								"north": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+								"east": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+								"south": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+								"west": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false, "windMode": [-1,-1,-1,-1] },
+								"up": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+								"down": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false }
+							},
+							"children": [
+								{
+									"name": "StrapFront1",
+									"from": [ 0.0, 0.0, 0.01 ],
+									"to": [ 0.1, 0.3, 3.04 ],
+									"rotationOrigin": [ -0.08, 0.0, 0.02 ],
+									"rotationX": 0.0,
+									"rotationY": 0.0,
+									"rotationZ": 0.0,
+									"faces": {
+										"north": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+										"east": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+										"south": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+										"west": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false, "windMode": [-1,-1,-1,-1] },
+										"up": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+										"down": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false }
+									}
+								},
+								{
+									"name": "StrapL1",
+									"from": [ 1.5, 0.0, -0.1 ],
+									"to": [ 1.6, 0.3, 1.33 ],
+									"rotationOrigin": [ 1.42, 0.0, -0.08 ],
+									"rotationX": 0.0,
+									"rotationY": -90.0,
+									"rotationZ": 0.0,
+									"faces": {
+										"north": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+										"east": { "texture": "#miner", "uv": [ 0.0, 0.0, 12.5, 3.0 ], "autoUv": false },
+										"south": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+										"west": { "texture": "#miner", "uv": [ 0.0, 0.0, 12.5, 3.0 ], "autoUv": false, "windMode": [-1,-1,-1,-1] },
+										"up": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+										"down": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false }
+									}
+								},
+								{
+									"name": "StrapR1",
+									"from": [ 1.5, 0.3, 3.1 ],
+									"to": [ 1.6, 0.6, 4.53 ],
+									"rotationOrigin": [ 1.42, 0.3, 3.12 ],
+									"rotationX": 180.0,
+									"rotationY": -90.0,
+									"rotationZ": 0.0,
+									"faces": {
+										"north": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+										"east": { "texture": "#miner", "uv": [ 0.0, 0.0, 12.5, 3.0 ], "autoUv": false },
+										"south": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+										"west": { "texture": "#miner", "uv": [ 0.0, 0.0, 12.5, 3.0 ], "autoUv": false, "windMode": [-1,-1,-1,-1] },
+										"up": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+										"down": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false }
+									}
+								}
+							]
+						},
+						{
+							"name": "StrapAnchorR2",
+							"from": [ 0.08, 5.5, 0.08 ],
+							"to": [ 0.08, 5.5, 0.08 ],
+							"rotationOrigin": [ 0.0, 5.5, 0.1 ],
+							"rotationX": 0.0,
+							"rotationY": 0.0,
+							"rotationZ": 0.0,
+							"faces": {
+								"north": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+								"east": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+								"south": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+								"west": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false, "windMode": [-1,-1,-1,-1] },
+								"up": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+								"down": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false }
+							},
+							"children": [
+								{
+									"name": "StrapFront2",
+									"from": [ 0.0, 0.0, 0.01 ],
+									"to": [ 0.1, 0.3, 3.04 ],
+									"rotationOrigin": [ -0.08, 0.0, 0.02 ],
+									"rotationX": 0.0,
+									"rotationY": 0.0,
+									"rotationZ": 0.0,
+									"faces": {
+										"north": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+										"east": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+										"south": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+										"west": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false, "windMode": [-1,-1,-1,-1] },
+										"up": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+										"down": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false }
+									}
+								},
+								{
+									"name": "StrapL2",
+									"from": [ 1.5, 0.0, -0.1 ],
+									"to": [ 1.6, 0.3, 1.33 ],
+									"rotationOrigin": [ 1.42, 0.0, -0.08 ],
+									"rotationX": 0.0,
+									"rotationY": -90.0,
+									"rotationZ": 0.0,
+									"faces": {
+										"north": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+										"east": { "texture": "#miner", "uv": [ 0.0, 0.0, 12.5, 3.0 ], "autoUv": false },
+										"south": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+										"west": { "texture": "#miner", "uv": [ 0.0, 0.0, 12.5, 3.0 ], "autoUv": false, "windMode": [-1,-1,-1,-1] },
+										"up": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+										"down": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false }
+									}
+								},
+								{
+									"name": "StrapR2",
+									"from": [ 1.5, 0.3, 3.1 ],
+									"to": [ 1.6, 0.6, 4.53 ],
+									"rotationOrigin": [ 1.42, 0.3, 3.12 ],
+									"rotationX": 180.0,
+									"rotationY": -90.0,
+									"rotationZ": 0.0,
+									"faces": {
+										"north": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+										"east": { "texture": "#miner", "uv": [ 0.0, 0.0, 12.5, 3.0 ], "autoUv": false },
+										"south": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+										"west": { "texture": "#miner", "uv": [ 0.0, 0.0, 12.5, 3.0 ], "autoUv": false, "windMode": [-1,-1,-1,-1] },
+										"up": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+										"down": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false }
+									}
+								}
+							]
+						},
+						{
+							"name": "StrapAnchorR3",
+							"from": [ 0.08, 6.5, 0.08 ],
+							"to": [ 0.08, 6.5, 0.08 ],
+							"rotationOrigin": [ 0.0, 6.5, 0.1 ],
+							"rotationX": 0.0,
+							"rotationY": 0.0,
+							"rotationZ": 0.0,
+							"faces": {
+								"north": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+								"east": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+								"south": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+								"west": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false, "windMode": [-1,-1,-1,-1] },
+								"up": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+								"down": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false }
+							},
+							"children": [
+								{
+									"name": "StrapFront3",
+									"from": [ 0.0, 0.0, 0.01 ],
+									"to": [ 0.1, 0.3, 3.04 ],
+									"rotationOrigin": [ -0.08, 0.0, 0.02 ],
+									"rotationX": 0.0,
+									"rotationY": 0.0,
+									"rotationZ": 0.0,
+									"faces": {
+										"north": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+										"east": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+										"south": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+										"west": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false, "windMode": [-1,-1,-1,-1] },
+										"up": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+										"down": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false }
+									}
+								},
+								{
+									"name": "StrapL3",
+									"from": [ 1.5, 0.0, -0.1 ],
+									"to": [ 1.6, 0.3, 1.33 ],
+									"rotationOrigin": [ 1.42, 0.0, -0.08 ],
+									"rotationX": 0.0,
+									"rotationY": -90.0,
+									"rotationZ": 0.0,
+									"faces": {
+										"north": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+										"east": { "texture": "#miner", "uv": [ 0.0, 0.0, 12.5, 3.0 ], "autoUv": false },
+										"south": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+										"west": { "texture": "#miner", "uv": [ 0.0, 0.0, 12.5, 3.0 ], "autoUv": false, "windMode": [-1,-1,-1,-1] },
+										"up": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+										"down": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false }
+									}
+								},
+								{
+									"name": "StrapR3",
+									"from": [ 1.5, 0.3, 3.1 ],
+									"to": [ 1.6, 0.6, 4.53 ],
+									"rotationOrigin": [ 1.42, 0.3, 3.12 ],
+									"rotationX": 180.0,
+									"rotationY": -90.0,
+									"rotationZ": 0.0,
+									"faces": {
+										"north": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+										"east": { "texture": "#miner", "uv": [ 0.0, 0.0, 12.5, 3.0 ], "autoUv": false },
+										"south": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+										"west": { "texture": "#miner", "uv": [ 0.0, 0.0, 12.5, 3.0 ], "autoUv": false, "windMode": [-1,-1,-1,-1] },
+										"up": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+										"down": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false }
+									}
+								}
+							]
+						},
+						{
+							"name": "StrapAnchorR4",
+							"from": [ 0.08, 7.5, 0.08 ],
+							"to": [ 0.08, 7.5, 0.08 ],
+							"rotationOrigin": [ 0.0, 7.5, 0.1 ],
+							"rotationX": 0.0,
+							"rotationY": 0.0,
+							"rotationZ": 0.0,
+							"faces": {
+								"north": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+								"east": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+								"south": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+								"west": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false, "windMode": [-1,-1,-1,-1] },
+								"up": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+								"down": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false }
+							},
+							"children": [
+								{
+									"name": "StrapFront4",
+									"from": [ 0.0, 0.0, 0.01 ],
+									"to": [ 0.1, 0.3, 3.04 ],
+									"rotationOrigin": [ -0.08, 0.0, 0.02 ],
+									"rotationX": 0.0,
+									"rotationY": 0.0,
+									"rotationZ": 0.0,
+									"faces": {
+										"north": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+										"east": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+										"south": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+										"west": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false, "windMode": [-1,-1,-1,-1] },
+										"up": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+										"down": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false }
+									}
+								},
+								{
+									"name": "StrapL4",
+									"from": [ 1.5, 0.0, -0.1 ],
+									"to": [ 1.6, 0.3, 1.33 ],
+									"rotationOrigin": [ 1.42, 0.0, -0.08 ],
+									"rotationX": 0.0,
+									"rotationY": -90.0,
+									"rotationZ": 0.0,
+									"faces": {
+										"north": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+										"east": { "texture": "#miner", "uv": [ 0.0, 0.0, 12.5, 3.0 ], "autoUv": false },
+										"south": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+										"west": { "texture": "#miner", "uv": [ 0.0, 0.0, 12.5, 3.0 ], "autoUv": false, "windMode": [-1,-1,-1,-1] },
+										"up": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+										"down": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false }
+									}
+								},
+								{
+									"name": "StrapR4",
+									"from": [ 1.5, 0.3, 3.1 ],
+									"to": [ 1.6, 0.6, 4.53 ],
+									"rotationOrigin": [ 1.42, 0.3, 3.12 ],
+									"rotationX": 180.0,
+									"rotationY": -90.0,
+									"rotationZ": 0.0,
+									"faces": {
+										"north": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+										"east": { "texture": "#miner", "uv": [ 0.0, 0.0, 12.5, 3.0 ], "autoUv": false },
+										"south": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+										"west": { "texture": "#miner", "uv": [ 0.0, 0.0, 12.5, 3.0 ], "autoUv": false, "windMode": [-1,-1,-1,-1] },
+										"up": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+										"down": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false }
 									}
 								}
 							]
@@ -2137,8 +2361,8 @@
 					"children": [
 						{
 							"name": "FramePartL",
-							"from": [ 0.0, 0.0, -3.2 ],
-							"to": [ 4.2, 3.0, 0.0 ],
+							"from": [ -0.02, 0.0, -3.22 ],
+							"to": [ 4.21, 3.0, 0.02 ],
 							"faces": {
 								"north": { "texture": "#cupronickel", "uv": [ 2.0, 5.5, 6.0, 8.5 ] },
 								"east": { "texture": "#cupronickel", "uv": [ 4.0, 5.5, 7.0, 8.5 ] },
@@ -2150,8 +2374,8 @@
 						},
 						{
 							"name": "FramePart2L",
-							"from": [ 1.5, 3.0, -3.2 ],
-							"to": [ 4.2, 8.0, 0.0 ],
+							"from": [ 1.5, 3.0, -3.22 ],
+							"to": [ 4.21, 8.0, 0.02 ],
 							"rotationOrigin": [ 1.5, 3.0, 0.0 ],
 							"faces": {
 								"north": { "texture": "#cupronickel", "uv": [ 2.0, 6.0, 4.5, 11.0 ] },
@@ -2165,7 +2389,7 @@
 						{
 							"name": "FramePart3L",
 							"from": [ 0.0, 3.0, -0.101 ],
-							"to": [ 1.2, 6.0, -0.001 ],
+							"to": [ 1.2, 6.0, 0.019 ],
 							"rotationOrigin": [ 0.0, 3.0, 0.0 ],
 							"rotationZ": -45.0,
 							"faces": {
@@ -2179,8 +2403,8 @@
 						},
 						{
 							"name": "FramePart4L",
-							"from": [ 0.0, 3.0, -3.199 ],
-							"to": [ 1.2, 6.0, -3.099 ],
+							"from": [ 0.0, 3.0, -3.219 ],
+							"to": [ 1.2, 6.0, -3.119 ],
 							"rotationOrigin": [ 0.0, 3.0, -3.1 ],
 							"rotationX": 180.0,
 							"rotationY": -180.0,
@@ -2210,10 +2434,10 @@
 					},
 					"children": [
 						{
-							"name": "StrapL",
+							"name": "StrapAnchorL1",
 							"from": [ 0.08, 4.5, -3.12 ],
-							"to": [ 1.58, 4.8, -0.08 ],
-							"rotationOrigin": [ 0.0, 4.5, -0.1 ],
+							"to": [ 0.08, 4.5, -3.12 ],
+							"rotationOrigin": [ 0.1, 4.5, -3.1 ],
 							"faces": {
 								"north": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
 								"east": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
@@ -2221,49 +2445,60 @@
 								"west": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false, "windMode": [-1,-1,-1,-1] },
 								"up": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
 								"down": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false }
-							}
-						},
-						{
-							"name": "Strap2L",
-							"from": [ 0.08, 5.5, -3.12 ],
-							"to": [ 1.58, 5.8, -0.08 ],
-							"rotationOrigin": [ 0.0, 5.5, -0.1 ],
-							"faces": {
-								"north": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 4.0 ], "autoUv": false },
-								"east": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 4.0 ], "autoUv": false },
-								"south": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
-								"west": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
-								"up": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 4.0 ], "autoUv": false },
-								"down": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 4.0 ], "autoUv": false }
-							}
-						},
-						{
-							"name": "Strap3L",
-							"from": [ 0.08, 6.5, -3.12 ],
-							"to": [ 1.58, 6.8, -0.08 ],
-							"rotationOrigin": [ 0.0, 6.5, -0.1 ],
-							"faces": {
-								"north": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 4.0 ], "autoUv": false },
-								"east": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 4.0 ], "autoUv": false },
-								"south": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
-								"west": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
-								"up": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 4.0 ], "autoUv": false },
-								"down": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 4.0 ], "autoUv": false }
-							}
-						},
-						{
-							"name": "Strap4L",
-							"from": [ 0.08, 7.5, -3.12 ],
-							"to": [ 1.58, 7.8, -0.08 ],
-							"rotationOrigin": [ 0.0, 7.5, -0.1 ],
-							"faces": {
-								"north": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 4.0 ], "autoUv": false },
-								"east": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 4.0 ], "autoUv": false },
-								"south": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
-								"west": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
-								"up": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 4.0 ], "autoUv": false },
-								"down": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 4.0 ], "autoUv": false }
-							}
+							},
+							"children": [
+								{
+									"name": "StrapFront5",
+									"from": [ 0.0, 0.0, 0.01 ],
+									"to": [ 0.1, 0.3, 3.04 ],
+									"rotationOrigin": [ -0.08, 0.0, 0.02 ],
+									"rotationX": 0.0,
+									"rotationY": 0.0,
+									"rotationZ": 0.0,
+									"faces": {
+										"north": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+										"east": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+										"south": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+										"west": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false, "windMode": [-1,-1,-1,-1] },
+										"up": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+										"down": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false }
+									}
+								},
+								{
+									"name": "StrapL5",
+									"from": [ 1.5, 0.0, -0.1 ],
+									"to": [ 1.6, 0.3, 1.33 ],
+									"rotationOrigin": [ 1.42, 0.0, -0.08 ],
+									"rotationX": 0.0,
+									"rotationY": -90.0,
+									"rotationZ": 0.0,
+									"faces": {
+										"north": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+										"east": { "texture": "#miner", "uv": [ 0.0, 0.0, 12.5, 3.0 ], "autoUv": false },
+										"south": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+										"west": { "texture": "#miner", "uv": [ 0.0, 0.0, 12.5, 3.0 ], "autoUv": false, "windMode": [-1,-1,-1,-1] },
+										"up": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+										"down": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false }
+									}
+								},
+								{
+									"name": "StrapR5",
+									"from": [ 1.5, 0.3, 3.1 ],
+									"to": [ 1.6, 0.6, 4.53 ],
+									"rotationOrigin": [ 1.42, 0.3, 3.12 ],
+									"rotationX": 180.0,
+									"rotationY": -90.0,
+									"rotationZ": 0.0,
+									"faces": {
+										"north": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+										"east": { "texture": "#miner", "uv": [ 0.0, 0.0, 12.5, 3.0 ], "autoUv": false },
+										"south": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+										"west": { "texture": "#miner", "uv": [ 0.0, 0.0, 12.5, 3.0 ], "autoUv": false, "windMode": [-1,-1,-1,-1] },
+										"up": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+										"down": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false }
+									}
+								}
+							]
 						},
 						{
 							"name": "StrapLatchAnchorL",
@@ -2403,6 +2638,207 @@
 										"west": { "texture": "#steel1", "uv": [ 7.5, 6.5, 8.0, 7.0 ] },
 										"up": { "texture": "#steel1", "uv": [ 9.0, 6.0, 9.5, 6.5 ] },
 										"down": { "texture": "#steel1", "uv": [ 9.0, 8.0, 9.5, 8.5 ] }
+									}
+								}
+							]
+						},
+						{
+							"name": "StrapAnchorL2",
+							"from": [ 0.08, 5.5, -3.12 ],
+							"to": [ 0.08, 5.5, -3.12 ],
+							"rotationOrigin": [ 0.1, 5.5, -3.1 ],
+							"faces": {
+								"north": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+								"east": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+								"south": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+								"west": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false, "windMode": [-1,-1,-1,-1] },
+								"up": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+								"down": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false }
+							},
+							"children": [
+								{
+									"name": "StrapFront6",
+									"from": [ 0.0, 0.0, 0.01 ],
+									"to": [ 0.1, 0.3, 3.04 ],
+									"rotationOrigin": [ -0.08, 0.0, 0.02 ],
+									"rotationX": 0.0,
+									"rotationY": 0.0,
+									"rotationZ": 0.0,
+									"faces": {
+										"north": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+										"east": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+										"south": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+										"west": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false, "windMode": [-1,-1,-1,-1] },
+										"up": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+										"down": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false }
+									}
+								},
+								{
+									"name": "StrapL6",
+									"from": [ 1.5, 0.0, -0.1 ],
+									"to": [ 1.6, 0.3, 1.33 ],
+									"rotationOrigin": [ 1.42, 0.0, -0.08 ],
+									"rotationX": 0.0,
+									"rotationY": -90.0,
+									"rotationZ": 0.0,
+									"faces": {
+										"north": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+										"east": { "texture": "#miner", "uv": [ 0.0, 0.0, 12.5, 3.0 ], "autoUv": false },
+										"south": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+										"west": { "texture": "#miner", "uv": [ 0.0, 0.0, 12.5, 3.0 ], "autoUv": false, "windMode": [-1,-1,-1,-1] },
+										"up": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+										"down": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false }
+									}
+								},
+								{
+									"name": "StrapR6",
+									"from": [ 1.5, 0.3, 3.1 ],
+									"to": [ 1.6, 0.6, 4.53 ],
+									"rotationOrigin": [ 1.42, 0.3, 3.12 ],
+									"rotationX": 180.0,
+									"rotationY": -90.0,
+									"rotationZ": 0.0,
+									"faces": {
+										"north": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+										"east": { "texture": "#miner", "uv": [ 0.0, 0.0, 12.5, 3.0 ], "autoUv": false },
+										"south": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+										"west": { "texture": "#miner", "uv": [ 0.0, 0.0, 12.5, 3.0 ], "autoUv": false, "windMode": [-1,-1,-1,-1] },
+										"up": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+										"down": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false }
+									}
+								}
+							]
+						},
+						{
+							"name": "StrapAnchorL3",
+							"from": [ 0.08, 6.5, -3.12 ],
+							"to": [ 0.08, 6.5, -3.12 ],
+							"rotationOrigin": [ 0.1, 6.5, -3.1 ],
+							"faces": {
+								"north": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+								"east": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+								"south": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+								"west": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false, "windMode": [-1,-1,-1,-1] },
+								"up": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+								"down": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false }
+							},
+							"children": [
+								{
+									"name": "StrapFront7",
+									"from": [ 0.0, 0.0, 0.01 ],
+									"to": [ 0.1, 0.3, 3.04 ],
+									"rotationOrigin": [ -0.08, 0.0, 0.02 ],
+									"rotationX": 0.0,
+									"rotationY": 0.0,
+									"rotationZ": 0.0,
+									"faces": {
+										"north": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+										"east": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+										"south": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+										"west": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false, "windMode": [-1,-1,-1,-1] },
+										"up": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+										"down": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false }
+									}
+								},
+								{
+									"name": "StrapL7",
+									"from": [ 1.5, 0.0, -0.1 ],
+									"to": [ 1.6, 0.3, 1.33 ],
+									"rotationOrigin": [ 1.42, 0.0, -0.08 ],
+									"rotationX": 0.0,
+									"rotationY": -90.0,
+									"rotationZ": 0.0,
+									"faces": {
+										"north": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+										"east": { "texture": "#miner", "uv": [ 0.0, 0.0, 12.5, 3.0 ], "autoUv": false },
+										"south": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+										"west": { "texture": "#miner", "uv": [ 0.0, 0.0, 12.5, 3.0 ], "autoUv": false, "windMode": [-1,-1,-1,-1] },
+										"up": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+										"down": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false }
+									}
+								},
+								{
+									"name": "StrapR7",
+									"from": [ 1.5, 0.3, 3.1 ],
+									"to": [ 1.6, 0.6, 4.53 ],
+									"rotationOrigin": [ 1.42, 0.3, 3.12 ],
+									"rotationX": 180.0,
+									"rotationY": -90.0,
+									"rotationZ": 0.0,
+									"faces": {
+										"north": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+										"east": { "texture": "#miner", "uv": [ 0.0, 0.0, 12.5, 3.0 ], "autoUv": false },
+										"south": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+										"west": { "texture": "#miner", "uv": [ 0.0, 0.0, 12.5, 3.0 ], "autoUv": false, "windMode": [-1,-1,-1,-1] },
+										"up": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+										"down": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false }
+									}
+								}
+							]
+						},
+						{
+							"name": "StrapAnchorL4",
+							"from": [ 0.08, 7.5, -3.12 ],
+							"to": [ 0.08, 7.5, -3.12 ],
+							"rotationOrigin": [ 0.1, 7.5, -3.1 ],
+							"faces": {
+								"north": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+								"east": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+								"south": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+								"west": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false, "windMode": [-1,-1,-1,-1] },
+								"up": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+								"down": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false }
+							},
+							"children": [
+								{
+									"name": "StrapFront8",
+									"from": [ 0.0, 0.0, 0.01 ],
+									"to": [ 0.1, 0.3, 3.04 ],
+									"rotationOrigin": [ -0.08, 0.0, 0.02 ],
+									"rotationX": 0.0,
+									"rotationY": 0.0,
+									"rotationZ": 0.0,
+									"faces": {
+										"north": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+										"east": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+										"south": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+										"west": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false, "windMode": [-1,-1,-1,-1] },
+										"up": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+										"down": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false }
+									}
+								},
+								{
+									"name": "StrapL8",
+									"from": [ 1.5, 0.0, -0.1 ],
+									"to": [ 1.6, 0.3, 1.33 ],
+									"rotationOrigin": [ 1.42, 0.0, -0.08 ],
+									"rotationX": 0.0,
+									"rotationY": -90.0,
+									"rotationZ": 0.0,
+									"faces": {
+										"north": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+										"east": { "texture": "#miner", "uv": [ 0.0, 0.0, 12.5, 3.0 ], "autoUv": false },
+										"south": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+										"west": { "texture": "#miner", "uv": [ 0.0, 0.0, 12.5, 3.0 ], "autoUv": false, "windMode": [-1,-1,-1,-1] },
+										"up": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+										"down": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false }
+									}
+								},
+								{
+									"name": "StrapR8",
+									"from": [ 1.5, 0.3, 3.1 ],
+									"to": [ 1.6, 0.6, 4.53 ],
+									"rotationOrigin": [ 1.42, 0.3, 3.12 ],
+									"rotationX": 180.0,
+									"rotationY": -90.0,
+									"rotationZ": 0.0,
+									"faces": {
+										"north": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+										"east": { "texture": "#miner", "uv": [ 0.0, 0.0, 12.5, 3.0 ], "autoUv": false },
+										"south": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+										"west": { "texture": "#miner", "uv": [ 0.0, 0.0, 12.5, 3.0 ], "autoUv": false, "windMode": [-1,-1,-1,-1] },
+										"up": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false },
+										"down": { "texture": "#miner", "uv": [ 0.0, 0.0, 16.0, 3.0 ], "autoUv": false }
 									}
 								}
 							]
@@ -2681,7 +3117,6 @@
 					}
 				}
 			]
-		},
-
+		}
 	]
 }
