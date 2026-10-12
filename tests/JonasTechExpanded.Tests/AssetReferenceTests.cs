@@ -78,6 +78,18 @@ namespace JonasTechExpanded.Tests
             if (shape != null) assertExists(shape, "shapes", ".json", $"{file}: shape");
         }
 
+        [Fact]
+        public void Every_blueprint_variant_has_its_sheet_texture()
+        {
+            // The item names its texture "item/blueprint/{type}", which the type check above skips.
+            var states = parse("itemtypes/jonasblueprint.json")["variantgroups"]![0]!["states"]!.Values<string>().ToList();
+            Assert.NotEmpty(states);
+
+            var missing = states.Where(s => !File.Exists(Path.Combine(ModAssets, "textures", "item", "blueprint", s + ".png"))).ToList();
+            Assert.True(missing.Count == 0, "No textures/item/blueprint/<type>.png for: " + string.Join(", ", missing) +
+                ". Run python tools/make-blueprint-textures.py");
+        }
+
         [Theory]
         [MemberData(nameof(PatchFiles))]
         public void Patch_targets_exist(string file)

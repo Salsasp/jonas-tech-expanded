@@ -37,6 +37,21 @@ namespace JonasTechExpanded.Tests
                 ("jonastechexpanded:exoskeletonarmframe", 1),
                 ("jonastechexpanded:exoskeletonarmframe", 1),
                 ("game:metalnailsandstrips-steel", 8)
+            }),
+            ["jonastechexpanded:jonasblueprint-tank02"] = ("game:jonasparts-tank02", new[]
+            {
+                ("game:ingot-steel", 1),
+                ("game:ingot-cupronickel", 1),
+                ("game:glass-plain", 1),
+                ("game:clearquartz", 1),
+                ("game:metalnailsandstrips-steel", 2)
+            }),
+            ["jonastechexpanded:jonasblueprint-gears02"] = ("game:jonasframes-gears02", new[]
+            {
+                ("game:ingot-steel", 1),
+                ("game:ingot-cupronickel", 1),
+                ("game:gear-rusty", 3),
+                ("game:metalnailsandstrips-steel", 2)
             })
         };
 
@@ -71,6 +86,9 @@ namespace JonasTechExpanded.Tests
                 }
 
                 Assert.True(ingredients <= sockets, $"{blueprint.Code}: {ingredients} ingredients but the bench has {sockets} sockets");
+
+                // Shared in the item's `attributes`; the engine has to merge it into each variant's attributesByType.
+                Assert.True(blueprint.Attributes["onJonasWorkbenchTransform"].Exists, $"{blueprint.Code}: no onJonasWorkbenchTransform");
             }
         }
 
@@ -97,6 +115,8 @@ namespace JonasTechExpanded.Tests
         [AtlasTheory(RollbackWorld = true)]
         [InlineData("jonastechexpanded:jonasblueprint-springboots", "BuildSpringboots")]
         [InlineData("jonastechexpanded:jonasblueprint-exoskeleton", "BuildExo")]
+        [InlineData("jonastechexpanded:jonasblueprint-tank02", "BuildPart")]
+        [InlineData("jonastechexpanded:jonasblueprint-gears02", "BuildFrame")]
         public async Task Building_takes_every_stage_and_returns_the_output(string blueprint, string playerName)
         {
             var (output, stages) = Builds[blueprint];
