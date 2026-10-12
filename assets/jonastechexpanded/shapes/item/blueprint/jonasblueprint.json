@@ -1,0 +1,256 @@
+{
+	"editor": {
+		"allAngles": false,
+		"entityTextureMode": false
+	},
+	"textureWidth": 16,
+	"textureHeight": 16,
+	"textureSizes": {},
+	"textures": {
+		"sheet": "item/blueprint/blueprint_template"
+	},
+	"elements": [
+		{
+			"name": "origin",
+			"from": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"to": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"rotationOrigin": [
+				8.0,
+				0.0,
+				8.0
+			],
+			"faces": {
+				"north": {
+					"texture": "#sheet",
+					"uv": [
+						0.0,
+						0.0,
+						0.5,
+						0.5
+					],
+					"enabled": false
+				},
+				"east": {
+					"texture": "#sheet",
+					"uv": [
+						0.0,
+						0.0,
+						0.5,
+						0.5
+					],
+					"enabled": false
+				},
+				"south": {
+					"texture": "#sheet",
+					"uv": [
+						0.0,
+						0.0,
+						0.5,
+						0.5
+					],
+					"enabled": false
+				},
+				"west": {
+					"texture": "#sheet",
+					"uv": [
+						0.0,
+						0.0,
+						0.5,
+						0.5
+					],
+					"enabled": false
+				},
+				"up": {
+					"texture": "#sheet",
+					"uv": [
+						0.0,
+						0.0,
+						0.5,
+						0.5
+					],
+					"enabled": false
+				},
+				"down": {
+					"texture": "#sheet",
+					"uv": [
+						0.0,
+						0.0,
+						0.5,
+						0.5
+					],
+					"enabled": false
+				}
+			},
+			"children": [
+				{
+					"name": "Sheet",
+					"from": [
+						3.0,
+						6.2,
+						0.9
+					],
+					"to": [
+						13.0,
+						14.2,
+						0.96
+					],
+					"rotationOrigin": [
+						8.0,
+						14.2,
+						0.9
+					],
+					"rotationX": 6.0,
+					"faces": {
+						"north": {
+							"texture": "#sheet",
+							"uv": [
+								0.0,
+								0.0,
+								16.0,
+								11.6
+							]
+						},
+						"east": {
+							"texture": "#sheet",
+							"uv": [
+								0.0,
+								0.0,
+								0.06,
+								8.0
+							],
+							"enabled": false
+						},
+						"south": {
+							"texture": "#sheet",
+							"uv": [
+								16.0,
+								0.0,
+								0.0,
+								11.6
+							]
+						},
+						"west": {
+							"texture": "#sheet",
+							"uv": [
+								0.0,
+								0.0,
+								0.06,
+								8.0
+							],
+							"enabled": false
+						},
+						"up": {
+							"texture": "#sheet",
+							"uv": [
+								0.0,
+								0.0,
+								10.0,
+								0.06
+							],
+							"enabled": false
+						},
+						"down": {
+							"texture": "#sheet",
+							"uv": [
+								0.0,
+								0.0,
+								10.0,
+								0.06
+							],
+							"enabled": false
+						}
+					},
+					"children": [
+						{
+							"name": "SheetLower",
+							"from": [
+								0.0,
+								-3.5,
+								0.0
+							],
+							"to": [
+								10.0,
+								0.0,
+								0.06
+							],
+							"rotationOrigin": [
+								0.0,
+								0.0,
+								0.0
+							],
+							"rotationX": -16.0,
+							"faces": {
+								"north": {
+									"texture": "#sheet",
+									"uv": [
+										0.0,
+										11.6,
+										16.0,
+										16.0
+									]
+								},
+								"east": {
+									"texture": "#sheet",
+									"uv": [
+										0.0,
+										0.0,
+										0.06,
+										3.5
+									],
+									"enabled": false
+								},
+								"south": {
+									"texture": "#sheet",
+									"uv": [
+										16.0,
+										11.6,
+										0.0,
+										16.0
+									]
+								},
+								"west": {
+									"texture": "#sheet",
+									"uv": [
+										0.0,
+										0.0,
+										0.06,
+										3.5
+									],
+									"enabled": false
+								},
+								"up": {
+									"texture": "#sheet",
+									"uv": [
+										0.0,
+										0.0,
+										10.0,
+										0.06
+									],
+									"enabled": false
+								},
+								"down": {
+									"texture": "#sheet",
+									"uv": [
+										0.0,
+										0.0,
+										10.0,
+										0.06
+									],
+									"enabled": false
+								}
+							}
+						}
+					]
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,35 @@
+[
+	{
+		// Copy a found Jonas part onto parchment to get its workbench blueprint. The part is not consumed:
+		// consume: false with the default durabilityChange 0. Don't use isTool here, it costs 1 durability and
+		// destroys an item that has none. (Comments must stay inside the recipe objects: the recipe loader
+		// reads a comment between array entries as a recipe and logs "Failed to parse".)
+		ingredientPattern: "PX",
+		shapeless: true,
+		ingredients: {
+			// No pumphead: it's a story-location item that only sits among the jonasparts by file layout.
+			"P": {
+				type: "item", code: "game:jonasparts-*", name: "type", consume: false,
+				allowedVariants: ["connector01", "cylinder01", "cylinder02", "tank01", "tank02", "valve01"]
+			},
+			"X": { type: "item", code: "game:paper-parchment" }
+		},
+		width: 2,
+		height: 1,
+		output: { type: "item", code: "jonasblueprint-{type}", quantity: 1 }
+	},
+	{
+		ingredientPattern: "PX",
+		shapeless: true,
+		ingredients: {
+			"P": {
+				type: "item", code: "game:jonasframes-*", name: "type", consume: false,
+				allowedVariants: ["gearbox01", "gearbox02", "oscillator01", "spring01", "joint01", "gears01", "gears02"]
+			},
+			"X": { type: "item", code: "game:paper-parchment" }
+		},
+		width: 2,
+		height: 1,
+		output: { type: "item", code: "jonasblueprint-{type}", quantity: 1 }
+	}
+]

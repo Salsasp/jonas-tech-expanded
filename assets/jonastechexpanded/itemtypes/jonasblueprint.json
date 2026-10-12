@@ -1,18 +1,32 @@
 {
 	code: "jonasblueprint",
 	variantgroups: [
-		{ code: "type", states: ["springboots", "exoskeleton"] }
+		// Part blueprints use the vanilla part's own type state, so the grid recipe maps jonasparts-{type} and
+		// jonasframes-{type} straight onto jonasblueprint-{type}. The two vanilla groups share no state names.
+		{ code: "type", states: [
+			"springboots", "exoskeleton",
+			"connector01", "cylinder01", "cylinder02", "tank01", "tank02", "valve01",
+			"gearbox01", "gearbox02", "oscillator01", "spring01", "joint01", "gears01", "gears02"
+		] }
 	],
 	maxstacksize: 1,
+	attributes: {
+		// On the workbench, hang the sheet from its top edge: moves the sheet's top-edge pivot
+		// (voxels 8, 14.2, 0.9) onto the socket point, nudged 0.35 voxels forward (after the bench's 0.8
+		// scale) so it hangs in front of the blueprint rail. Turned 180 degrees about that pivot so the sheet's
+		// tilt swings it away from the bench instead of into it. The engine merges this into every variant's
+		// attributesByType entry below.
+		onJonasWorkbenchTransform: {
+			translation: { x: 0, y: -0.8875, z: 0.4711 },
+			origin: { x: 0.5, y: 0.8875, z: 0.05625 },
+			rotation: { x: 0, y: 180, z: 0 }
+		}
+	},
 	attributesByType: {
 		// Recipe for the Jonas workbench. Stages use vanilla's right-click construction format (the same as
 		// the waterwheel): each stage's requireStacks are taken from the hotbar in one right-click. Unprefixed
 		// codes are in this mod's domain. After the last stage, hold right-click for assemblySeconds.
 		"*-springboots": {
-			// On the workbench, hang the sheet from its top edge: moves the label-paper's top-edge pivot
-			// (voxels 8, 14.2, 0.9) onto the socket point, nudged 0.35 voxels forward (after the bench's 0.8
-			// scale) so it hangs in front of the blueprint rail. Every blueprint variant needs this.
-			onJonasWorkbenchTransform: { translation: { x: 0, y: -0.8875, z: 0.4711 } },
 			jonasWorkbench: {
 				output: { type: "item", code: "springboots" },
 				assemblySeconds: 4,
@@ -29,7 +43,6 @@
 			}
 		},
 		"*-exoskeleton": {
-			onJonasWorkbenchTransform: { translation: { x: 0, y: -0.8875, z: 0.4711 } },
 			jonasWorkbench: {
 				output: { type: "item", code: "exoskeletonchest" },
 				assemblySeconds: 4,
@@ -41,12 +54,174 @@
 					{ requireStacks: [ { type: "item", code: "game:metalnailsandstrips-steel", quantity: 8 } ], actionLangCode: "jonastechexpanded:workbench-install" }
 				]
 			}
+		},
+		// Part blueprints: every part takes 1 steel ingot, 1 cupronickel ingot and 2 steel nails and strips,
+		// plus extras that suit the part. Copied from a found part plus parchment in the crafting grid
+		// (recipes/grid/jonas/jonasblueprint.json).
+		"*-connector01": {
+			jonasWorkbench: {
+				output: { type: "item", code: "game:jonasparts-connector01" },
+				assemblySeconds: 4,
+				stages: [
+					{ requireStacks: [ { type: "item", code: "game:ingot-steel", quantity: 1 } ], actionLangCode: "jonastechexpanded:workbench-install" },
+					{ requireStacks: [ { type: "item", code: "game:ingot-cupronickel", quantity: 1 } ], actionLangCode: "jonastechexpanded:workbench-install" },
+					{ requireStacks: [ { type: "item", code: "game:ingot-copper", quantity: 1 } ], actionLangCode: "jonastechexpanded:workbench-install" },
+					{ requireStacks: [ { type: "item", code: "game:metalnailsandstrips-steel", quantity: 2 } ], actionLangCode: "jonastechexpanded:workbench-install" }
+				]
+			}
+		},
+		"*-cylinder01": {
+			jonasWorkbench: {
+				output: { type: "item", code: "game:jonasparts-cylinder01" },
+				assemblySeconds: 4,
+				stages: [
+					{ requireStacks: [ { type: "item", code: "game:ingot-steel", quantity: 1 } ], actionLangCode: "jonastechexpanded:workbench-install" },
+					{ requireStacks: [ { type: "item", code: "game:ingot-cupronickel", quantity: 1 } ], actionLangCode: "jonastechexpanded:workbench-install" },
+					{ requireStacks: [ { type: "block", code: "game:glass-plain", quantity: 1 } ], actionLangCode: "jonastechexpanded:workbench-install" },
+					{ requireStacks: [ { type: "item", code: "game:metalnailsandstrips-steel", quantity: 2 } ], actionLangCode: "jonastechexpanded:workbench-install" }
+				]
+			}
+		},
+		"*-cylinder02": {
+			jonasWorkbench: {
+				output: { type: "item", code: "game:jonasparts-cylinder02" },
+				assemblySeconds: 4,
+				stages: [
+					{ requireStacks: [ { type: "item", code: "game:ingot-steel", quantity: 1 } ], actionLangCode: "jonastechexpanded:workbench-install" },
+					{ requireStacks: [ { type: "item", code: "game:ingot-cupronickel", quantity: 1 } ], actionLangCode: "jonastechexpanded:workbench-install" },
+					{ requireStacks: [ { type: "item", code: "game:clearquartz", quantity: 1 } ], actionLangCode: "jonastechexpanded:workbench-install" },
+					{ requireStacks: [ { type: "item", code: "game:metalnailsandstrips-steel", quantity: 2 } ], actionLangCode: "jonastechexpanded:workbench-install" }
+				]
+			}
+		},
+		"*-tank01": {
+			jonasWorkbench: {
+				output: { type: "item", code: "game:jonasparts-tank01" },
+				assemblySeconds: 4,
+				stages: [
+					{ requireStacks: [ { type: "item", code: "game:ingot-steel", quantity: 1 } ], actionLangCode: "jonastechexpanded:workbench-install" },
+					{ requireStacks: [ { type: "item", code: "game:ingot-cupronickel", quantity: 1 } ], actionLangCode: "jonastechexpanded:workbench-install" },
+					{ requireStacks: [ { type: "block", code: "game:glass-plain", quantity: 1 } ], actionLangCode: "jonastechexpanded:workbench-install" },
+					{ requireStacks: [ { type: "item", code: "game:metalnailsandstrips-steel", quantity: 2 } ], actionLangCode: "jonastechexpanded:workbench-install" }
+				]
+			}
+		},
+		"*-tank02": {
+			jonasWorkbench: {
+				output: { type: "item", code: "game:jonasparts-tank02" },
+				assemblySeconds: 4,
+				stages: [
+					{ requireStacks: [ { type: "item", code: "game:ingot-steel", quantity: 1 } ], actionLangCode: "jonastechexpanded:workbench-install" },
+					{ requireStacks: [ { type: "item", code: "game:ingot-cupronickel", quantity: 1 } ], actionLangCode: "jonastechexpanded:workbench-install" },
+					{ requireStacks: [ { type: "block", code: "game:glass-plain", quantity: 1 } ], actionLangCode: "jonastechexpanded:workbench-install" },
+					{ requireStacks: [ { type: "item", code: "game:clearquartz", quantity: 1 } ], actionLangCode: "jonastechexpanded:workbench-install" },
+					{ requireStacks: [ { type: "item", code: "game:metalnailsandstrips-steel", quantity: 2 } ], actionLangCode: "jonastechexpanded:workbench-install" }
+				]
+			}
+		},
+		"*-valve01": {
+			jonasWorkbench: {
+				output: { type: "item", code: "game:jonasparts-valve01" },
+				assemblySeconds: 4,
+				stages: [
+					{ requireStacks: [ { type: "item", code: "game:ingot-steel", quantity: 1 } ], actionLangCode: "jonastechexpanded:workbench-install" },
+					{ requireStacks: [ { type: "item", code: "game:ingot-cupronickel", quantity: 1 } ], actionLangCode: "jonastechexpanded:workbench-install" },
+					{ requireStacks: [ { type: "item", code: "game:ingot-copper", quantity: 1 } ], actionLangCode: "jonastechexpanded:workbench-install" },
+					{ requireStacks: [ { type: "item", code: "game:metalnailsandstrips-steel", quantity: 2 } ], actionLangCode: "jonastechexpanded:workbench-install" }
+				]
+			}
+		},
+		"*-gearbox01": {
+			jonasWorkbench: {
+				output: { type: "item", code: "game:jonasframes-gearbox01" },
+				assemblySeconds: 4,
+				stages: [
+					{ requireStacks: [ { type: "item", code: "game:ingot-steel", quantity: 1 } ], actionLangCode: "jonastechexpanded:workbench-install" },
+					{ requireStacks: [ { type: "item", code: "game:ingot-cupronickel", quantity: 1 } ], actionLangCode: "jonastechexpanded:workbench-install" },
+					{ requireStacks: [ { type: "item", code: "game:gear-rusty", quantity: 2 } ], actionLangCode: "jonastechexpanded:workbench-install" },
+					{ requireStacks: [ { type: "item", code: "game:metalnailsandstrips-steel", quantity: 2 } ], actionLangCode: "jonastechexpanded:workbench-install" }
+				]
+			}
+		},
+		"*-gearbox02": {
+			jonasWorkbench: {
+				output: { type: "item", code: "game:jonasframes-gearbox02" },
+				assemblySeconds: 4,
+				stages: [
+					{ requireStacks: [ { type: "item", code: "game:ingot-steel", quantity: 1 } ], actionLangCode: "jonastechexpanded:workbench-install" },
+					{ requireStacks: [ { type: "item", code: "game:ingot-cupronickel", quantity: 1 } ], actionLangCode: "jonastechexpanded:workbench-install" },
+					{ requireStacks: [ { type: "item", code: "game:gear-rusty", quantity: 2 } ], actionLangCode: "jonastechexpanded:workbench-install" },
+					{ requireStacks: [ { type: "item", code: "game:metalnailsandstrips-steel", quantity: 2 } ], actionLangCode: "jonastechexpanded:workbench-install" }
+				]
+			}
+		},
+		"*-oscillator01": {
+			jonasWorkbench: {
+				output: { type: "item", code: "game:jonasframes-oscillator01" },
+				assemblySeconds: 4,
+				stages: [
+					{ requireStacks: [ { type: "item", code: "game:ingot-steel", quantity: 1 } ], actionLangCode: "jonastechexpanded:workbench-install" },
+					{ requireStacks: [ { type: "item", code: "game:ingot-cupronickel", quantity: 1 } ], actionLangCode: "jonastechexpanded:workbench-install" },
+					{ requireStacks: [ { type: "item", code: "game:gear-rusty", quantity: 1 } ], actionLangCode: "jonastechexpanded:workbench-install" },
+					{ requireStacks: [ { type: "item", code: "game:clearquartz", quantity: 1 } ], actionLangCode: "jonastechexpanded:workbench-install" },
+					{ requireStacks: [ { type: "item", code: "game:metalnailsandstrips-steel", quantity: 2 } ], actionLangCode: "jonastechexpanded:workbench-install" }
+				]
+			}
+		},
+		"*-spring01": {
+			jonasWorkbench: {
+				output: { type: "item", code: "game:jonasframes-spring01" },
+				assemblySeconds: 4,
+				stages: [
+					{ requireStacks: [ { type: "item", code: "game:ingot-steel", quantity: 1 } ], actionLangCode: "jonastechexpanded:workbench-install" },
+					{ requireStacks: [ { type: "item", code: "game:ingot-cupronickel", quantity: 1 } ], actionLangCode: "jonastechexpanded:workbench-install" },
+					{ requireStacks: [ { type: "item", code: "game:metalplate-steel", quantity: 1 } ], actionLangCode: "jonastechexpanded:workbench-install" },
+					{ requireStacks: [ { type: "item", code: "game:metalnailsandstrips-steel", quantity: 2 } ], actionLangCode: "jonastechexpanded:workbench-install" }
+				]
+			}
+		},
+		"*-joint01": {
+			jonasWorkbench: {
+				output: { type: "item", code: "game:jonasframes-joint01" },
+				assemblySeconds: 4,
+				stages: [
+					{ requireStacks: [ { type: "item", code: "game:ingot-steel", quantity: 1 } ], actionLangCode: "jonastechexpanded:workbench-install" },
+					{ requireStacks: [ { type: "item", code: "game:ingot-cupronickel", quantity: 1 } ], actionLangCode: "jonastechexpanded:workbench-install" },
+					{ requireStacks: [ { type: "item", code: "game:gear-rusty", quantity: 1 } ], actionLangCode: "jonastechexpanded:workbench-install" },
+					{ requireStacks: [ { type: "item", code: "game:metalnailsandstrips-steel", quantity: 2 } ], actionLangCode: "jonastechexpanded:workbench-install" }
+				]
+			}
+		},
+		"*-gears01": {
+			jonasWorkbench: {
+				output: { type: "item", code: "game:jonasframes-gears01" },
+				assemblySeconds: 4,
+				stages: [
+					{ requireStacks: [ { type: "item", code: "game:ingot-steel", quantity: 1 } ], actionLangCode: "jonastechexpanded:workbench-install" },
+					{ requireStacks: [ { type: "item", code: "game:ingot-cupronickel", quantity: 1 } ], actionLangCode: "jonastechexpanded:workbench-install" },
+					{ requireStacks: [ { type: "item", code: "game:gear-rusty", quantity: 2 } ], actionLangCode: "jonastechexpanded:workbench-install" },
+					{ requireStacks: [ { type: "item", code: "game:metalnailsandstrips-steel", quantity: 2 } ], actionLangCode: "jonastechexpanded:workbench-install" }
+				]
+			}
+		},
+		"*-gears02": {
+			jonasWorkbench: {
+				output: { type: "item", code: "game:jonasframes-gears02" },
+				assemblySeconds: 4,
+				stages: [
+					{ requireStacks: [ { type: "item", code: "game:ingot-steel", quantity: 1 } ], actionLangCode: "jonastechexpanded:workbench-install" },
+					{ requireStacks: [ { type: "item", code: "game:ingot-cupronickel", quantity: 1 } ], actionLangCode: "jonastechexpanded:workbench-install" },
+					{ requireStacks: [ { type: "item", code: "game:gear-rusty", quantity: 3 } ], actionLangCode: "jonastechexpanded:workbench-install" },
+					{ requireStacks: [ { type: "item", code: "game:metalnailsandstrips-steel", quantity: 2 } ], actionLangCode: "jonastechexpanded:workbench-install" }
+				]
+			}
 		}
 	},
-	// Vanilla parchment shape with the blank map texture, until there's a dedicated blueprint model.
-	shape: { base: "game:block/wood/crate/label-paper" },
+	// Hanging blueprint sheet. Keeps the old label-paper's hang point (top edge centered at
+	// voxels 8, 14.2, 0.9, front facing north), so onJonasWorkbenchTransform and the transforms below still fit.
+	shape: { base: "item/blueprint/jonasblueprint" },
 	textures: {
-		"labelbase": { base: "game:item/lore/map-blank" }
+		"sheet": { base: "item/blueprint/{type}" }
 	},
 	creativeinventory: { "general": ["*"], "items": ["*"] },
 	materialDensity: 210,
@@ -64,7 +239,7 @@
 	},
 	guiTransform: {
 		translation: { x: 0, y: 0, z: 0 },
-		rotation: { x: 42, y: 34, z: -33 },
+		rotation: { x: 42, y: 34, z: 150 },
 		origin: { x: 0.53, y: 0.55, z: 0 },
 		scale: 2.45
 	}
