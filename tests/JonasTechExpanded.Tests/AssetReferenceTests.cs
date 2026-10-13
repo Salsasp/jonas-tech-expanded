@@ -94,6 +94,30 @@ namespace JonasTechExpanded.Tests
             Assert.True(problems.Count == 0, $"{file}: keyframes missing axes (crashes the client animator):\n" + string.Join("\n", problems));
         }
 
+        /// <summary>
+        /// Shaders only compile on the client at runtime, so this is the one check before the game: every shader
+        /// program has both halves, and every #include names a file the game ships in game:shaderincludes.
+        /// </summary>
+        [Fact]
+        public void Shaders_are_paired_and_include_existing_files()
+        {
+            string dir = Path.Combine(ModAssets, "shaders");
+            if (!Directory.Exists(dir)) return;
+
+            string includes = Path.Combine(GameAssets, "game", "shaderincludes");
+            foreach (var file in Directory.EnumerateFiles(dir).Where(f => f.EndsWith(".vsh") || f.EndsWith(".fsh")))
+            {
+                string other = Path.ChangeExtension(file, file.EndsWith(".vsh") ? ".fsh" : ".vsh");
+                Assert.True(File.Exists(other), $"{Path.GetFileName(file)} has no {Path.GetFileName(other)}");
+
+                foreach (var line in File.ReadLines(file).Select(l => l.Trim()).Where(l => l.StartsWith("#include ")))
+                {
+                    string name = line["#include ".Length..].Trim();
+                    Assert.True(File.Exists(Path.Combine(includes, name)), $"{Path.GetFileName(file)}: #include {name} not found in {includes}");
+                }
+            }
+        }
+
         [Theory]
         [MemberData(nameof(TypeFiles))]
         public void Type_textures_and_shapes_exist(string file)

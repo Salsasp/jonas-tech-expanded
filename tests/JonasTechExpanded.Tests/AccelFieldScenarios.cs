@@ -228,6 +228,22 @@ namespace JonasTechExpanded.Tests
             Assert.Equal(1, System.GetMul(center.AddCopy(1, 0, 0)));
         }
 
+        [AtlasTheory]
+        [InlineData(0)]
+        [InlineData(1)]
+        [InlineData(2)]
+        public async Task Show_field_sphere_reaches_the_corner_blocks(int sizeIndex)
+        {
+            var field = await placeField(World.Spawn.Offset(0, 1, 0), gears: 0, activate: false);
+            setIndices(field, sizeIndex, 0);
+
+            // Design: the shell passes through the centers of the field's corner blocks, (size - 1) / 2 blocks
+            // out on each axis. It must not shrink below that, or corner blocks would look outside the field.
+            float cornerBlockCenter = (field.Size - 1) / 2f * MathF.Sqrt(3);
+            Assert.True(AccelFieldSphereRenderer.SphereRadius(field) >= cornerBlockCenter - 0.001f,
+                $"{field.Size}^3 field: sphere radius {AccelFieldSphereRenderer.SphereRadius(field)} is inside the corner blocks' centers at {cornerBlockCenter}");
+        }
+
         [AtlasScenario(RollbackWorld = true)]
         public async Task Overlapping_fields_use_the_fastest_not_the_sum()
         {
