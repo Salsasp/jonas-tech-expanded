@@ -54,6 +54,11 @@
       <HintPath>$(VintageStoryDir)/Lib/Newtonsoft.Json.dll</HintPath>
       <Private>false</Private>
     </Reference>
+    <!-- Shipped with the game; patches the vanilla machine ticks the temporal acceleration field speeds up. -->
+    <Reference Include="0Harmony">
+      <HintPath>$(VintageStoryDir)/Lib/0Harmony.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
     <!-- GL texture readback for the .jteicons dev command (client only). -->
     <Reference Include="OpenTK.Graphics">
       <HintPath>$(VintageStoryDir)/Lib/OpenTK.Graphics.dll</HintPath>

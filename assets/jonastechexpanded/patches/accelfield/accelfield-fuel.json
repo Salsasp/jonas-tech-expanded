@@ -1,0 +1,10 @@
+[
+	// Declares what one temporal gear is worth as temporal acceleration field fuel (fuel units; one unit runs the
+	// field for an in-game hour at its cheapest settings). Same pattern as the wearables' fuel patches.
+	{
+		"op": "add",
+		"path": "/attributesByType/*-temporal/accelFieldFuelHours",
+		"value": 24,
+		"file": "game:itemtypes/resource/gear.json"
+	}
+]

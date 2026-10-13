@@ -1,0 +1,48 @@
+{
+	code: "temporalaccelfield",
+	class: "BlockTemporalAccelField",
+	entityClass: "TemporalAccelField",
+	attributes: {
+		// Tunables for AccelFieldTunables (C# defaults mirror these). Each list is one GUI button per entry.
+		// A fuel unit lasts one in-game hour at fuel multiplier 1; a temporal gear is worth 24 units
+		// (patches/accelfield/accelfield-fuel.json). Consumption per hour = sizeFuelMul * speedFuelMul,
+		// so 3x3x3 at 2x runs 24 hours per gear, 4x runs 6, 8x runs 3, and 5x5x5 / 9x9x9 double / triple that cost.
+		accelField: {
+			// Edge length of the field cube in blocks, centered on the machine. Must be odd.
+			sizes: [3, 5, 9],
+			sizeFuelMuls: [1, 2, 3],
+			speeds: [2, 4, 8],
+			speedFuelMuls: [1, 4, 8],
+			// Used only if the temporal gear lost its accelFieldFuelHours attribute.
+			defaultGearFuel: 24,
+			// Played while running (switched on with fuel). The animation must exist in the shape and needs the
+			// Animatable entity behavior below; leave either key out to have none. Placeholders until real assets.
+			runningAnimation: "running",
+			runningSound: { location: "game:sounds/block/riftward.ogg", volume: 0.4, range: 8 }
+		}
+	},
+	entityBehaviors: [{ name: "Animatable" }],
+	creativeinventory: { "general": ["*"], "decorative": ["*"] },
+	shape: { base: "block/temporalaccelfield" },
+	blockmaterial: "Metal",
+	sidesolid: { all: false },
+	sideopaque: { all: false },
+	lightAbsorption: 0,
+	lightHsv: [28, 4, 6],
+	resistance: 4,
+	collisionSelectionBox: { x1: 0.0625, y1: 0, z1: 0.0625, x2: 0.9375, y2: 1, z2: 0.9375 },
+	drops: [
+		{ type: "block", code: "temporalaccelfield" }
+	],
+	sounds: {
+		"hit": "game:block/anvil",
+		"break": "game:block/anvil",
+		"place": "game:block/anvil",
+		"walk": "game:walk/stone"
+	},
+	materialDensity: 4000,
+	guiTransform: {
+		origin: { x: 0.5, y: 0.5, z: 0.5 },
+		scale: 1.2
+	}
+}
