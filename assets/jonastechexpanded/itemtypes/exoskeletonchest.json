@@ -16,6 +16,8 @@
 		exoskeleton: {
 			reachBonus: 2.5,
 			miningSpeedMultiplier: 2,
+			// Hours of fuel drained per 1 HP of damage taken while powered (after armor).
+			damageFuelHoursPerHp: 0.2,
 			fuelHoursCapacity: 48,
 			// Element names in the worn shape that are removed, along with their children, while unpowered.
 			poweredOnlyElements: ["TemporalGear"]

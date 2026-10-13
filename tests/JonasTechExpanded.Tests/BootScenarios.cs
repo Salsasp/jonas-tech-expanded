@@ -132,6 +132,10 @@ namespace JonasTechExpanded.Tests
             Assert.True(health >= 0, "health missing from the player's server behaviors");
             // Fall damage is only absorbed if the boots see the hit before health subtracts it.
             Assert.True(charge < health, $"springbootsCharge (index {charge}) must run before health (index {health})");
+
+            // The exoskeleton drains fuel for what got through armor, which health works out first.
+            int drain = behaviors.FindIndex(b => b is EntityBehaviorExoDamageDrain);
+            Assert.True(drain > health, $"exoDamageDrain (index {drain}) must run after health (index {health})");
         }
 
         [AtlasTheory]

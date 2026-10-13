@@ -6,6 +6,7 @@
 	"exoskeleton-effect-reach": "While powered: +{0:0.#} blocks of reach",
 	"exoskeleton-effect-mining": "While powered: +{0}% mining speed on all materials",
 	"exoskeleton-effect-stability": "While powered: temporal stability does not drain",
+	"exoskeleton-effect-damage": "Taking damage while powered drains {0:0.#} hours of fuel per HP",
 	"ingameerror-fuelable-full": "This item's fuel is already full",
 	"item-springboots": "Jonas Springboots",
 	"itemdesc-springboots": "Advanced shock absorbing mechanical boots that use temporal gears as fuel. The millwrights and carpenters of the kingdom rejoiced at the invention of such technology.",

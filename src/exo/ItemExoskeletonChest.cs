@@ -24,12 +24,16 @@ namespace JonasTechExpanded
         /// <summary>Mining speed multiplier applied to every block material.</summary>
         public float MiningSpeedMultiplier { get; private set; }
 
+        /// <summary>Hours of fuel drained per HP of damage the wearer takes while powered.</summary>
+        public float DamageFuelHoursPerHp { get; private set; }
+
         public override void OnLoaded(ICoreAPI api)
         {
             base.OnLoaded(api);
             var attr = Attributes?[TunablesKey];
             ReachBonus = attr?["reachBonus"].AsFloat(2.5f) ?? 2.5f;
             MiningSpeedMultiplier = attr?["miningSpeedMultiplier"].AsFloat(2f) ?? 2f;
+            DamageFuelHoursPerHp = attr?["damageFuelHoursPerHp"].AsFloat(0.2f) ?? 0.2f;
         }
 
         protected override void AppendEffectInfo(StringBuilder dsc)
@@ -37,6 +41,7 @@ namespace JonasTechExpanded
             dsc.AppendLine(Lang.Get("jonastechexpanded:exoskeleton-effect-reach", ReachBonus));
             dsc.AppendLine(Lang.Get("jonastechexpanded:exoskeleton-effect-mining", (int)((MiningSpeedMultiplier - 1) * 100)));
             dsc.AppendLine(Lang.Get("jonastechexpanded:exoskeleton-effect-stability"));
+            dsc.AppendLine(Lang.Get("jonastechexpanded:exoskeleton-effect-damage", DamageFuelHoursPerHp));
         }
     }
 }

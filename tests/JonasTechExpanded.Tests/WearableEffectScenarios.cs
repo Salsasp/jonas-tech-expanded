@@ -112,6 +112,40 @@ namespace JonasTechExpanded.Tests
             Assert.True(player.Stats.Health < health, $"Health stayed at {player.Stats.Health}; fall damage should apply without fuel");
         }
 
+        [AtlasScenario]
+        public async Task Powered_exoskeleton_loses_fuel_for_damage_taken()
+        {
+            var player = await World.JoinPlayer("ExoHit");
+            TestKit.SetGameMode(player, EnumGameMode.Survival);
+            var worn = TestKit.Equip(player, EnumCharacterDressType.ArmorBody, TestKit.Fueled(World, "jonastechexpanded:exoskeletonchest", 20));
+            var exo = (ItemExoskeletonChest)worn.Itemstack.Collectible;
+            await World.Ticks(5);
+
+            float health = player.Stats.Health;
+            // Internal damage skips armor, so the HP lost is exactly the damage dealt.
+            player.Entity.ReceiveDamage(new DamageSource { Source = EnumDamageSource.Internal, Type = EnumDamageType.BluntAttack }, 4);
+            await World.Ticks(2);
+
+            Assert.Equal(health - 4, player.Stats.Health, 2);
+            Assert.Equal(20 - 4 * exo.DamageFuelHoursPerHp, exo.GetFuelHours(worn.Itemstack), 2);
+        }
+
+        [AtlasScenario]
+        public async Task Exoskeleton_keeps_its_fuel_when_springboots_absorb_the_fall()
+        {
+            var player = await World.JoinPlayer("ExoBootsFall");
+            TestKit.SetGameMode(player, EnumGameMode.Survival);
+            var worn = TestKit.Equip(player, EnumCharacterDressType.ArmorBody, TestKit.Fueled(World, "jonastechexpanded:exoskeletonchest", 20));
+            TestKit.Equip(player, EnumCharacterDressType.ArmorLegs, TestKit.Fueled(World, "jonastechexpanded:springboots", 20));
+            var exo = (ItemExoskeletonChest)worn.Itemstack.Collectible;
+            await World.Ticks(5);
+
+            player.Entity.ReceiveDamage(fall(), 6);
+            await World.Ticks(2);
+
+            Assert.Equal(20, exo.GetFuelHours(worn.Itemstack), 2);
+        }
+
         [AtlasTheory]
         [InlineData(0f, 0)]
         [InlineData(0.49f, 0)]

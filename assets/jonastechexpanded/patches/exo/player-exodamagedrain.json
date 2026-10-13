@@ -1,0 +1,10 @@
+[
+	// Appended after vanilla health, so the behavior sees damage after armor and shields have reduced it.
+	{
+		"op": "add",
+		"path": "/server/behaviors/-",
+		"value": { code: "exoDamageDrain" },
+		"file": "game:entities/humanoid/player.json",
+		"side": "Server"
+	}
+]

@@ -24,6 +24,7 @@ namespace JonasTechExpanded
             api.RegisterItemClass("ItemExoskeletonChest", typeof(ItemExoskeletonChest));
             api.RegisterEntityBehaviorClass("exoStabilized", typeof(EntityBehaviorExoStabilized));
             api.RegisterEntityBehaviorClass("exoVisuals", typeof(EntityBehaviorExoVisuals));
+            api.RegisterEntityBehaviorClass("exoDamageDrain", typeof(EntityBehaviorExoDamageDrain));
             api.RegisterCollectibleBehaviorClass("exoMiningSpeed", typeof(CollectibleBehaviorExoMiningSpeed));
         }
 
