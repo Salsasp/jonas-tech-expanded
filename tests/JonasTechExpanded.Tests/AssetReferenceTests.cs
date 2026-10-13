@@ -59,6 +59,41 @@ namespace JonasTechExpanded.Tests
             Assert.True(undefined.Count == 0, $"{file}: faces use undefined textures: {string.Join(", ", undefined)}");
         }
 
+        /// <summary>
+        /// The client's animator lerps all three axes of a keyframe's offset, rotation or stretch as non-null values
+        /// (Animation.lerpKeyFrameElement), so a keyframe setting only rotationY crashes the client when the
+        /// animator is built. VS Model Creator always writes all three; hand-written shapes must too.
+        /// </summary>
+        [Theory]
+        [MemberData(nameof(ShapeFiles))]
+        public void Keyframes_set_all_three_axes(string file)
+        {
+            var groups = new[]
+            {
+                new[] { "offsetX", "offsetY", "offsetZ" },
+                new[] { "rotationX", "rotationY", "rotationZ" },
+                new[] { "stretchX", "stretchY", "stretchZ" }
+            };
+
+            var problems = new List<string>();
+            foreach (var animation in (parse(file)["animations"] as JArray) ?? new JArray())
+            {
+                foreach (var keyFrame in (animation["keyframes"] as JArray) ?? new JArray())
+                {
+                    foreach (var element in (keyFrame["elements"] as JObject)?.Properties() ?? Enumerable.Empty<JProperty>())
+                    {
+                        var pose = (JObject)element.Value;
+                        foreach (var axes in groups.Where(g => g.Any(a => pose[a] != null) && !g.All(a => pose[a] != null)))
+                        {
+                            problems.Add($"{animation["code"]} frame {keyFrame["frame"]} {element.Name}: sets only {string.Join("/", axes.Where(a => pose[a] != null))}");
+                        }
+                    }
+                }
+            }
+
+            Assert.True(problems.Count == 0, $"{file}: keyframes missing axes (crashes the client animator):\n" + string.Join("\n", problems));
+        }
+
         [Theory]
         [MemberData(nameof(TypeFiles))]
         public void Type_textures_and_shapes_exist(string file)

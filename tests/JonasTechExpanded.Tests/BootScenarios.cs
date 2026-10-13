@@ -101,6 +101,7 @@ namespace JonasTechExpanded.Tests
         [AtlasTheory]
         [InlineData("exoskeletonFuelHours")]
         [InlineData("springbootsFuelHours")]
+        [InlineData("accelFieldFuelHours")]
         public Task Temporal_gear_is_patched_as_fuel(string attribute)
         {
             var gear = TestKit.Item(World, "game:gear-temporal");
