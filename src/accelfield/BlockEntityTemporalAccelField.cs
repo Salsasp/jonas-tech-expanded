@@ -47,7 +47,10 @@ namespace JonasTechExpanded
         public int SizeIndex { get; private set; }
         public int SpeedIndex { get; private set; }
 
-        /// <summary>Whether the field outline stays visible to everyone nearby.</summary>
+        /// <summary>
+        /// Whether the cosmetic force-field sphere is drawn (to everyone nearby) while running. Unrelated to the
+        /// ctrl + right-click range preview.
+        /// </summary>
         public bool FieldVisible { get; private set; }
 
         /// <summary>

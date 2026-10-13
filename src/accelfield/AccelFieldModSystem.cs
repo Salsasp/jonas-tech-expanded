@@ -11,7 +11,8 @@ namespace JonasTechExpanded
 {
     /// <summary>
     /// Registers the temporal acceleration field, keeps track of loaded fields, and on one clock: speeds up what's
-    /// inside them, burns their fuel, and (client) draws field outlines.
+    /// inside them and burns their fuel. Client side it owns both visuals: the ctrl + right-click range preview
+    /// (accurate, for placing blocks) and the cosmetic "Show field" sphere (<see cref="AccelFieldSphereRenderer"/>).
     ///
     /// Where fields overlap, a block gets the fastest field's speed; speeds don't stack.
     /// </summary>
@@ -22,21 +23,22 @@ namespace JonasTechExpanded
         /// <summary>Real-time milliseconds between acceleration passes.</summary>
         public const int TickIntervalMs = 1000;
 
-        /// <summary>How long ctrl + right-click shows a field's outline.</summary>
+        /// <summary>How long ctrl + right-click shows a field's range preview.</summary>
         public const int PreviewMs = 5000;
 
-        /// <summary>First highlight slot id used for field outlines; one slot per shown field.</summary>
+        /// <summary>First highlight slot id used for range previews; one slot per previewed field.</summary>
         private const int HighlightSlotBase = 4810;
 
         private ICoreAPI api;
         private ICoreClientAPI capi;
         private Harmony harmony;
+        private AccelFieldSphereRenderer sphereRenderer;
 
         private readonly List<BlockEntityTemporalAccelField> fields = new List<BlockEntityTemporalAccelField>();
         private readonly AccelFieldTransitions transitions = new AccelFieldTransitions();
         private double lastTickTotalHours = -1;
 
-        // Client: outlines currently drawn, by field position, and ctrl-click previews by expiry time.
+        // Client: range previews currently drawn, by field position, and when each one expires.
         private readonly Dictionary<BlockPos, (int slot, int size)> shownOutlines = new Dictionary<BlockPos, (int, int)>();
         private readonly Dictionary<BlockPos, long> previewUntilMs = new Dictionary<BlockPos, long>();
 
@@ -70,6 +72,7 @@ namespace JonasTechExpanded
             capi = api;
             api.Event.RegisterGameTickListener(onTick, TickIntervalMs, 300);
             api.Event.RegisterGameTickListener(_ => updateOutlines(), 250);
+            sphereRenderer = new AccelFieldSphereRenderer(api, this);
         }
 
         public void Register(BlockEntityTemporalAccelField field)
@@ -81,6 +84,8 @@ namespace JonasTechExpanded
         {
             fields.Remove(field);
         }
+
+        public bool IsRegistered(BlockEntityTemporalAccelField field) => fields.Contains(field);
 
         /// <summary>The time multiplier at a position: the fastest active field covering it, 1 if none.</summary>
         public float GetMul(BlockPos pos)
@@ -133,9 +138,12 @@ namespace JonasTechExpanded
             foreach (var field in fields.ToList()) field.ConsumeFuel(hours);
         }
 
-        #region Client outlines
+        #region Client range preview
 
-        /// <summary>Client: shows the field's outline for <see cref="PreviewMs"/>.</summary>
+        /// <summary>
+        /// Client: highlights every block the field accelerates for <see cref="PreviewMs"/>. A debugging aid for
+        /// placing things in range, unrelated to the cosmetic "Show field" sphere.
+        /// </summary>
         public void ShowPreview(BlockEntityTemporalAccelField field)
         {
             if (capi == null) return;
@@ -149,7 +157,7 @@ namespace JonasTechExpanded
             foreach (var expired in previewUntilMs.Where(p => p.Value <= now).Select(p => p.Key).ToList()) previewUntilMs.Remove(expired);
 
             var wanted = fields
-                .Where(f => f.FieldVisible || previewUntilMs.ContainsKey(f.Pos))
+                .Where(f => previewUntilMs.ContainsKey(f.Pos))
                 .ToDictionary(f => f.Pos, f => f);
 
             foreach (var pos in shownOutlines.Keys.Where(p => !wanted.ContainsKey(p)).ToList())
@@ -163,10 +171,11 @@ namespace JonasTechExpanded
                 if (shownOutlines.TryGetValue(pos, out var shown) && shown.size == field.Size) continue;
 
                 int slot = shown.slot != 0 ? shown.slot : freeSlot();
-                var shell = shellPositions(field).ToList();
+                // Every block in range, so nothing reads as hollow. The machine itself isn't accelerated.
+                var inRange = field.Positions().Where(field.Contains).ToList();
                 // Translucent temporal teal. Highlight colors are true RGBA (see MultiblockStructure).
-                int color = ColorUtil.ColorFromRgba(70, 200, 220, 40);
-                capi.World.HighlightBlocks(capi.World.Player, slot, shell, Enumerable.Repeat(color, shell.Count).ToList());
+                int color = ColorUtil.ColorFromRgba(70, 200, 220, 30);
+                capi.World.HighlightBlocks(capi.World.Player, slot, inRange, Enumerable.Repeat(color, inRange.Count).ToList());
                 shownOutlines[pos] = (slot, field.Size);
             }
         }
@@ -177,14 +186,6 @@ namespace JonasTechExpanded
             int slot = HighlightSlotBase;
             while (used.Contains(slot)) slot++;
             return slot;
-        }
-
-        /// <summary>The outer layer of the field cube: enough to show its bounds without stacking translucent layers.</summary>
-        private static IEnumerable<BlockPos> shellPositions(BlockEntityTemporalAccelField field)
-        {
-            int half = field.Size / 2;
-            return field.Positions().Where(p =>
-                Math.Abs(p.X - field.Pos.X) == half || Math.Abs(p.Y - field.Pos.Y) == half || Math.Abs(p.Z - field.Pos.Z) == half);
         }
 
         #endregion
@@ -199,6 +200,9 @@ namespace JonasTechExpanded
                 foreach (var (slot, _) in shownOutlines.Values) capi.World.HighlightBlocks(capi.World.Player, slot, new List<BlockPos>(), new List<int>());
             }
             shownOutlines.Clear();
+
+            sphereRenderer?.Dispose();
+            sphereRenderer = null;
 
             harmony?.UnpatchAll(HarmonyId);
             harmony = null;

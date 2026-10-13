@@ -18,7 +18,12 @@
 			// Played while running (switched on with fuel). The animation must exist in the shape and needs the
 			// Animatable entity behavior below; leave either key out to have none. Placeholders until real assets.
 			runningAnimation: "running",
-			runningSound: { location: "game:sounds/block/riftward.ogg", volume: 0.4, range: 8 }
+			runningSound: { location: "game:sounds/block/riftward.ogg", volume: 0.4, range: 8 },
+			// "Show field" sphere (cosmetic, shaders/accelfield.*). Its radius reaches the centers of the field's
+			// corner blocks plus this many blocks: 0 cuts the corner blocks in half (radius 1.7 / 3.5 / 6.9),
+			// about 0.87 reaches the cube's outer corners. Color is 0..1 RGB.
+			sphereMargin: 0,
+			sphereColor: [0.25, 0.85, 0.95]
 		}
 	},
 	entityBehaviors: [{ name: "Animatable" }],

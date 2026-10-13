@@ -1,6 +1,7 @@
 using System;
 using Vintagestory.API.Common;
 using Vintagestory.API.Datastructures;
+using Vintagestory.API.MathTools;
 
 namespace JonasTechExpanded
 {
@@ -33,6 +34,15 @@ namespace JonasTechExpanded
         public float RunningSoundVolume = 0.5f;
         public float RunningSoundRange = 8;
 
+        /// <summary>
+        /// Blocks added to the cosmetic sphere's radius beyond the centers of the field's corner blocks. 0 puts the
+        /// shell through those centers; about 0.87 reaches the cube's outer corners.
+        /// </summary>
+        public float SphereMargin = 0;
+
+        /// <summary>Base color of the cosmetic sphere, 0..1 RGB.</summary>
+        public Vec3f SphereColor = new Vec3f(0.25f, 0.85f, 0.95f);
+
         public static AccelFieldTunables FromAttributes(JsonObject attributes)
         {
             var t = new AccelFieldTunables();
@@ -51,6 +61,10 @@ namespace JonasTechExpanded
             if (!string.IsNullOrEmpty(soundPath)) t.RunningSound = AssetLocation.Create(soundPath, "jonastechexpanded");
             t.RunningSoundVolume = sound["volume"].AsFloat(t.RunningSoundVolume);
             t.RunningSoundRange = sound["range"].AsFloat(t.RunningSoundRange);
+
+            t.SphereMargin = attr["sphereMargin"].AsFloat(t.SphereMargin);
+            float[] color = attr["sphereColor"].AsArray<float>(null);
+            if (color?.Length == 3) t.SphereColor = new Vec3f(color[0], color[1], color[2]);
 
             if (t.Sizes.Length != t.SizeFuelMuls.Length || t.Speeds.Length != t.SpeedFuelMuls.Length || t.Sizes.Length == 0 || t.Speeds.Length == 0)
             {

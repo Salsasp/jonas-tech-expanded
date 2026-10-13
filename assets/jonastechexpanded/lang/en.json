@@ -54,7 +54,7 @@
 	"blockdesc-temporalaccelfield": "Burns temporal gears to make time run faster in the space around it. Fires, kilns, barrels, skeps and anything that rots, dries, or cures nearby all finish sooner.",
 	"accelfield-title": "Temporal Acceleration Field",
 	"accelfield-open": "Configure",
-	"accelfield-preview": "Show field",
+	"accelfield-preview": "Preview range",
 	"accelfield-info-active": "Active: {0}x speed in a {1}x{1}x{1} field",
 	"accelfield-info-fuel": "Fuel: {0:0.#} hours remaining",
 	"accelfield-info-inactive": "Inactive. Add temporal gears to power it.",
