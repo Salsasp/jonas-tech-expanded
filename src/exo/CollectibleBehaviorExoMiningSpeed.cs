@@ -24,7 +24,7 @@ namespace JonasTechExpanded
 
         public override float GetMiningSpeed(ItemStack itemstack, BlockSelection blockSel, Block block, IPlayer forPlayer, ref EnumHandling bhHandling)
         {
-            var exo = modSys?.GetPoweredExo(forPlayer);
+            var exo = modSys?.GetPowered(forPlayer);
             if (exo == null) return 1f;
 
             // Handled rather than PreventDefault, so this multiplies on top of the tool's own

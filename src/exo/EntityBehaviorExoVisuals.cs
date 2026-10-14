@@ -1,19 +1,16 @@
 using System;
 using Vintagestory.API.Common;
 using Vintagestory.API.Common.Entities;
-using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
 
 namespace JonasTechExpanded
 {
     /// <summary>
-    /// Client side half of the exoskeleton's look. The server publishes whether the player's exoskeleton
-    /// is powered as a watched attribute; this rebuilds the worn shape when that flips, so
-    /// ItemExoskeletonChest can add or drop the powered-only parts, and keeps the exoactive animation
-    /// running only while powered. While the exoskeleton is worn it also moves the hands' item anchors
-    /// onto the exoskeleton's grippers, so held items sit at the end of the frame's arms.
+    /// Powered-state visuals for the exoskeleton (<see cref="EntityBehaviorFueledWearableVisuals"/>). While the
+    /// exoskeleton is worn it also moves the hands' item anchors onto the exoskeleton's grippers, so held items
+    /// sit at the end of the frame's arms.
     /// </summary>
-    public class EntityBehaviorExoVisuals : EntityBehavior
+    public class EntityBehaviorExoVisuals : EntityBehaviorFueledWearableVisuals
     {
         public const string PoweredAttribute = "jonastechexpanded:exoPowered";
         public const string ActiveAnimation = "exoactive";
@@ -25,37 +22,7 @@ namespace JonasTechExpanded
             ("ItemAnchorL", "HeldItemAnchorL")
         };
 
-        private bool powered;
-
-        public EntityBehaviorExoVisuals(Entity entity) : base(entity) { }
-
-        public override void Initialize(EntityProperties properties, JsonObject attributes)
-        {
-            base.Initialize(properties, attributes);
-
-            powered = entity.WatchedAttributes.GetBool(PoweredAttribute);
-            entity.WatchedAttributes.RegisterModifiedListener(PoweredAttribute, onPoweredChanged);
-        }
-
-        private void onPoweredChanged()
-        {
-            bool nowPowered = entity.WatchedAttributes.GetBool(PoweredAttribute);
-            if (nowPowered == powered) return;
-
-            powered = nowPowered;
-            entity.MarkShapeModified();
-        }
-
-        public override void OnGameTick(float deltaTime)
-        {
-            // Polled rather than set on change, because the animator doesn't exist yet during Initialize.
-            var animManager = entity.AnimManager;
-            if (animManager == null) return;
-
-            bool running = animManager.IsAnimationActive(ActiveAnimation);
-            if (powered && !running) animManager.StartAnimation(ActiveAnimation);
-            else if (!powered && running) animManager.StopAnimation(ActiveAnimation);
-        }
+        public EntityBehaviorExoVisuals(Entity entity) : base(entity, PoweredAttribute, ActiveAnimation) { }
 
         public override void OnTesselation(ref Shape entityShape, string shapePathForLogging, ref bool shapeIsCloned, ref string[] willDeleteElements)
         {

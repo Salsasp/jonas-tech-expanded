@@ -35,7 +35,7 @@ namespace JonasTechExpanded
         {
             if (stabilityBh == null || modSys == null) return;
 
-            if (modSys.GetPoweredExo((entity as EntityPlayer)?.Player) == null)
+            if (modSys.GetPowered((entity as EntityPlayer)?.Player) == null)
             {
                 floor = -1;
                 return;

@@ -62,7 +62,7 @@ namespace JonasTechExpanded
             if (modSys == null || entity is not EntityPlayer entityPlayer) return;
             if (!isAuthoritativeSide(entityPlayer)) return;
 
-            var boots = modSys.GetPoweredSpringBoots(entityPlayer.Player);
+            var boots = modSys.GetPowered(entityPlayer.Player);
             var controls = getControls(entityPlayer);
             bool onGround = entity.OnGround && !entity.Swimming;
             if (onGround) coyote = 0.15f;
@@ -149,7 +149,7 @@ namespace JonasTechExpanded
 
             if (entity.World.Side == EnumAppSide.Server)
             {
-                var slot = modSys.GetPoweredSpringBootsSlot(entityPlayer.Player);
+                var slot = modSys.GetPoweredSlot(entityPlayer.Player);
                 if (slot == null) return;
 
                 var boots = (ItemSpringBoots)slot.Itemstack.Collectible;
@@ -230,7 +230,7 @@ namespace JonasTechExpanded
             goIdle();
             if (wasActive && restorePassive)
             {
-                var boots = modSys?.GetPoweredSpringBoots((entity as EntityPlayer)?.Player);
+                var boots = modSys?.GetPowered((entity as EntityPlayer)?.Player);
                 writeJumpMul(boots != null ? boots.JumpHeightMul : 1f);
             }
             else if (wasActive && !restorePassive)

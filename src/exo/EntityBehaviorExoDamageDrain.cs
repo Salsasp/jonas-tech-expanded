@@ -31,7 +31,7 @@ namespace JonasTechExpanded
             if (damageSource.Duration > System.TimeSpan.Zero) return;
             if (entity.World.Side != EnumAppSide.Server || modSys == null) return;
 
-            var slot = modSys.GetPoweredExoSlot((entity as EntityPlayer)?.Player);
+            var slot = modSys.GetPoweredSlot((entity as EntityPlayer)?.Player);
             if (slot == null) return;
 
             var exo = (ItemExoskeletonChest)slot.Itemstack.Collectible;
