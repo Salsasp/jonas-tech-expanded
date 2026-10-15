@@ -255,6 +255,32 @@ if [ "$DO_CLEAN" -eq 1 ]; then
 fi
 
 # ---------------------------------------------------------------------------
+# Localize shape textures
+#
+# VS Model Creator rewrites every texture it found in the game install as an absolute
+# disk path on each save, which the game can't load. Point them back at our copies
+# (copying any we don't have yet) before anything is built, tested or packaged.
+# ---------------------------------------------------------------------------
+
+LOCALIZE="$ROOT/tools/localize-textures.py"
+if [ -f "$LOCALIZE" ]; then
+    step "Localizing shape textures"
+    PYTHON=""
+    for candidate in python3 python; do
+        # The Windows Store stub answers to the name but can't run anything; check it works.
+        if command -v "$candidate" >/dev/null 2>&1 && "$candidate" -c '' >/dev/null 2>&1; then
+            PYTHON="$candidate"; break
+        fi
+    done
+    if [ -n "$PYTHON" ]; then
+        "$PYTHON" "$(to_native "$LOCALIZE")" || die "Some shape textures could not be localized (see above)"
+        ok "shape textures OK"
+    else
+        warn "python not found -- skipping (absolute texture paths will fail the asset tests)"
+    fi
+fi
+
+# ---------------------------------------------------------------------------
 # Build
 # ---------------------------------------------------------------------------
 
