@@ -46,8 +46,14 @@
 		"walk": "game:walk/stone"
 	},
 	materialDensity: 4000,
+	heldRightTpIdleAnimation: "holdbothhands",
 	guiTransform: {
 		origin: { x: 0.5, y: 0.5, z: 0.5 },
 		scale: 1.2
+	},
+	tpHandTransform: {
+		translation: { x: -0.8, y: -0.8, z: -0.6 },
+		rotation: { x: 3, y: 1, z: -94 },
+		scale: 0.8
 	}
 }
