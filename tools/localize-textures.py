@@ -18,7 +18,8 @@ MOD_TEXTURES = REPO / "assets" / "jonastechexpanded" / "textures"
 # ".../assets/<survival|game|creative>/textures/<path>" -> <path>
 VANILLA = re.compile(r"^(?P<root>.*/assets/(?:survival|game|creative)/textures)/(?P<path>.+)$")
 TEXTURES_BLOCK = re.compile(r'"textures"\s*:\s*\{[^}]*\}')
-ENTRY = re.compile(r'("(?P<key>[^"]+)"\s*:\s*")(?P<value>[A-Za-z]:/[^"]+)(")')
+# VSMC writes either C:/... or C:\... (JSON-escaped backslashes) depending on how the texture was picked.
+ENTRY = re.compile(r'("(?P<key>[^"]+)"\s*:\s*")(?P<value>[A-Za-z]:(?:/|\\)[^"]+)(")')
 
 
 def localize(shape: pathlib.Path) -> bool:
@@ -27,7 +28,7 @@ def localize(shape: pathlib.Path) -> bool:
 
     def replace(m: re.Match) -> str:
         nonlocal ok
-        value = m.group("value")
+        value = m.group("value").replace("\\\\", "/")
         vanilla = VANILLA.match(value)
         if not vanilla:
             # A custom texture (e.g. drawn in GIMP): reuse our copy if exactly one has the same file name.
@@ -43,7 +44,7 @@ def localize(shape: pathlib.Path) -> bool:
 
         source = pathlib.Path(value + ".png")
         target = MOD_TEXTURES / (vanilla.group("path") + ".png")
-        if not source.exists():
+        if not target.exists() and not source.exists():
             print(f"  {shape.name}: '{m.group('key')}' -> {source} does not exist")
             ok = False
             return m.group(0)
