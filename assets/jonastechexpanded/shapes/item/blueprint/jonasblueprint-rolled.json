@@ -1,0 +1,105 @@
+{
+	"editor": {
+		"allAngles": false,
+		"entityTextureMode": false
+	},
+	"textureWidth": 16,
+	"textureHeight": 16,
+	"textureSizes": {
+	},
+	"textures": {
+		"lore-marked": "jonastechexpanded:item/blueprint/blueprint_template",
+		"scrolls-rotten": "jonastechexpanded:item/blueprint/blueprint_template",
+		"tie-marked": "game:item/lore/lore-marked",
+		"tie-rotten": "game:item/lore/scrolls-rotten"
+	},
+	"elements": [
+		{
+			"name": "origin",
+			"from": [ 8.0, 0.0, 8.0 ],
+			"to": [ 8.0, 0.0, 8.0 ],
+			"rotationOrigin": [ 8.0, 0.0, 8.0 ],
+			"faces": {
+			},
+			"children": [
+				{
+					"name": "mid",
+					"from": [ -5.5, 0.5, -0.5 ],
+					"to": [ 5.5, 1.5, 0.5 ],
+					"rotationOrigin": [ 0.0, 1.0, 0.0 ],
+					"faces": {
+						"east": { "texture": "#scrolls-rotten", "uv": [ 5.0, 7.0, 6.0, 8.0 ], "windMode": [-1,-1,-1,-1] },
+						"west": { "texture": "#scrolls-rotten", "uv": [ 5.5, 10.0, 6.5, 11.0 ] }
+					},
+					"children": [
+						{
+							"name": "d",
+							"from": [ -0.5, -0.5, 0.0 ],
+							"to": [ 11.5, 0.0, 1.5 ],
+							"rotationOrigin": [ 5.5, -0.5, 0.5 ],
+							"faces": {
+								"east": { "texture": "#scrolls-rotten", "uv": [ 9.5, 14.5, 11.0, 15.0 ] },
+								"south": { "texture": "#scrolls-rotten", "uv": [ 0.0, 8.0, 12.0, 8.5 ] },
+								"west": { "texture": "#scrolls-rotten", "uv": [ 0.0, 7.0, 0.5, 8.5 ], "rotation": 90 },
+								"up": { "texture": "#scrolls-rotten", "uv": [ 0.0, 11.0, 12.0, 12.5 ] },
+								"down": { "texture": "#scrolls-rotten", "uv": [ 0.0, 13.0, 12.0, 14.5 ] }
+							}
+						},
+						{
+							"name": "n",
+							"from": [ -0.5, -0.5, -0.5 ],
+							"to": [ 11.5, 1.0, 0.0 ],
+							"rotationOrigin": [ 5.5, 0.5, 0.6 ],
+							"faces": {
+								"north": { "texture": "#scrolls-rotten", "uv": [ 0.0, 13.0, 12.0, 14.5 ] },
+								"east": { "texture": "#scrolls-rotten", "uv": [ 0.0, 0.0, 0.5, 1.5 ] },
+								"south": { "texture": "#scrolls-rotten", "uv": [ 0.0, 14.0, 12.0, 15.5 ] },
+								"west": { "texture": "#scrolls-rotten", "uv": [ 1.5, 9.0, 2.0, 10.5 ] },
+								"down": { "texture": "#scrolls-rotten", "uv": [ 0.0, 11.0, 12.0, 11.5 ] }
+							}
+						},
+						{
+							"name": "u",
+							"from": [ -0.5, 1.0, -0.5 ],
+							"to": [ 11.5, 1.5, 1.0 ],
+							"rotationOrigin": [ 5.5, 1.0, 0.5 ],
+							"faces": {
+								"north": { "texture": "#scrolls-rotten", "uv": [ 0.0, 7.0, 12.0, 7.5 ] },
+								"east": { "texture": "#scrolls-rotten", "uv": [ 10.0, 3.5, 11.5, 4.0 ] },
+								"west": { "texture": "#scrolls-rotten", "uv": [ 0.0, 14.0, 1.5, 14.5 ] },
+								"up": { "texture": "#scrolls-rotten", "uv": [ 0.0, 7.0, 12.0, 8.5 ] },
+								"down": { "texture": "#scrolls-rotten", "uv": [ 0.0, 10.0, 12.0, 11.5 ] }
+							}
+						},
+						{
+							"name": "s",
+							"from": [ -0.5, 0.0, 1.0 ],
+							"to": [ 11.5, 1.5, 1.5 ],
+							"rotationOrigin": [ 5.5, 0.0, 0.5 ],
+							"faces": {
+								"north": { "texture": "#scrolls-rotten", "uv": [ 0.0, 11.0, 12.0, 12.5 ] },
+								"east": { "texture": "#scrolls-rotten", "uv": [ 11.0, 9.0, 11.5, 10.5 ] },
+								"south": { "texture": "#scrolls-rotten", "uv": [ 0.0, 5.0, 12.0, 6.5 ] },
+								"west": { "texture": "#scrolls-rotten", "uv": [ 0.0, 0.0, 0.5, 1.5 ] },
+								"up": { "texture": "#scrolls-rotten", "uv": [ 0.0, 5.0, 12.0, 5.5 ] }
+							}
+						},
+						{
+							"name": "tie",
+							"from": [ 5.0, -0.6, -0.6 ],
+							"to": [ 6.0, 1.6, 1.6 ],
+							"rotationOrigin": [ 5.5, 0.5, 0.5 ],
+							"faces": {
+								"north": { "texture": "#tie-marked", "uv": [ 13.0, 1.0, 14.0, 3.0 ], "glow": 64 },
+								"east": { "texture": "#tie-rotten", "uv": [ 13.5, 0.5, 15.5, 2.5 ], "glow": 64 },
+								"south": { "texture": "#tie-marked", "uv": [ 13.5, 0.0, 14.5, 2.0 ], "glow": 64 },
+								"west": { "texture": "#tie-rotten", "uv": [ 13.0, 1.5, 15.0, 3.5 ], "glow": 64 },
+								"up": { "texture": "#tie-marked", "uv": [ 12.5, 1.5, 13.5, 3.5 ], "glow": 64 },
+								"down": { "texture": "#tie-marked", "uv": [ 12.0, 2.0, 13.0, 4.0 ], "glow": 64 }
+							}
+						}
+					]
+				}
+			]
+		}
+	]}

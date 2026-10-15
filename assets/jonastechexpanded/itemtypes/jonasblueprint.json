@@ -1,5 +1,7 @@
 {
 	code: "jonasblueprint",
+	// Shows rolledShape while in a scroll rack (ItemJonasBlueprint).
+	class: "ItemJonasBlueprint",
 	variantgroups: [
 		// Part blueprints use the vanilla part's own type state, so the grid recipe maps jonasparts-{type} and
 		// jonasframes-{type} straight onto jonasblueprint-{type}. The two vanilla groups share no state names.
@@ -20,6 +22,16 @@
 			translation: { x: 0, y: -0.8875, z: 0.4711 },
 			origin: { x: 0.5, y: 0.8875, z: 0.05625 },
 			rotation: { x: 0, y: 180, z: 0 }
+		},
+		// Vanilla scroll racks accept it and show rolledShape instead of the flat sheet. The shape is a copy of
+		// vanilla's item/lore/scroll-unbound (blueprint template texture), so the transform is vanilla parchment's.
+		// The rack puts item point (0, 0, 1) at the slot's center with item x along the slot's depth.
+		scrollrackable: true,
+		rolledShape: "item/blueprint/jonasblueprint-rolled",
+		onscrollrackTransform: {
+			translation: { x: -0.5, y: -0.18, z: 0.48 },
+			rotation: { x: -45, y: 0, z: 0 },
+			origin: { x: 0.5, y: 0.1, z: 0.5 }
 		}
 	},
 	attributesByType: {

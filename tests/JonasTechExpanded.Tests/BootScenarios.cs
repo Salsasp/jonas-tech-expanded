@@ -48,7 +48,7 @@ namespace JonasTechExpanded.Tests
         [InlineData("jonastechexpanded:springboots", typeof(ItemSpringBoots))]
         [InlineData("jonastechexpanded:shockabsorptionapparatus", typeof(Item))]
         [InlineData("jonastechexpanded:springbootsbody", typeof(Item))]
-        [InlineData("jonastechexpanded:jonasblueprint-springboots", typeof(Item))]
+        [InlineData("jonastechexpanded:jonasblueprint-springboots", typeof(ItemJonasBlueprint))]
         public Task Item_is_registered_with_its_class(string code, Type expected)
         {
             Assert.IsType(expected, TestKit.Item(World, code));
