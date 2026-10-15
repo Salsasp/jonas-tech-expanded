@@ -59,9 +59,16 @@
 		burnDuration: 25
 	},
 	materialDensity: 600,
-	// Centered on the two-block model (x 0..2).
+	heldRightTpIdleAnimation: "holdbothhands",
 	guiTransform: {
+		translation: { x: 0, y: 5, z: 0 },
+		rotation: { x: -22, y: -135, z: 0 },
 		origin: { x: 1, y: 0.5, z: 0.5 },
 		scale: 0.8
+	},
+	tpHandTransform: {
+		translation: { x: -0.5, y: -1.1, z: -0.5 },
+		rotation: { x: 131, y: 19, z: -83 },
+		scale: 0.62
 	}
 }
