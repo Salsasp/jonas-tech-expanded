@@ -26,6 +26,11 @@
 			sphereColor: [0.25, 0.85, 0.95]
 		}
 	},
+	behaviors: [
+		// Two blocks tall. Vanilla fills the top block with an invisible multiblock-monolithic placeholder that
+		// forwards clicks, breaking and hitboxes to this block; the field stays centered on this (bottom) block.
+		{ name: "Multiblock", properties: { sizex: 1, sizey: 2, sizez: 1, cposition: { x: 0, y: 0, z: 0 } } }
+	],
 	entityBehaviors: [{ name: "Animatable" }],
 	creativeinventory: { "general": ["*"], "decorative": ["*"] },
 	shape: { base: "block/temporalaccelfield" },
