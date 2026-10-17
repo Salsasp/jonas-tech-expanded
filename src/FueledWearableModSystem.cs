@@ -18,7 +18,7 @@ namespace JonasTechExpanded
         private readonly HashSet<string> bonusApplied = new HashSet<string>();
         private double lastFuelCheckTotalHours = -1;
 
-        /// <summary>Character inventory slot the wearable goes in.</summary>
+        /// <summary>Vanilla character inventory slot the wearable goes in; checked first, before searching the rest.</summary>
         protected abstract EnumCharacterDressType Slot { get; }
 
         /// <summary>Watched attribute published on the wearer while the wearable is powered.</summary>
@@ -59,7 +59,15 @@ namespace JonasTechExpanded
             if (inv == null) return null;
 
             var slot = inv[(int)Slot];
-            return slot?.Itemstack?.Collectible is TItem ? slot : null;
+            if (slot?.Itemstack?.Collectible is TItem) return slot;
+
+            // Combat Overhaul swaps in its own character inventory with the vanilla armor slots disabled;
+            // armor sits in extra layer/zone slots further along, so search the rest.
+            foreach (var other in inv)
+            {
+                if (other?.Itemstack?.Collectible is TItem) return other;
+            }
+            return null;
         }
 
         /// <summary>

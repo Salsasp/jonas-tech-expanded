@@ -110,6 +110,23 @@ namespace JonasTechExpanded.Tests
         }
 
         /// <summary>
+        /// Combat Overhaul disables the vanilla armor slots and keeps armor in extra character-inventory slots, so
+        /// the wearable must be found wherever it sits in that inventory. A clothes slot stands in for CO's slots.
+        /// </summary>
+        [AtlasTheory]
+        [MemberData(nameof(Wearables))]
+        public async Task Found_outside_its_vanilla_slot(string code, EnumCharacterDressType slot, string poweredAttribute)
+        {
+            var player = await World.JoinPlayer("Moved" + slot);
+            var attrs = player.Entity.WatchedAttributes;
+
+            TestKit.Equip(player, EnumCharacterDressType.Neck, TestKit.Fueled(World, code, 10));
+            await TestKit.UntilTicked(World, () => attrs.GetBool(poweredAttribute));
+
+            Assert.True(attrs.GetBool(poweredAttribute));
+        }
+
+        /// <summary>
         /// Left-clicks a held gear onto the wearable's slot, the inventory path players use. TryPutInto can't be
         /// used here: it checks mergeability at AutoMerge priority, and refueling only accepts DirectMerge.
         /// </summary>

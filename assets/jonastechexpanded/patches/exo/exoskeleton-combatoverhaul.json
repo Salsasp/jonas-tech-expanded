@@ -1,0 +1,34 @@
+[
+	// Combat Overhaul compatibility, applied only when it is installed. CO disables the vanilla armor slots and
+	// only accepts items with its Armor behavior. The exoskeleton takes the plate layer (Outer) on the chest.
+	// Resists/stats are CO's own sewn-linen (gambeson) values, which our vanilla protection already mirrors.
+	// The vanilla protection/stat attributes are removed so they don't stack with CO's, as CO does for vanilla armor.
+	{
+		"op": "add",
+		"path": "/behaviors/-",
+		"value": {
+			"name": "CombatOverhaul:Armor",
+			"properties": {
+				"Layers": ["Outer"],
+				"Zones": ["Torso"],
+				"Resists": { "PiercingAttack": 1, "SlashingAttack": 1, "BluntAttack": 5 },
+				"FlatReduction": {},
+				"PlayerStats": { "walkspeed": 0, "manipulationSpeed": -0.01, "steadyAim": -0.02, "healingeffectivness": -0.09, "hungerrate": 0.03 }
+			}
+		},
+		"file": "jonastechexpanded:itemtypes/exoskeletonchest.json",
+		"dependsOn": [{ "modid": "combatoverhaul" }]
+	},
+	{
+		"op": "remove",
+		"path": "/attributes/protectionModifiers",
+		"file": "jonastechexpanded:itemtypes/exoskeletonchest.json",
+		"dependsOn": [{ "modid": "combatoverhaul" }]
+	},
+	{
+		"op": "remove",
+		"path": "/attributes/statModifiers",
+		"file": "jonastechexpanded:itemtypes/exoskeletonchest.json",
+		"dependsOn": [{ "modid": "combatoverhaul" }]
+	}
+]
