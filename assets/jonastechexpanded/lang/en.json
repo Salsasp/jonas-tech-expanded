@@ -51,7 +51,7 @@
 	"workbench-progress": "Stages installed: {0} / {1}",
 	"workbench-ready": "Ready to assemble: {0}",
 	"block-temporalaccelfield": "Temporal Acceleration Field Generator",
-	"blockdesc-temporalaccelfield": "Burns temporal gears to make time run faster in the space around it. Fires, kilns, barrels, skeps and anything that rots, dries, or cures nearby all finish sooner.",
+	"blockdesc-temporalaccelfield": "Burns temporal gears to make time run faster in the space around it. Affects campfires, barrels, pit kilns, bloomeries, and item aging.",
 	"accelfield-title": "Temporal Acceleration Field",
 	"accelfield-open": "Configure",
 	"accelfield-preview": "Preview range",
