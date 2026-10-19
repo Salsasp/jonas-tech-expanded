@@ -10,11 +10,11 @@ using Vintagestory.API.Util;
 namespace JonasTechExpanded
 {
     /// <summary>
-    /// Handheld resonator. Right-click opens a one-slot UI for the tuning cylinder
+    /// Handheld resonator. Ctrl + right-click opens a one-slot UI for the tuning cylinder
     /// (<see cref="InventoryPortableResonator"/>); shift + right-click starts/stops the song, resuming where it
-    /// stopped. The cylinder lives in the stack's attributes, and the <c>cylinder</c> variant (<c>empty</c> /
-    /// <c>loaded</c>) mirrors it, because item codes reach other clients while stack attributes don't. Playback
-    /// itself is run by <see cref="ResonatorModSystem"/>.
+    /// stopped. Plain right-click is left free for shelf placement. The cylinder lives in the stack's attributes, and
+    /// the <c>cylinder</c> variant (<c>empty</c> / <c>loaded</c>) mirrors it, because item codes reach other
+    /// clients while stack attributes don't. Playback itself is run by <see cref="ResonatorModSystem"/>.
     /// </summary>
     public class ItemPortableResonator : Item
     {
@@ -146,8 +146,10 @@ namespace JonasTechExpanded
 
         public override void OnHeldInteractStart(ItemSlot slot, EntityAgent byEntity, BlockSelection blockSel, EntitySelection entitySel, bool firstEvent, ref EnumHandHandling handling)
         {
-            // Ctrl + shift + right-click is ground placement (the GroundStorable behavior, run by base).
-            if (!firstEvent || byEntity.Controls.CtrlKey || byEntity is not EntityPlayer { Player: { } player })
+            // Plain right-click is left to the targeted block (shelf placement); ctrl + shift + right-click is ground
+            // placement (the GroundStorable behavior, run by base).
+            var controls = byEntity.Controls;
+            if (!firstEvent || controls.CtrlKey == controls.ShiftKey || byEntity is not EntityPlayer { Player: { } player })
             {
                 base.OnHeldInteractStart(slot, byEntity, blockSel, entitySel, firstEvent, ref handling);
                 return;
@@ -155,7 +157,7 @@ namespace JonasTechExpanded
 
             handling = EnumHandHandling.PreventDefault;
 
-            if (byEntity.Controls.ShiftKey)
+            if (controls.ShiftKey)
             {
                 if (GetTrack(slot.Itemstack) == null)
                 {
@@ -188,6 +190,7 @@ namespace JonasTechExpanded
                 new WorldInteraction
                 {
                     ActionLangCode = "jonastechexpanded:heldhelp-resonator-open",
+                    HotKeyCode = "ctrl",
                     MouseButton = EnumMouseButton.Right
                 },
                 new WorldInteraction

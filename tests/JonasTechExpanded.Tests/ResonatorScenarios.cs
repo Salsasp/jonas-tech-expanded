@@ -189,6 +189,34 @@ namespace JonasTechExpanded.Tests
             }
         }
 
+        [AtlasScenario]
+        public async Task Ctrl_right_click_opens_the_ui_and_plain_right_click_is_left_to_shelves()
+        {
+            var player = await World.JoinPlayer("ResoOpen");
+            var (slot, item) = giveLoaded(player);
+            var controls = player.Entity.Controls;
+            var inventoryId = InventoryPortableResonator.ClassName + "-" + player.Player.PlayerUID;
+
+            var handling = EnumHandHandling.NotHandled;
+            item.OnHeldInteractStart(slot, player.Entity, null, null, true, ref handling);
+            Assert.NotEqual(EnumHandHandling.PreventDefault, handling);
+            Assert.Null(player.Player.InventoryManager.GetInventory(inventoryId));
+
+            controls.CtrlKey = true;
+            try
+            {
+                handling = EnumHandHandling.NotHandled;
+                item.OnHeldInteractStart(slot, player.Entity, null, null, true, ref handling);
+                Assert.Equal(EnumHandHandling.PreventDefault, handling);
+                Assert.NotNull(player.Player.InventoryManager.GetInventory(inventoryId));
+                Assert.False(item.IsPlaying(slot.Itemstack));
+            }
+            finally
+            {
+                controls.CtrlKey = false;
+            }
+        }
+
         private Item cylinderItem()
         {
             return World.Api.World.Items.FirstOrDefault(i => i?.Code != null && ItemPortableResonator.IsCylinder(new ItemStack(i)));
