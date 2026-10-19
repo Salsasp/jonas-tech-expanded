@@ -1,0 +1,17 @@
+[
+	{
+		// Everything is used up, tools included. solderbar-tin is the vanilla "Lead solder bar".
+		ingredientPattern: "BI_,WHC,PPP",
+		ingredients: {
+			"B": { type: "item", code: "game:solderbar-*", quantity: 2, allowedVariants: ["tin", "silver"] },
+			"I": { type: "item", code: "game:solderingiron" },
+			"W": { type: "item", code: "game:wrench-iron" },
+			"H": { type: "item", code: "game:hammer-iron" },
+			"C": { type: "item", code: "game:chisel-iron" },
+			"P": { type: "item", code: "game:plank-*", quantity: 2 }
+		},
+		width: 3,
+		height: 3,
+		output: { type: "block", code: "jonasworkbench-north", quantity: 1 }
+	}
+]

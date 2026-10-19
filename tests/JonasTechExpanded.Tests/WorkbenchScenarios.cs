@@ -226,6 +226,53 @@ namespace JonasTechExpanded.Tests
             Assert.Equal(2, dropped.GetValueOrDefault("jonastechexpanded:springbootsbody"));
         }
 
+        [AtlasTheory(RollbackWorld = true)]
+        [InlineData("game:solderbar-tin", "CraftBenchLead")]
+        [InlineData("game:solderbar-silver", "CraftBenchSilver")]
+        public async Task Grid_recipe_crafts_the_bench_and_uses_up_the_tools(string solder, string playerName)
+        {
+            var player = await World.JoinPlayer(playerName);
+            // BI_, WHC, PPP; mixed plank woods are fine.
+            var codes = new[]
+            {
+                solder, "game:solderingiron", null,
+                "game:wrench-iron", "game:hammer-iron", "game:chisel-iron",
+                "game:plank-oak", "game:plank-pine", "game:plank-oak"
+            };
+            var grid = codes.Select(code =>
+            {
+                var slot = (ItemSlot)new DummySlot();
+                if (code != null) slot.Itemstack = new ItemStack(TestKit.Item(World, code), code == solder || code.Contains("plank") ? 2 : 1);
+                return slot;
+            }).ToArray();
+
+            var recipe = Assert.Single(World.Api.World.GridRecipes.Where(r => r.Matches(player.Player, World.Api.World, grid, 3)));
+            Assert.Equal(new AssetLocation("jonastechexpanded:jonasworkbench-north"), recipe.Output.ResolvedItemStack.Collectible.Code);
+
+            Assert.True(recipe.ConsumeInput(player.Player, grid, 3));
+            for (int i = 0; i < grid.Length; i++) Assert.True(grid[i].Empty, $"{codes[i]} should be used up");
+        }
+
+        [AtlasScenario(RollbackWorld = true)]
+        public async Task Grid_recipe_needs_two_solder_bars()
+        {
+            var player = await World.JoinPlayer("CraftBenchShort");
+            var codes = new[]
+            {
+                "game:solderbar-tin", "game:solderingiron", null,
+                "game:wrench-iron", "game:hammer-iron", "game:chisel-iron",
+                "game:plank-oak", "game:plank-oak", "game:plank-oak"
+            };
+            var grid = codes.Select(code =>
+            {
+                var slot = (ItemSlot)new DummySlot();
+                if (code != null) slot.Itemstack = new ItemStack(TestKit.Item(World, code), code.Contains("plank") ? 2 : 1);
+                return slot;
+            }).ToArray();
+
+            Assert.DoesNotContain(World.Api.World.GridRecipes, r => r.Matches(player.Player, World.Api.World, grid, 3));
+        }
+
         /// <summary>Survival player holding the blueprint, standing next to a fresh bench.</summary>
         private async Task<(ITestPlayer player, BlockEntityJonasWorkbench be, BlockPos pos)> setUp(string playerName, string blueprint = Blueprint)
         {
