@@ -170,6 +170,14 @@ namespace JonasTechExpanded
                 return true;
             }
 
+            // Shift, not ctrl: creative + ctrl is vanilla RightClickConstruction's free install.
+            if (byPlayer.Entity.Controls.ShiftKey)
+            {
+                if (Api.Side == EnumAppSide.Server) takeLast(byPlayer);
+                playSound(PlaceSound, byPlayer);
+                return true;
+            }
+
             if (!HasRecipe) return true;
 
             if (IsComplete)
@@ -184,12 +192,6 @@ namespace JonasTechExpanded
                 nextTickSoundAt = 0;
                 if (Api.Side == EnumAppSide.Server) MarkDirty();
                 else startConverging();
-                return true;
-            }
-
-            if (rcc.CurrentCompletedStage == 0 && hand.Empty && byPlayer.Entity.Controls.ShiftKey)
-            {
-                if (Api.Side == EnumAppSide.Server) takeBlueprint(byPlayer);
                 return true;
             }
 
@@ -316,26 +318,50 @@ namespace JonasTechExpanded
                 inventory.MarkSlotDirty(slot);
             }
             resetProgress();
+            giveOrDrop(byPlayer, stack);
+            MarkDirty(true);
+        }
 
-            if (!byPlayer.InventoryManager.TryGiveItemstack(stack, true))
+        /// <summary>
+        /// Undoes the last installed stage, giving back everything it put in the sockets. With no stage installed, takes
+        /// the blueprint instead.
+        /// </summary>
+        private void takeLast(IPlayer byPlayer)
+        {
+            int stage = HasRecipe ? rcc.CurrentCompletedStage : 0;
+            if (stage == 0)
             {
-                Api.World.SpawnItemEntity(stack, Pos.ToVec3d().Add(0.5, 1.1, 0.5));
+                takeBlueprint(byPlayer);
+                return;
             }
 
+            var require = stages[stage].RequireStacks ?? new ConstructionIngredient[0];
+            for (int i = 0; i < require.Length; i++)
+            {
+                int slot = 1 + firstSocketOfStage[stage] + i;
+                giveOrDrop(byPlayer, inventory[slot].TakeOutWhole());
+                inventory.MarkSlotDirty(slot);
+
+                // Lets the stage pick a different variant when it is installed again.
+                if (require[i].StoreWildCard != null) rcc.StoredWildCards.Remove(require[i].StoreWildCard);
+            }
+
+            rcc.CurrentCompletedStage = stage - 1;
             MarkDirty(true);
         }
 
         private void takeBlueprint(IPlayer byPlayer)
         {
-            var stack = inventory[BlueprintSlot].TakeOutWhole();
-            if (!byPlayer.InventoryManager.TryGiveItemstack(stack, true))
-            {
-                Api.World.SpawnItemEntity(stack, Pos.ToVec3d().Add(0.5, 1.1, 0.5));
-            }
-
-            resetProgress();
+            giveOrDrop(byPlayer, inventory[BlueprintSlot].TakeOutWhole());
             bindRecipe();
             MarkDirty(true);
+        }
+
+        private void giveOrDrop(IPlayer byPlayer, ItemStack stack)
+        {
+            if (stack == null || byPlayer.InventoryManager.TryGiveItemstack(stack, true)) return;
+
+            Api.World.SpawnItemEntity(stack, Pos.ToVec3d().Add(0.5, 1.1, 0.5));
         }
 
         private void resetProgress()
@@ -368,7 +394,14 @@ namespace JonasTechExpanded
                 };
             }
 
-            if (!HasRecipe) return null;
+            var takeLast = new WorldInteraction
+            {
+                ActionLangCode = HasRecipe && rcc.CurrentCompletedStage > 0 ? "jonastechexpanded:workbench-takelast" : "jonastechexpanded:workbench-takeblueprint",
+                MouseButton = EnumMouseButton.Right,
+                HotKeyCode = "shift"
+            };
+
+            if (!HasRecipe) return new[] { takeLast };
 
             if (IsComplete)
             {
@@ -379,23 +412,13 @@ namespace JonasTechExpanded
                         ActionLangCode = "jonastechexpanded:workbench-assemble",
                         MouseButton = EnumMouseButton.Right,
                         Itemstacks = getHammerStacks()
-                    }
+                    },
+                    takeLast
                 };
             }
 
             var help = rcc.GetInteractionHelp(Api.World, forPlayer) ?? new WorldInteraction[0];
-            if (rcc.CurrentCompletedStage == 0)
-            {
-                help = help.Append(new WorldInteraction
-                {
-                    ActionLangCode = "jonastechexpanded:workbench-takeblueprint",
-                    MouseButton = EnumMouseButton.Right,
-                    HotKeyCode = "shift",
-                    RequireFreeHand = true
-                });
-            }
-
-            return help;
+            return help.Append(takeLast);
         }
 
         private ItemStack[] getBlueprintStacks()

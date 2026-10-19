@@ -44,6 +44,7 @@
 	"itemdesc-exoskeletonarmframe": "A component for the Jonas Exoskeleton. A geared steel limb that lends its strength to the wearer's arm.",
 	"workbench-placeblueprint": "Place blueprint",
 	"workbench-takeblueprint": "Take blueprint",
+	"workbench-takelast": "Take back last installed parts",
 	"workbench-install": "Install",
 	"workbench-assemble": "Hold to assemble",
 	"workbench-needhammer": "Hold a hammer in your main hand to assemble",

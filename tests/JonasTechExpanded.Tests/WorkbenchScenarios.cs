@@ -203,6 +203,46 @@ namespace JonasTechExpanded.Tests
         }
 
         [AtlasScenario(RollbackWorld = true)]
+        public async Task Shift_right_click_takes_back_stages_newest_first_then_the_blueprint()
+        {
+            var (player, be, _) = await completeBench("TakeLast");
+            var (_, stages) = Builds[Blueprint];
+            TestKit.PutInHotbar(player, 0, new ItemStack(TestKit.Item(World, "game:hammer-iron")));
+
+            player.Entity.Controls.ShiftKey = true;
+            try
+            {
+                // Works on a complete bench too, instead of assembling.
+                for (int stage = stages.Length - 1; stage >= 0; stage--)
+                {
+                    Assert.True(be.OnInteractStart(player.Player));
+                    Assert.False(be.IsComplete);
+                    Assert.True(be.Inventory[1 + stage].Empty, $"Socket {1 + stage} still filled");
+                    Assert.All(Enumerable.Range(1, stage), i => Assert.False(be.Inventory[i].Empty, $"Socket {i} emptied too early"));
+                }
+
+                Assert.Equal(stages.Sum(s => s.quantity), stages.Select(s => s.code).Distinct().Sum(code => TestKit.CountCarried(player, code)));
+                Assert.True(be.HasBlueprint, "Blueprint should go last");
+
+                Assert.True(be.OnInteractStart(player.Player));
+                Assert.False(be.HasBlueprint);
+                Assert.Equal(1, TestKit.CountCarried(player, Blueprint));
+            }
+            finally
+            {
+                player.Entity.Controls.ShiftKey = false;
+            }
+
+            // Taken-back parts install again from scratch.
+            TestKit.ClearHotbar(player);
+            TestKit.PutInHotbar(player, 0, new ItemStack(TestKit.Item(World, Blueprint)));
+            be.OnInteractStart(player.Player);
+            stockHotbar(player, stages);
+            be.OnInteractStart(player.Player);
+            Assert.False(be.Inventory[1].Empty, "First stage didn't install after taking everything back");
+        }
+
+        [AtlasScenario(RollbackWorld = true)]
         public async Task Stage_without_its_ingredients_is_not_installed()
         {
             var (player, be, _) = await setUp("Missing");
