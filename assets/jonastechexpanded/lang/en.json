@@ -46,6 +46,7 @@
 	"workbench-takeblueprint": "Take blueprint",
 	"workbench-install": "Install",
 	"workbench-assemble": "Hold to assemble",
+	"workbench-needhammer": "Hold a hammer in your main hand to assemble",
 	"workbench-noblueprint": "No blueprint placed",
 	"workbench-blueprint": "Blueprint: {0}",
 	"workbench-progress": "Stages installed: {0} / {1}",

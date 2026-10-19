@@ -15,7 +15,7 @@ namespace JonasTechExpanded
     /// Multistep crafting bench. A blueprint placed on the bench selects the recipe, whose stages are filled one
     /// right-click at a time through vanilla's <see cref="RightClickConstruction"/> (the system behind waterwheels and
     /// boats). Each installed ingredient is shown in a socket on the bench top; once every stage is in, holding
-    /// right-click assembles the output.
+    /// right-click with a hammer assembles the output while the parts slide together (<see cref="WorkbenchAssemblyRenderer"/>).
     /// </summary>
     /// <remarks>
     /// The socket slots hold the real consumed stacks, so breaking the bench drops everything put in so far.
@@ -49,8 +49,16 @@ namespace JonasTechExpanded
         private SocketPlacement blueprintPlacement;
         private SocketPlacement[] socketPlacements;
 
+        /// <summary>
+        /// Whether a hold-to-assemble is in progress. Each side tracks its own interaction; the server's value is also
+        /// synced so other players' clients can show the parts converging.
+        /// </summary>
         private bool assembling;
         private float nextTickSoundAt;
+
+        /// <summary>Client: socket items are drawn by the renderer, sliding to the middle, instead of in the chunk mesh.</summary>
+        private bool converging;
+        private WorkbenchAssemblyRenderer assemblyRenderer;
 
         public override InventoryBase Inventory => inventory;
         public override string InventoryClassName => "jonasworkbench";
@@ -59,6 +67,9 @@ namespace JonasTechExpanded
         public bool HasBlueprint => !inventory[BlueprintSlot].Empty;
         public bool HasRecipe => stages != null;
         public bool IsComplete => HasRecipe && rcc.CurrentCompletedStage >= stages.Length - 1;
+
+        /// <summary>While converging only the blueprint (slot 0) goes into the chunk mesh; the renderer draws the rest.</summary>
+        public override int DisplayedItems => converging ? 1 : base.DisplayedItems;
 
         public BlockEntityJonasWorkbench()
         {
@@ -73,8 +84,19 @@ namespace JonasTechExpanded
             blueprintPlacement = placements.Blueprint;
             socketPlacements = placements.Sockets.Take(MaxSockets).ToArray();
 
+            if (api is ICoreClientAPI capi) assemblyRenderer = new WorkbenchAssemblyRenderer(capi, this);
+
             bindRecipe();
         }
+
+        /// <summary>The bench at a position, following a multiblock placeholder back to the main block.</summary>
+        public static BlockEntityJonasWorkbench At(IWorldAccessor world, BlockPos pos)
+        {
+            if (world.BlockAccessor.GetBlock(pos) is BlockMultiblock placeholder) pos = pos.AddCopy(placeholder.OffsetInv);
+            return world.BlockAccessor.GetBlockEntity(pos) as BlockEntityJonasWorkbench;
+        }
+
+        public static bool IsHammer(ItemSlot slot) => slot?.Itemstack?.Collectible.Tool == EnumTool.Hammer;
 
         /// <summary>
         /// Reads the recipe from the blueprint on the bench, or clears it when there is none. Doesn't touch progress.
@@ -152,8 +174,16 @@ namespace JonasTechExpanded
 
             if (IsComplete)
             {
+                if (!IsHammer(hand))
+                {
+                    (Api as ICoreClientAPI)?.TriggerIngameError(this, "needhammer", Lang.Get("jonastechexpanded:workbench-needhammer"));
+                    return true;
+                }
+
                 assembling = true;
                 nextTickSoundAt = 0;
+                if (Api.Side == EnumAppSide.Server) MarkDirty();
+                else startConverging();
                 return true;
             }
 
@@ -175,7 +205,8 @@ namespace JonasTechExpanded
 
         public bool OnInteractStep(float secondsUsed, IPlayer byPlayer)
         {
-            if (!assembling || !IsComplete) return false;
+            // Switching away from the hammer stops it, short of the time, so nothing is made.
+            if (!assembling || !IsComplete || !IsHammer(byPlayer.InventoryManager.ActiveHotbarSlot)) return false;
 
             if (Api.Side == EnumAppSide.Client && secondsUsed >= nextTickSoundAt)
             {
@@ -190,16 +221,54 @@ namespace JonasTechExpanded
         {
             bool wasAssembling = assembling;
             assembling = false;
+            bool done = wasAssembling && IsComplete && secondsUsed >= assemblySeconds - 0.1f;
 
-            if (!wasAssembling || !IsComplete || secondsUsed < assemblySeconds - 0.1f) return;
+            if (!done)
+            {
+                if (Api.Side == EnumAppSide.Client) stopConverging();
+                else if (wasAssembling) MarkDirty();
+                return;
+            }
 
+            // On the client the parts stay converged until the server's update empties the sockets.
             playSound(AssembleDoneSound, byPlayer);
             if (Api.Side == EnumAppSide.Server) completeAssembly(byPlayer);
         }
 
         public void OnInteractCancel()
         {
+            bool wasAssembling = assembling;
             assembling = false;
+
+            if (Api.Side == EnumAppSide.Client) stopConverging();
+            else if (wasAssembling) MarkDirty();
+        }
+
+        /// <summary>Client: hands the socket items to the renderer and takes them out of the chunk mesh.</summary>
+        private void startConverging()
+        {
+            if (converging || assemblyRenderer == null) return;
+
+            var meshes = new MeshData[socketPlacements.Length];
+            for (int i = 0; i < meshes.Length; i++)
+            {
+                var slot = inventory[1 + i];
+                if (!slot.Empty) meshes[i] = getOrCreateMesh(slot, 1 + i);
+            }
+
+            assemblyRenderer.Start(meshes, socketPlacements, Block.Shape?.rotateY ?? 0, assemblySeconds);
+            converging = true;
+            Api.World.BlockAccessor.MarkBlockDirty(Pos);
+        }
+
+        /// <summary>Client: puts the socket items back into the chunk mesh.</summary>
+        private void stopConverging()
+        {
+            if (!converging) return;
+
+            assemblyRenderer?.Stop();
+            converging = false;
+            Api.World.BlockAccessor.MarkBlockDirty(Pos);
         }
 
         private void fillSockets(int stage)
@@ -308,7 +377,8 @@ namespace JonasTechExpanded
                     new WorldInteraction
                     {
                         ActionLangCode = "jonastechexpanded:workbench-assemble",
-                        MouseButton = EnumMouseButton.Right
+                        MouseButton = EnumMouseButton.Right,
+                        Itemstacks = getHammerStacks()
                     }
                 };
             }
@@ -333,6 +403,15 @@ namespace JonasTechExpanded
             return ObjectCacheUtil.GetOrCreate(Api, "jonasWorkbenchBlueprintStacks", () =>
                 Api.World.Collectibles
                     .Where(obj => obj.Attributes?[RecipeAttribute].Exists == true)
+                    .Select(obj => new ItemStack(obj))
+                    .ToArray());
+        }
+
+        private ItemStack[] getHammerStacks()
+        {
+            return ObjectCacheUtil.GetOrCreate(Api, "jonasWorkbenchHammerStacks", () =>
+                Api.World.Collectibles
+                    .Where(obj => obj.Tool == EnumTool.Hammer)
                     .Select(obj => new ItemStack(obj))
                     .ToArray());
         }
@@ -418,10 +497,11 @@ namespace JonasTechExpanded
         /// <summary>
         /// Transform from a displayed stack's mesh to the main block's space. Rotates about the main block's
         /// center exactly like the block shape's rotateY, so a placement past x = 16 lands on the second block.
+        /// Multiplies onto <paramref name="into"/> when given (the renderer passes its block-to-camera matrix).
         /// </summary>
-        public static Matrixf PlacementMatrix(float blockRotY, SocketPlacement placement)
+        public static Matrixf PlacementMatrix(float blockRotY, SocketPlacement placement, Matrixf into = null)
         {
-            return new Matrixf()
+            return (into ?? new Matrixf())
                 .Translate(0.5f, 0, 0.5f)
                 .RotateYDeg(blockRotY)
                 .Translate(placement.X / 16f - 0.5f, placement.Y / 16f, placement.Z / 16f - 0.5f)
@@ -430,10 +510,23 @@ namespace JonasTechExpanded
                 .Translate(-0.5f, 0, -0.5f);
         }
 
+        public override void OnBlockRemoved()
+        {
+            base.OnBlockRemoved();
+            assemblyRenderer?.Dispose();
+        }
+
+        public override void OnBlockUnloaded()
+        {
+            base.OnBlockUnloaded();
+            assemblyRenderer?.Dispose();
+        }
+
         public override void ToTreeAttributes(ITreeAttribute tree)
         {
             base.ToTreeAttributes(tree);
             rcc.ToTreeAttributes(tree);
+            tree.SetBool("assembling", assembling);
         }
 
         public override void FromTreeAttributes(ITreeAttribute tree, IWorldAccessor worldForResolving)
@@ -443,6 +536,15 @@ namespace JonasTechExpanded
 
             // The blueprint may have changed. Before Initialize there is no Api; Initialize binds then.
             if (Api != null) bindRecipe();
+
+            // Another player's assembly, as the server sees it. The local player's own assembly is driven by its
+            // interaction instead, so a stale update can't cut it short.
+            if (Api?.Side == EnumAppSide.Client)
+            {
+                bool serverAssembling = tree.GetBool("assembling");
+                if (serverAssembling && IsComplete) startConverging();
+                else if (!serverAssembling && !assembling) stopConverging();
+            }
 
             RedrawAfterReceivingTreeAttributes(worldForResolving);
         }

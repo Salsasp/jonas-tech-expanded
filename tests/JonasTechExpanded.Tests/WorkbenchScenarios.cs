@@ -142,6 +142,7 @@ namespace JonasTechExpanded.Tests
                 Assert.Equal(quantity, socket.StackSize);
             }
             Assert.True(be.IsComplete);
+            TestKit.PutInHotbar(player, 0, new ItemStack(TestKit.Item(World, "game:hammer-iron")));
 
             // Releasing early does nothing.
             Assert.True(be.OnInteractStart(player.Player));
@@ -158,6 +159,47 @@ namespace JonasTechExpanded.Tests
             Assert.False(be.IsComplete);
             Assert.True(be.HasBlueprint, "Blueprint stays on the bench for the next build");
             Assert.All(Enumerable.Range(1, be.Inventory.Count - 1), i => Assert.True(be.Inventory[i].Empty, $"Socket {i} not cleared"));
+        }
+
+        [AtlasScenario(RollbackWorld = true)]
+        public async Task Assembly_needs_a_hammer_in_hand_throughout()
+        {
+            var (player, be, _) = await completeBench("NoHammer");
+
+            // Empty hand: the click is taken but nothing starts.
+            Assert.True(be.OnInteractStart(player.Player));
+            Assert.False(be.OnInteractStep(1f, player.Player));
+            be.OnInteractStop(4f, player.Player);
+            Assert.True(be.IsComplete);
+
+            // Not a hammer either.
+            TestKit.PutInHotbar(player, 0, new ItemStack(TestKit.Item(World, "game:chisel-iron")));
+            Assert.True(be.OnInteractStart(player.Player));
+            Assert.False(be.OnInteractStep(1f, player.Player));
+            be.OnInteractStop(4f, player.Player);
+            Assert.True(be.IsComplete);
+
+            // Starting with a hammer, then switching away, stops it short.
+            TestKit.PutInHotbar(player, 0, new ItemStack(TestKit.Item(World, "game:hammer-iron")));
+            Assert.True(be.OnInteractStart(player.Player));
+            Assert.True(be.OnInteractStep(1f, player.Player));
+            player.Player.InventoryManager.ActiveHotbarSlotNumber = 9;
+            Assert.False(be.OnInteractStep(2f, player.Player), "Assembly kept going without the hammer");
+            be.OnInteractStop(2f, player.Player);
+
+            Assert.True(be.IsComplete);
+            Assert.Equal(0, TestKit.CountCarried(player, "jonastechexpanded:springboots"));
+        }
+
+        [AtlasScenario]
+        public Task Every_hammer_gets_the_assembly_swing()
+        {
+            var hammers = World.Api.World.Collectibles.Where(c => c.Tool == EnumTool.Hammer).ToList();
+
+            Assert.NotEmpty(hammers);
+            Assert.All(hammers, h => Assert.True(h.HasBehavior<CollectibleBehaviorWorkbenchHammer>(), $"{h.Code} has no workbench swing"));
+            Assert.False(TestKit.Item(World, "game:chisel-iron").HasBehavior<CollectibleBehaviorWorkbenchHammer>());
+            return Task.CompletedTask;
         }
 
         [AtlasScenario(RollbackWorld = true)]
@@ -293,6 +335,21 @@ namespace JonasTechExpanded.Tests
         }
 
         /// <summary>Every stage's ingredients in hotbar slots 1+, leaving the active slot 0 free.</summary>
+        /// <summary>A bench with every springboots stage installed, the hand empty.</summary>
+        private async Task<(ITestPlayer player, BlockEntityJonasWorkbench be, BlockPos pos)> completeBench(string playerName)
+        {
+            var (player, be, pos) = await setUp(playerName);
+            be.OnInteractStart(player.Player);
+
+            var (_, stages) = Builds[Blueprint];
+            stockHotbar(player, stages);
+            for (int stage = 0; stage < stages.Length; stage++) be.OnInteractStart(player.Player);
+
+            Assert.True(be.IsComplete);
+            Assert.True(TestKit.HotbarSlot(player, 0).Empty);
+            return (player, be, pos);
+        }
+
         private void stockHotbar(ITestPlayer player, (string code, int quantity)[] stages)
         {
             for (int i = 0; i < stages.Length; i++)
