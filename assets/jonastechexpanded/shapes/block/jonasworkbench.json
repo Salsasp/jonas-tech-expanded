@@ -2024,8 +2024,40 @@
     },
     {
       "name": "Socket1",
-      "from":[10.5,14.0,2.5],
-      "to":[16.5,14.5,8.5],
+      "from":[1.5000002384185791,14.0,9.4999990463256836],
+      "to":[7.5000002384185791,14.5,15.499999046325684],
+      "faces": {
+        "north":{"texture": "#copper", "uv": [0.0, 0.0, 6.0, 0.5]},
+        "east":{"texture": "#copper", "uv": [0.0, 0.0, 6.0, 0.5]},
+        "south":{"texture": "#copper", "uv": [0.0, 0.0, 6.0, 0.5]},
+        "west":{"texture": "#copper", "uv": [0.0, 0.0, 6.0, 0.5]},
+        "up":{"texture": "#copper", "uv": [0.0, 0.0, 6.0, 6.0]},
+        "down":{"texture": "#copper", "uv": [0.0, 0.0, 6.0, 6.0]}
+      },
+      "rotationOrigin":[4.5,14.0,12.5],
+      "rotationY": 20.0000057220459,
+      "uv":[0.0,0.0]
+    },
+    {
+      "name": "Socket2",
+      "from":[24.500001907348633,14.0,9.4999980926513672],
+      "to":[30.500001907348633,14.5,15.499998092651367],
+      "faces": {
+        "north":{"texture": "#copper", "uv": [0.0, 0.0, 6.0, 0.5]},
+        "east":{"texture": "#copper", "uv": [0.0, 0.0, 6.0, 0.5]},
+        "south":{"texture": "#copper", "uv": [0.0, 0.0, 6.0, 0.5]},
+        "west":{"texture": "#copper", "uv": [0.0, 0.0, 6.0, 0.5]},
+        "up":{"texture": "#copper", "uv": [0.0, 0.0, 6.0, 6.0]},
+        "down":{"texture": "#copper", "uv": [0.0, 0.0, 6.0, 6.0]}
+      },
+      "rotationOrigin":[27.5,14.0,12.5],
+      "rotationY": -20.0000057220459,
+      "uv":[0.0,0.0]
+    },
+    {
+      "name": "Socket3",
+      "from":[10.5,14.0,2.5000007152557373],
+      "to":[16.5,14.5,8.5000007152557373],
       "faces": {
         "north":{"texture": "#copper", "uv": [0.0, 0.0, 6.0, 0.5]},
         "east":{"texture": "#copper", "uv": [0.0, 0.0, 6.0, 0.5]},
@@ -2035,39 +2067,7 @@
         "down":{"texture": "#copper", "uv": [0.0, 0.0, 6.0, 6.0]}
       },
       "rotationOrigin":[13.5,14.0,5.5],
-      "rotationY": 10.0,
-      "uv":[0.0,0.0]
-    },
-    {
-      "name": "Socket2",
-      "from":[17.5,14.0,2.5],
-      "to":[23.5,14.5,8.5],
-      "faces": {
-        "north":{"texture": "#copper", "uv": [0.0, 0.0, 6.0, 0.5]},
-        "east":{"texture": "#copper", "uv": [0.0, 0.0, 6.0, 0.5]},
-        "south":{"texture": "#copper", "uv": [0.0, 0.0, 6.0, 0.5]},
-        "west":{"texture": "#copper", "uv": [0.0, 0.0, 6.0, 0.5]},
-        "up":{"texture": "#copper", "uv": [0.0, 0.0, 6.0, 6.0]},
-        "down":{"texture": "#copper", "uv": [0.0, 0.0, 6.0, 6.0]}
-      },
-      "rotationOrigin":[20.5,14.0,5.5],
-      "rotationY": -10.0,
-      "uv":[0.0,0.0]
-    },
-    {
-      "name": "Socket3",
-      "from":[3.5,14.0,2.5],
-      "to":[9.5,14.5,8.5],
-      "faces": {
-        "north":{"texture": "#copper", "uv": [0.0, 0.0, 6.0, 0.5]},
-        "east":{"texture": "#copper", "uv": [0.0, 0.0, 6.0, 0.5]},
-        "south":{"texture": "#copper", "uv": [0.0, 0.0, 6.0, 0.5]},
-        "west":{"texture": "#copper", "uv": [0.0, 0.0, 6.0, 0.5]},
-        "up":{"texture": "#copper", "uv": [0.0, 0.0, 6.0, 6.0]},
-        "down":{"texture": "#copper", "uv": [0.0, 0.0, 6.0, 6.0]}
-      },
-      "rotationOrigin":[6.5,14.0,5.5],
-      "rotationY": -15.0,
+      "rotationY": 10.000001907348633,
       "uv":[0.0,0.0]
     },
     {
@@ -2120,8 +2120,8 @@
     },
     {
       "name": "Socket7",
-      "from":[1.5,14.0,9.5],
-      "to":[7.5,14.5,15.5],
+      "from":[3.5000004768371582,14.0,2.5],
+      "to":[9.5000004768371582,14.5,8.5],
       "faces": {
         "north":{"texture": "#copper", "uv": [0.0, 0.0, 6.0, 0.5]},
         "east":{"texture": "#copper", "uv": [0.0, 0.0, 6.0, 0.5]},
@@ -2130,14 +2130,14 @@
         "up":{"texture": "#copper", "uv": [0.0, 0.0, 6.0, 6.0]},
         "down":{"texture": "#copper", "uv": [0.0, 0.0, 6.0, 6.0]}
       },
-      "rotationOrigin":[4.5,14.0,12.5],
-      "rotationY": 20.0,
+      "rotationOrigin":[6.5,14.0,5.5],
+      "rotationY": -15.000001907348633,
       "uv":[0.0,0.0]
     },
     {
       "name": "Socket8",
-      "from":[24.5,14.0,9.5],
-      "to":[30.5,14.5,15.5],
+      "from":[17.499998092651367,14.0,2.5],
+      "to":[23.499998092651367,14.5,8.5],
       "faces": {
         "north":{"texture": "#copper", "uv": [0.0, 0.0, 6.0, 0.5]},
         "east":{"texture": "#copper", "uv": [0.0, 0.0, 6.0, 0.5]},
@@ -2146,8 +2146,8 @@
         "up":{"texture": "#copper", "uv": [0.0, 0.0, 6.0, 6.0]},
         "down":{"texture": "#copper", "uv": [0.0, 0.0, 6.0, 6.0]}
       },
-      "rotationOrigin":[27.5,14.0,12.5],
-      "rotationY": -20.0,
+      "rotationOrigin":[20.5,14.0,5.5],
+      "rotationY": -10.000000953674316,
       "uv":[0.0,0.0]
     }
   ],
