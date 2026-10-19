@@ -1,5 +1,6 @@
 using System.Linq;
 using System.Text;
+using Newtonsoft.Json.Linq;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common;
 using Vintagestory.API.Config;
@@ -371,6 +372,47 @@ namespace JonasTechExpanded
             }
 
             return matrices;
+        }
+
+        protected override MeshData getOrCreateMesh(ItemSlot slot, int index)
+        {
+            var cached = getMesh(slot);
+            if (cached != null) return cached;
+
+            // Vanilla already applied the item's own onJonasWorkbenchTransform, if it has one.
+            var mesh = base.getOrCreateMesh(slot, index);
+            var stack = slot.Itemstack;
+            if (stack.Collectible.Attributes?[AttributeTransformCode].Exists == true) return mesh;
+
+            var transform = FindItemTransform(Block.Attributes?["workbench"]["itemTransforms"], stack.Collectible.Code, Block.Code.Domain);
+            if (transform == null) return mesh;
+
+            // displayedShape meshes are shared through ObjectCacheUtil, so transform a copy.
+            mesh = mesh.Clone();
+            transform.EnsureDefaultValues();
+            mesh.ModelTransform(transform);
+            MeshCache[getMeshCacheKey(slot)] = mesh;
+            return mesh;
+        }
+
+        /// <summary>
+        /// The bench's own transform for an item, from block JSON <c>attributes.workbench.itemTransforms</c>: an object
+        /// keyed by item code (wildcards allowed, unprefixed codes are in <paramref name="defaultDomain"/>, the bench's own
+        /// domain, as in blueprint recipes). The first matching key in file
+        /// order wins, so list specific codes before wildcards. Null when nothing matches.
+        /// </summary>
+        public static ModelTransform FindItemTransform(JsonObject itemTransforms, AssetLocation code, string defaultDomain)
+        {
+            if (itemTransforms?.Token is not JObject byCode) return null;
+
+            foreach (var entry in byCode)
+            {
+                if (WildcardUtil.Match(AssetLocation.Create(entry.Key, defaultDomain), code))
+                {
+                    return new JsonObject(entry.Value).AsObject<ModelTransform>();
+                }
+            }
+            return null;
         }
 
         /// <summary>

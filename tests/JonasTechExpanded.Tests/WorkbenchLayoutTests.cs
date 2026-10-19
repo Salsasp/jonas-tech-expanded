@@ -2,6 +2,8 @@ using System.IO;
 using System.Linq;
 using Newtonsoft.Json.Linq;
 using Vintagestory.API.Common;
+using Vintagestory.API.Datastructures;
+using Vintagestory.API.Util;
 
 namespace JonasTechExpanded.Tests
 {
@@ -88,6 +90,37 @@ namespace JonasTechExpanded.Tests
             Assert.Equal(5, placement.Z, 3);
             Assert.Equal(rotationY, placement.RotateY, 3);
             Assert.Equal(0.4f, placement.Scale);
+        }
+
+        [Fact]
+        public void Item_transform_matches_wildcards_and_the_first_match_wins()
+        {
+            var transforms = new JsonObject(JToken.Parse(@"{
+                'game:armor-body-jerkin-leather': { translation: { x: 1, y: 0, z: 0 } },
+                'game:armor-body-*': { translation: { x: 2, y: 0, z: 0 } },
+                'exoskeleton*': { translation: { x: 3, y: 0, z: 0 } }
+            }"));
+
+            Assert.Equal(1, BlockEntityJonasWorkbench.FindItemTransform(transforms, new AssetLocation("game:armor-body-jerkin-leather"), "jonastechexpanded").Translation.X);
+            Assert.Equal(2, BlockEntityJonasWorkbench.FindItemTransform(transforms, new AssetLocation("game:armor-body-lamellar-wood"), "jonastechexpanded").Translation.X);
+            Assert.Equal(3, BlockEntityJonasWorkbench.FindItemTransform(transforms, new AssetLocation("jonastechexpanded:exoskeletontorsoframe"), "jonastechexpanded").Translation.X);
+            Assert.Null(BlockEntityJonasWorkbench.FindItemTransform(transforms, new AssetLocation("jonastechexpanded:armor-body-jerkin-leather"), "jonastechexpanded"));
+            Assert.Null(BlockEntityJonasWorkbench.FindItemTransform(null, new AssetLocation("game:armor-body-jerkin-leather"), "jonastechexpanded"));
+        }
+
+        [Fact]
+        public void Every_item_transform_key_matches_a_recipe_ingredient()
+        {
+            var keys = ((JObject)Block["attributes"]["workbench"]["itemTransforms"]).Properties().Select(p => AssetLocation.Create(p.Name, "jonastechexpanded")).ToList();
+            var blueprint = JObject.Parse(File.ReadAllText(Path.Combine(ModAssets, "itemtypes", "jonasblueprint.json")));
+            var ingredients = blueprint.SelectTokens("attributesByType.*.jonasWorkbench.stages[*].requireStacks[*].code")
+                .Select(c => new AssetLocation(c.ToString().Contains(':') ? c.ToString() : "jonastechexpanded:" + c)).ToList();
+
+            Assert.NotEmpty(keys);
+            foreach (var key in keys)
+            {
+                Assert.True(ingredients.Any(i => WildcardUtil.Match(key, i)), $"itemTransforms key {key} matches no workbench ingredient");
+            }
         }
 
         /// <summary>The named element's box in model voxels, adding up parent offsets. Rotated ancestors aren't supported.</summary>

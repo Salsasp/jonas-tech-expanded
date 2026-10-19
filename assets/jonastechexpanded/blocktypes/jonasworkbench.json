@@ -27,9 +27,27 @@
 		// are numbered in mirrored pairs so any recipe size fills the bench symmetrically: back row beside the
 		// blueprint, then the front row. socketScale 0.4 makes a full-block item about 6 voxels across, the size
 		// of the marker pads.
+		// itemTransforms: how an ingredient sits on its socket, keyed by item code (wildcards allowed, unprefixed codes
+		// are this mod's, as in blueprint recipes; vanilla items need game:). The first matching key wins, so list specific codes before wildcards. Applied to the item's
+		// mesh before the socket placement, where (0.5, 0, 0.5) is the socket point. An item's own
+		// onJonasWorkbenchTransform attribute takes precedence (the blueprint uses one). Items with neither render
+		// at their shape's own coordinates, which only works for shapes modelled in the 0..16 cube.
 		workbench: {
 			blueprintScale: 0.8,
-			socketScale: 0.4
+			socketScale: 0.4,
+			itemTransforms: {
+				// Armor is modelled on the player's torso (center about (0.34, 1.12, 0.5), the pivot of vanilla's
+				// ground transform). Laid on its back like a dropped jerkin and moved down onto the socket.
+				"game:armor-body-jerkin-*": {
+					translation: { x: 0.16, y: -1.1, z: 0 },
+					rotation: { x: 0, y: 0, z: 90 },
+					origin: { x: 0.34, y: 1.12, z: 0.5 }
+				},
+				"exoskeletonarmframe": {
+					rotation: { x: 0, y: 0, z: 90 },
+					//origin: { x: 0.5, y: 0, z: 0.5 }
+				}
+			}
 		}
 	},
 	creativeinventory: { "general": ["*-north"], "decorative": ["*-north"] },
