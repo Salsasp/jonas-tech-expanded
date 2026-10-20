@@ -33,7 +33,7 @@ namespace JonasTechExpanded
         private const int MaxSockets = 8;
 
         private static readonly AssetLocation PlaceSound = new AssetLocation("game:sounds/effect/latch");
-        private static readonly AssetLocation AssembleTickSound = new AssetLocation("game:sounds/effect/gears");
+        private static readonly AssetLocation AssembleSound = new AssetLocation("jonastechexpanded:sounds/workbench_assembly");
         private static readonly AssetLocation AssembleDoneSound = new AssetLocation("game:sounds/effect/anvilhit1");
 
         private readonly InventoryDisplayed inventory;
@@ -54,11 +54,12 @@ namespace JonasTechExpanded
         /// synced so other players' clients can show the parts converging.
         /// </summary>
         private bool assembling;
-        private float nextTickSoundAt;
 
         /// <summary>Client: socket items are drawn by the renderer, sliding to the middle, instead of in the chunk mesh.</summary>
         private bool converging;
         private WorkbenchAssemblyRenderer assemblyRenderer;
+        /// <summary>Client: the assembly sound, started with the convergence and stopped if the assembly is cancelled.</summary>
+        private ILoadedSound assemblySound;
 
         public override InventoryBase Inventory => inventory;
         public override string InventoryClassName => "jonasworkbench";
@@ -189,7 +190,6 @@ namespace JonasTechExpanded
                 }
 
                 assembling = true;
-                nextTickSoundAt = 0;
                 if (Api.Side == EnumAppSide.Server) MarkDirty();
                 else startConverging();
                 return true;
@@ -209,12 +209,6 @@ namespace JonasTechExpanded
         {
             // Switching away from the hammer stops it, short of the time, so nothing is made.
             if (!assembling || !IsComplete || !IsHammer(byPlayer.InventoryManager.ActiveHotbarSlot)) return false;
-
-            if (Api.Side == EnumAppSide.Client && secondsUsed >= nextTickSoundAt)
-            {
-                playSound(AssembleTickSound, byPlayer);
-                nextTickSoundAt = secondsUsed + 1f;
-            }
 
             return secondsUsed < assemblySeconds;
         }
@@ -261,9 +255,22 @@ namespace JonasTechExpanded
             assemblyRenderer.Start(meshes, socketPlacements, Block.Shape?.rotateY ?? 0, assemblySeconds);
             converging = true;
             Api.World.BlockAccessor.MarkBlockDirty(Pos);
+
+            stopAssemblySound();
+            assemblySound = ((ICoreClientAPI)Api).World.LoadSound(new SoundParams
+            {
+                Location = AssembleSound,
+                Position = Pos.ToVec3f().Add(0.5f, 1f, 0.5f),
+                DisposeOnFinish = true,
+                Range = 16
+            });
+            assemblySound?.Start();
         }
 
-        /// <summary>Client: puts the socket items back into the chunk mesh.</summary>
+        /// <summary>
+        /// Client: puts the socket items back into the chunk mesh. A bench that is still complete means the assembly
+        /// was cancelled, so the sound stops too; after a finished assembly it plays out.
+        /// </summary>
         private void stopConverging()
         {
             if (!converging) return;
@@ -271,6 +278,18 @@ namespace JonasTechExpanded
             assemblyRenderer?.Stop();
             converging = false;
             Api.World.BlockAccessor.MarkBlockDirty(Pos);
+
+            if (IsComplete) stopAssemblySound();
+        }
+
+        private void stopAssemblySound()
+        {
+            if (assemblySound != null && !assemblySound.IsDisposed)
+            {
+                assemblySound.Stop();
+                assemblySound.Dispose();
+            }
+            assemblySound = null;
         }
 
         private void fillSockets(int stage)
@@ -537,12 +556,14 @@ namespace JonasTechExpanded
         {
             base.OnBlockRemoved();
             assemblyRenderer?.Dispose();
+            stopAssemblySound();
         }
 
         public override void OnBlockUnloaded()
         {
             base.OnBlockUnloaded();
             assemblyRenderer?.Dispose();
+            stopAssemblySound();
         }
 
         public override void ToTreeAttributes(ITreeAttribute tree)
